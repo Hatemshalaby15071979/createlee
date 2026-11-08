@@ -1,0 +1,6 @@
+event_id,event_date,event_type,agent_or_system,description,triggered_by,action_taken,reviewed_by,outcome,log_status,related_control,last_updated
+AE-001,2026-08-14,kill_switch_activation,agent-qa-12,Emergency halt of QA agent after anomalous bulk-action proposal,SOC alert,Agent suspended; pending review,[REDACTED_PERSON],Contained - no customer impact,logged,W-02,2026-11-06
+AE-002,2026-09-11,access_review,all_agents,Quarterly review of agent permissions,Scheduled cycle,3 stale accesses revoked,[REDACTED_PERSON],Completed,logged,W-04,2026-11-06
+AE-003,2026-09-29,access_revocation,agent-support-07,Revoked AI agent access per data-subject request,Data-subject request,Access revoked and logged,[REDACTED_PERSON],Completed,logged,W-02,2026-11-06
+AE-004,2026-10-16,kill_switch_test,agent-qa-12,Scheduled kill-switch drill to verify revocability,Security team,Kill switch verified functional; drill recorded in change log CHG-2026-1042,[REDACTED_PERSON],Pass - control effective,logged,W-02,2026-11-06
+AE-005,2026-11-03,access_review,all_agents,Routine quarterly permission re-certification,Scheduled cycle,2 permissions downgraded,[REDACTED_PERSON],Completed,logged,W-04,2026-11-06

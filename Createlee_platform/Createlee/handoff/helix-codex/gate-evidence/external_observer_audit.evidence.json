@@ -1,0 +1,21 @@
+{
+  "gate": "external_observer_audit",
+  "scope": "production",
+  "status": "ORG_MUST_COMPLETE",
+  "generated_at_iso8601": "2026-11-06T23:38:19Z",
+  "as_of": "2026-11-06",
+  "demand": "Third-party audit of the control plane and audit chain.",
+  "payload": {
+    "auditor": "",
+    "audit_id": "",
+    "scope": "",
+    "findings": [],
+    "opinion": "",
+    "report_sha256": "",
+    "signature": null
+  },
+  "signature": null,
+  "signature_instruction": "Sign the canonical JSON of this file with an RSA key held OUTSIDE the audited repository and store <gate>.evidence.json.sig beside it, also outside the repository. Never commit the private key.",
+  "operator_note": "Requires an external auditor. No CSV closes this.",
+  "generated_by": "Createlee / Engeznee — UNSIGNED TEMPLATE"
+}

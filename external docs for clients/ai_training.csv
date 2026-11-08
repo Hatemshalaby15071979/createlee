@@ -1,0 +1,8 @@
+date,timestamp,module_id,training_type,status,duration_hours,instructor,cost_currency,cost_amount,priority,notes
+2026-08-15,2026-08-15T09:30:00+02:00,BASE,deployment,true,4.5,N/A,N/A,high,"Core deployment"
+2026-09-01,2026-09-01T14:00:00+02:00,CUSTOMER,draft,false,2.0,N/A,N/A,normal,"Draft phase"
+2026-09-20,2026-09-20T10:00:00+02:00,BASE,deployment,true,3.5,"AI Core Training",30,high,"Refresher training"
+2026-10-05,2026-10-05T09:00:00+02:00,CUSTOMER,release,false,4.0,N/A,N/A,medium,"Pre-production readiness review"
+2026-10-18,2026-10-18T11:30:00+02:00,CUSTOMER,verification,true,5.5,Jane Smith,50,high,"Validation and verification pass"
+2026-11-02,2026-11-02T09:00:00+02:00,FULLSTACK,draft,false,3.0,N/A,N/A,normal,"Draft phase"
+")

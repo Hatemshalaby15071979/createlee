@@ -1,0 +1,77 @@
+===============================================================================
+SINGLE-FILE GENERATION TASK 5 OF 8  --  role_spec.csv
+For opencode / local Ollama. Self-contained: you have NO other context.
+===============================================================================
+
+You are generating ONE CSV evidence export for a telecom call-centre Signoff pack.
+Generate ONLY this one file. Do not generate or mention the other 7.
+
+AS-OF          : 2026-11-06
+COVERAGE WINDOW: 2026-08-08 .. 2026-11-06 inclusive (90 days)
+NATURE         : internal operational export; generate SIMULATED realistic data.
+                 Never claim it came from a live production system.
+
+-------------------------------------------------------------------------------
+NON-NEGOTIABLE RULES
+-------------------------------------------------------------------------------
+R1 FIXED WIDTH : every data row has EXACTLY 5 comma-separated fields
+                 (exactly 4 commas), because the header has 5 columns.
+                 Count the commas in every row before you emit it.
+                 A short row or an empty trailing field is a HARD FAILURE.
+R2 ONE RECORD PER LINE : header and every data row on its OWN line. No blank
+                 lines, no joined lines, no trailing spaces, and NO literal
+                 backslash-n characters. Use real newline characters.
+R3 ONE BLOCK ONLY : no text before the === FILE: line and no text after the
+                 === END === line. No markdown fences, no commentary.
+
+-------------------------------------------------------------------------------
+FILE DEFINITION
+-------------------------------------------------------------------------------
+exact name   : role_spec.csv
+header       : ts,role,assigned_to,is_authorised_supervisor,named_accountable
+columns      : 5
+min rows     : at least 1 data row
+example row  : 2026-10-01T00:00:00+02:00,AI Ops Lead,ACCT-01,yes,yes
+
+Emit EXACTLY ONE row with named_accountable=yes (lowercase); every
+other row must be named_accountable=no.
+
+-------------------------------------------------------------------------------
+HARD RULES
+-------------------------------------------------------------------------------
+- Emit the header EXACTLY as written above, as the first line of the block.
+  Do not add, remove, rename or reorder any column.
+- All booleans: lowercase yes / no only.
+- All timestamps: valid ISO-8601 with an offset (+02:00 etc.) or Z.
+- Most rows must fall inside 2026-08-08 .. 2026-11-06.
+- Do NOT delete rows to make the file look clean. If a control cannot be
+  evidenced, write `no` or leave the cell empty. Gaps are honest findings.
+- Plain UTF-8 CSV text only. No XLSX, no HTML, no markdown tables.
+
+-------------------------------------------------------------------------------
+OUTPUT CONTRACT (emit exactly this shape, nothing else)
+-------------------------------------------------------------------------------
+=== FILE: role_spec.csv ===
+<header line>
+<data row>
+<data row>
+=== END ===
+
+-------------------------------------------------------------------------------
+VERIFICATION GATE -- READ THIS BEFORE YOU CLAIM ANYTHING
+-------------------------------------------------------------------------------
+After writing the file, run this in the folder holding the CSVs:
+
+    node validate_signoff_csv.mjs .
+
+It prints a machine-checkable verdict (ACCEPTABLE / NOT ACCEPTABLE) and lists
+every failure. Paste that output.
+
+If your runtime cannot execute that command, output the single word UNVERIFIED.
+Do NOT write "Task complete", "ready for review", "ready for distribution",
+"all requirements met", or any similar completion claim. Your own judgement
+about whether you followed the rules is not evidence; the validator is.
+
+The 8-file pack is only complete once ALL 8 single-file runs exist AND the
+validator reports ACCEPTABLE with 0 failures.
+===============================================================================

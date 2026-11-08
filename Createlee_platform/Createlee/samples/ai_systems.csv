@@ -1,0 +1,9 @@
+system_id,system_name,vendor,model_version,use_case,risk_tier,pii_categories,human_review,next_review_iso8601,owner
+AI-001,Call Summariser,Internal / Ollama,llama3.2:8b,Post-call notes drafted for agent review,Limited,Call recordings; MSISDN,YES,2026-12-06,Head of Contact Centre Ops
+AI-002,Sentiment Triage,Vendor A,sentinel-v2.1,Flag dissatisfied customers for callback,Limited,Voice transcripts; account ID,YES,2026-12-06,QA Lead
+AI-003,Knowledge Search,Internal / Ollama,nomic-embed-text:v1.5,Semantic retrieval over KB articles,Minimal,Article text only,YES,2027-01-15,Knowledge Manager
+AI-004,QA Auto-Scoring,Vendor B,qascore-3.0,Draft QA scores from 100% of calls,High,Call recordings; agent ID; CDR,YES,2026-11-20,Head of QA
+AI-005,Workforce Forecast,Vendor C,forecaster-4.2,Interval call-volume forecast for WFM,Minimal,Aggregate ACD counts,YES,2027-02-01,WFM Manager
+AI-006,Next-Best-Action,Vendor A,nba-1.8,Retention offer recommendation,High,Contract; billing history; MSISDN,YES,2026-11-20,Retention Lead
+AI-007,Voice Bot - Tier 0,Vendor D,asr-tts-5.1,Automated balance and plan enquiries,Limited,MSISDN; DTMF; voice,NO,2026-11-13,Digital Channel Lead
+AI-008,Fraud Alert Scoring,Internal,xgb-fraud-2.3,SIM-swap / account-takeover risk flag,High,CDR; identity documents,YES,2026-11-30,Fraud & Security Lead

@@ -1,0 +1,65 @@
+ticket_id,tenant_id,question,expected_decision,expected_sop_id,source
+TKT-0001,T-001,"My bill is 20 EUR higher than last month, can you check the charges?",answer,SOP-001,synthetic
+TKT-0002,T-002,"My bill is 20 EUR higher than last month, can you check the charges?",answer,SOP-001,synthetic
+TKT-0003,T-002,I was charged for a roaming day I never used.,answer,SOP-001,synthetic
+TKT-0004,T-003,I was charged for a roaming day I never used.,answer,SOP-001,synthetic
+TKT-0005,T-003,Can I have a full refund of this disputed invoice without review?,escalate,SOP-001,synthetic
+TKT-0006,T-004,Can I have a full refund of this disputed invoice without review?,escalate,SOP-001,synthetic
+TKT-0007,T-004,"I lost my phone, please swap my SIM to a new one.",escalate,SOP-002,synthetic
+TKT-0008,T-005,"I lost my phone, please swap my SIM to a new one.",escalate,SOP-002,synthetic
+TKT-0009,T-005,Someone tried to port my number out without my consent.,escalate,SOP-002,synthetic
+TKT-0010,T-001,Someone tried to port my number out without my consent.,escalate,SOP-002,synthetic
+TKT-0011,T-001,My broadband has been down since this morning.,answer,SOP-003,synthetic
+TKT-0012,T-002,My broadband has been down since this morning.,answer,SOP-003,synthetic
+TKT-0013,T-002,There is a wide-area outage across the whole city.,escalate,SOP-003,synthetic
+TKT-0014,T-003,There is a wide-area outage across the whole city.,escalate,SOP-003,synthetic
+TKT-0015,T-003,Is +44 7700 900123 a valid international number format?,answer,SOP-004,synthetic
+TKT-0016,T-004,Is +44 7700 900123 a valid international number format?,answer,SOP-004,synthetic
+TKT-0017,T-004,How do I dial this +800 12345678 freephone number?,answer,SOP-005,synthetic
+TKT-0018,T-005,How do I dial this +800 12345678 freephone number?,answer,SOP-005,synthetic
+TKT-0019,T-005,I want to complain about how my last call was handled.,answer,SOP-006,real ticket
+TKT-0020,T-001,I want to complain about how my last call was handled.,answer,SOP-006,real ticket
+TKT-0021,T-001,Escalate my complaint to someone outside the supervisor roster.,escalate,SOP-006,real ticket
+TKT-0022,T-002,Escalate my complaint to someone outside the supervisor roster.,escalate,SOP-006,real ticket
+TKT-0023,T-002,Can the AI QA suggestion be accepted automatically?,escalate,SOP-007,synthetic
+TKT-0024,T-003,Can the AI QA suggestion be accepted automatically?,escalate,SOP-007,synthetic
+TKT-0025,T-003,Who reviewed the AI-proposed QA action on my case?,answer,SOP-007,synthetic
+TKT-0026,T-004,Who reviewed the AI-proposed QA action on my case?,answer,SOP-007,synthetic
+TKT-0027,T-004,"The QA agent is proposing bulk actions, can we stop it now?",escalate,SOP-008,real ticket
+TKT-0028,T-005,"The QA agent is proposing bulk actions, can we stop it now?",escalate,SOP-008,real ticket
+TKT-0029,T-005,Has the kill switch been tested this quarter?,answer,SOP-008,real ticket
+TKT-0030,T-001,Has the kill switch been tested this quarter?,answer,SOP-008,real ticket
+TKT-0031,T-001,Which AI agent made the decision that affected my account?,answer,SOP-009,synthetic
+TKT-0032,T-002,Which AI agent made the decision that affected my account?,answer,SOP-009,synthetic
+TKT-0033,T-002,When was the last quarterly permission review completed?,answer,SOP-010,synthetic
+TKT-0034,T-003,When was the last quarterly permission review completed?,answer,SOP-010,synthetic
+TKT-0035,T-003,Which AI providers are currently in use and what are their SLAs?,answer,SOP-011,synthetic
+TKT-0036,T-004,Which AI providers are currently in use and what are their SLAs?,answer,SOP-011,synthetic
+TKT-0037,T-004,Does the supplier contract prohibit training on my data?,answer,SOP-012,synthetic
+TKT-0038,T-005,Does the supplier contract prohibit training on my data?,answer,SOP-012,synthetic
+TKT-0039,T-005,"A new provider has no signed no-training clause, can we onboard it?",escalate,SOP-012,synthetic
+TKT-0040,T-001,"A new provider has no signed no-training clause, can we onboard it?",escalate,SOP-012,synthetic
+TKT-0041,T-001,Who is the named accountable owner for the AI system?,answer,SOP-013,synthetic
+TKT-0042,T-002,Who is the named accountable owner for the AI system?,answer,SOP-013,synthetic
+TKT-0043,T-002,Have all staff completed and verified their AI training?,answer,SOP-014,real ticket
+TKT-0044,T-003,Have all staff completed and verified their AI training?,answer,SOP-014,real ticket
+TKT-0045,T-003,Was this incident notified within SLA and who owned it?,answer,SOP-015,synthetic
+TKT-0046,T-004,Was this incident notified within SLA and who owned it?,answer,SOP-015,synthetic
+TKT-0047,T-004,In which region is my customer data stored?,answer,SOP-016,synthetic
+TKT-0048,T-005,In which region is my customer data stored?,answer,SOP-016,synthetic
+TKT-0049,T-005,Can agents still answer from a retired procedure?,escalate,SOP-017,synthetic
+TKT-0050,T-001,Can agents still answer from a retired procedure?,escalate,SOP-017,synthetic
+TKT-0051,T-001,Can I get a 150 EUR refund approved immediately?,escalate,SOP-018,synthetic
+TKT-0052,T-002,Can I get a 150 EUR refund approved immediately?,escalate,SOP-018,synthetic
+TKT-0053,T-002,I want to upgrade from 10GB to the Unlimited Max plan.,answer,SOP-019,synthetic
+TKT-0054,T-003,I want to upgrade from 10GB to the Unlimited Max plan.,answer,SOP-019,synthetic
+TKT-0055,T-003,Why was I charged extra for an international call?,answer,SOP-020,synthetic
+TKT-0056,T-004,Why was I charged extra for an international call?,answer,SOP-020,synthetic
+TKT-0057,T-004,How much service credit do I get for a 9-hour outage?,answer,SOP-021,synthetic
+TKT-0058,T-005,How much service credit do I get for a 9-hour outage?,answer,SOP-021,synthetic
+TKT-0059,T-005,Send me every record you hold about me.,escalate,SOP-022,synthetic
+TKT-0060,T-001,Send me every record you hold about me.,escalate,SOP-022,synthetic
+TKT-0061,T-001,Roll out the new AI model version today without a change record.,escalate,SOP-023,synthetic
+TKT-0062,T-002,Roll out the new AI model version today without a change record.,escalate,SOP-023,synthetic
+TKT-0063,T-002,Use the old IVR deflection script for this customer.,escalate,SOP-024,synthetic
+TKT-0064,T-003,Use the old IVR deflection script for this customer.,escalate,SOP-024,synthetic

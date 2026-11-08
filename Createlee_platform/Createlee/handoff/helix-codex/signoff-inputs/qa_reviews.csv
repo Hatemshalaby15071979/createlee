@@ -1,0 +1,14 @@
+ts,ai_action,human_action,reviewer_id,agent_id
+2026-11-05T09:12:44+02:00,suggest_refund,accepted,R-4421,A-1042
+2026-11-05T09:19:03+02:00,flag_identity_check,accepted,R-4422,A-1043
+2026-11-05T09:26:51+02:00,recommend_plan_change,accepted,R-4423,A-1044
+2026-11-05T10:02:17+02:00,suggest_followup,pending,R-4424,A-1042
+2026-11-05T10:14:39+02:00,suggest_network_reset,accepted,,A-1045
+2026-11-05T10:41:08+02:00,suggest_offer,accepted,R-4422,A-1046
+2026-11-05T11:03:26+02:00,escalate_priority,accepted,R-4423,A-1043
+2026-11-05T11:22:55+02:00,suggest_compensation,accepted,R-4424,A-1047
+2026-11-05T11:47:12+02:00,suggest_followup,pending,R-4421,A-1044
+2026-11-05T12:05:33+02:00,suggest_followup,accepted,,A-1048
+2026-11-05T12:31:47+02:00,suggest_followup,accepted,R-4423,A-1045
+2026-11-05T12:58:09+02:00,suggest_upgrade,accepted,R-4424,A-1046
+2026-07-15T09:00:00+02:00,escalate_priority,accepted,R-4400,A-1042

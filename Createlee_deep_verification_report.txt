@@ -1,0 +1,107 @@
+Createlee / Engeznee - Deep Verification Report
+====================================================
+Generated at (ISO-8601 UTC): 2026-11-06T07:41:40Z
+Schema version: 1.0
+As-of: 2026-11-06
+
+RESULT SUMMARY
+--------------
+  Platform regression suite : 72/72 PASS (Createlee_verification_report.txt)
+  Deep consistency checks   : 36/36 PASS
+  Clean-install checks      : 11/11 PASS
+  Final ZIP re-verification : 72/72 PASS, standalone HTTP boot OK, /api/library OK
+
+WHAT THIS SESSION ADDED
+----------------------
+  1. Grounding honesty - the ISO official ISO/IEC 42001 page that was actually
+     fetched this session was missing from the reference table; added as WEB-13.
+     WEB-07 (a third-party blog) was mislabelled as 'ITU-T E.800 (summary)';
+     relabelled honestly. references.csv gained a 'verification' column that
+     separates 2 direct-fetch sources (WEB-01, WEB-13) from 11 search leads.
+     SOP-004 and SOP-013 now carry concrete ITU E.156 / ISO 42001 requirements
+     taken from the fetched pages, with version bumps 1.2 -> 1.3.
+  2. INDEX.csv completeness - the manifest and README were written AFTER the
+     index, so both were missing from the delivery manifest and file_count was
+     understated (41 vs 43). Index generation is now a function refreshed as the
+     final step; INDEX lists all 42 other files with correct sha256, and
+     manifest.file_count == actual file count == 43.
+  3. Clean-install proof - the delivered platform ZIP was extracted into a fresh
+     directory with independent runtime folders; its own selftest passed 72/72,
+     app.py booted standalone HTTP, /api/library worked, and shutdown was clean.
+     A degraded build with NO uploaded files and NO evidence pack still produced
+     24 procedures, 64 labels, 13 references, 5 limitations, 5 report formats,
+     13 honest findings and 0 deleted rows.
+
+DEEP CONSISTENCY CHECKS
+-----------------------
+   1. [PASS] uploaded/agent_identity_log.csv row-for-row  |  4 rows
+   2. [PASS] uploaded/ai_inventory.csv row-for-row  |  4 rows
+   3. [PASS] uploaded/audit_events.csv row-for-row  |  5 rows
+   4. [PASS] uploaded/delivery_manifest.csv row-for-row  |  8 rows
+   5. [PASS] uploaded/escalation_log.csv row-for-row  |  3 rows
+   6. [PASS] uploaded/training_records.csv row-for-row  |  4 rows
+   7. [PASS] 6 REAL files / 28 rows preserved
+   8. [PASS] 8 evidence CSVs byte-identical
+   9. [PASS] 5 report formats present  |  ['.csv', '.docx', '.json', '.pdf', '.txt']
+  10. [PASS] PDF magic
+  11. [PASS] DOCX valid OOXML
+  12. [PASS] TXT preserves all 13 findings
+  13. [PASS] JSON web reference table = 13 rows
+  14. [PASS] JSON report has 14 coverage records
+  15. [PASS] CSV report non-empty
+  16. [PASS] key figure 24 in TXT
+  17. [PASS] key figure 64 in TXT
+  18. [PASS] key figure 13 in TXT
+  19. [PASS] key figure 21 in TXT
+  20. [PASS] manifest generated_at ISO-8601 UTC  |  2026-11-06T07:40:31Z
+  21. [PASS] manifest as_of valid
+  22. [PASS] manifest time_standard ISO-8601/UTC
+  23. [PASS] 13 refs ISO-8601 UTC retrieval time
+  24. [PASS] report filenames carry UTC stamp
+  25. [PASS] INDEX rows ISO-8601 UTC  |  42 rows
+  26. [PASS] references.csv verification column
+  27. [PASS] exactly 2 direct-fetch sources
+  28. [PASS] WEB-07 honestly labelled
+  29. [PASS] ISO official page present
+  30. [PASS] INDEX sha256 matches every listed file  |  []
+  31. [PASS] INDEX lists every deliverable  |  missing=[] extra=[]
+  32. [PASS] manifest file_count == actual files  |  manifest=43 actual=43
+  33. [PASS] all CSV parse as UTF-8  |  []
+  34. [PASS] README lists 13 findings
+  35. [PASS] README 5 limitations
+  36. [PASS] README rows deleted = 0
+
+CLEAN-INSTALL CHECKS
+--------------------
+   1. [PASS] ZIP extracted self-contained  |  30 entries
+   2. [PASS] ZIP selftest 72/72 from clean dir  |  RESULT: 72/72 passed | all_passed=True
+   3. [PASS] degrades with no uploads/evidence (no crash)  |  {'corpus': 24, 'labels': 64, 'refs': 13, 'limits': 5, 'formats': 5, 'files': 27, 'findings': 13, 'rows_deleted': 0}
+   4. [PASS] degraded build still >=20 corpus / >=50 labels
+   5. [PASS] degraded build still 5 report formats
+   6. [PASS] degraded build still 5 limitations + 0 deletions
+   7. [PASS] degraded build preserves honest findings  |  13
+   8. [PASS] ZIP app.py boots standalone HTTP server
+   9. [PASS] standalone status reports 5 formats / Engeznee  |  Createlee
+  10. [PASS] standalone /api/library works  |  corpus=24 labels=64
+  11. [PASS] standalone server shut down cleanly
+
+KEYFIGURES
+----------
+  Procedure corpus 24 / labels 64 / web references 13 (2 direct-fetch)
+  Reconciliation 21 union keys, 15 full matches, 2 A-only, 1 B-only, 3 mismatches
+  13 honest findings preserved, rows_deleted = 0
+  6 REAL uploaded files: 28 rows preserved row-for-row (XLSX saved as .csv)
+  8 exact-named evidence CSVs byte-identical to the delivered evidence pack
+  INDEX.csv: 42 listed files, all sha256 verified, all ISO-8601 UTC timestamps
+  System library: 43 files, 5 report formats (csv/txt/json/pdf/docx)
+
+HONESTY BOUNDARY
+----------------
+  Web sources are real public standards used as reference grounding, NOT customer
+  data. Operational rows are simulated real-life data and must be replaced with
+  genuine system exports before any real signoff. The 6 files under uploaded/
+  are the user's actual records, preserved row-for-row. Tenant isolation,
+  authenticated end-to-end flows, hosted telemetry/escalation transport,
+  external security audit and billing integration CANNOT be closed by these files.
+  Internal operational exports need no organisational approval; Createlee's own
+  operator review gate still applies before any AI-authored report is saved/emailed.

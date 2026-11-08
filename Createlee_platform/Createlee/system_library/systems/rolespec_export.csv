@@ -1,0 +1,9 @@
+ts,role,assigned_to,is_authorised_supervisor,named_accountable
+2026-10-01T00:00:00+02:00,AI Ops Lead,ACCT-01,yes,yes
+2026-10-02T00:00:00+02:00,Authorised Supervisor,sup-oncall-01,yes,no
+2026-10-02T00:00:00+02:00,Authorised Supervisor,sup-qa-02,yes,no
+2026-10-02T00:00:00+02:00,Authorised Supervisor,sup-fin-01,yes,no
+2026-10-03T00:00:00+02:00,Customer Advisor,A-1000,no,no
+2026-10-03T00:00:00+02:00,QA Analyst,A-1002,no,no
+2026-10-03T00:00:00+02:00,WFM Analyst,A-1003,no,no
+2026-10-03T00:00:00+02:00,Incident Manager,A-1004,no,no

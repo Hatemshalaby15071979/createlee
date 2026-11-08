@@ -1,0 +1,19 @@
+{
+  "gate": "incident_oncall_ownership",
+  "scope": "production",
+  "status": "TEMPLATE",
+  "generated_at_iso8601": "2026-11-06T23:38:19Z",
+  "as_of": "2026-11-06",
+  "demand": "Named production on-call and escalation contract.",
+  "payload": {
+    "oncall_owner": "",
+    "escalation_path": "",
+    "sla_minutes": null,
+    "contract_ref": "",
+    "signature": null
+  },
+  "signature": null,
+  "signature_instruction": "Sign the canonical JSON of this file with an RSA key held OUTSIDE the audited repository and store <gate>.evidence.json.sig beside it, also outside the repository. Never commit the private key.",
+  "operator_note": "Createlee supplies incident_notifications.csv with named owners.",
+  "generated_by": "Createlee / Engeznee — UNSIGNED TEMPLATE"
+}

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Createlee — Engeznee</title>
+  <link rel="stylesheet" href="/static/style.css?v=4">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">CL</span>
+    <div>
+      <h1>Createlee</h1>
+      <p>Call-centre operations document generator</p>
+    </div>
+  </div>
+  <div class="badges">
+    <span class="badge agent">Agent: <b>Engeznee</b></span>
+    <span class="badge" id="badgeTime">—</span>
+    <span class="badge" id="badgeLlm">LLM: …</span>
+    <span class="badge" id="badgeMail">Email: …</span>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="side">
+
+    <section class="card">
+      <h2>⚙ Settings</h2>
+      <p class="hint">Engeznee runs on a local Ollama model. Pick one below; the app starts
+        Ollama itself when it is not running.</p>
+      <div class="formgrid">
+        <label class="wide">Local model
+          <select id="modelSel"><option value="">(auto — no model detected)</option></select>
+        </label>
+        <label>Temperature <input id="tempInput" type="number" min="0" max="1.5" step="0.1" value="0.3"></label>
+        <label>Max tool steps <input id="stepsInput" type="number" min="1" max="12" value="6"></label>
+      </div>
+      <label class="checkline">
+        <input type="checkbox" id="autostartChk" checked>
+        Start Ollama automatically when the app starts
+      </label>
+      <div class="row">
+        <button id="saveSettingsBtn" class="primary">Save settings</button>
+        <button id="startOllamaBtn" class="ghost">Start Ollama</button>
+        <button id="refreshModelsBtn" class="ghost">Refresh</button>
+      </div>
+      <div id="settingsStatus" class="hint">checking…</div>
+    </section>
+
+    <section class="card">
+      <h2>1 · Upload documents</h2>
+      <p class="hint">Multiple files. <b>questions.csv</b> and <b>mapping-table.template.csv</b> are required; any file with the same name replaces the bundled copy.</p>
+      <input type="file" id="fileInput" multiple
+             accept=".csv,.tsv,.txt,.json,.xlsx,.xls,.pdf,.docx,.md,.log">
+      <div class="row">
+        <button id="uploadBtn" class="primary">Upload &amp; analyse</button>
+        <button id="dropClearBtn" class="ghost" title="Clear the file picker">Clear picker</button>
+      </div>
+      <div id="uploadList" class="upload-list"></div>
+    </section>
+
+    <section class="card">
+      <h2>Canonical CSV templates</h2>
+      <p class="hint">Download, edit, then upload. These two files define every generated document.</p>
+      <div class="links">
+        <a href="/api/template/questions.csv" class="filelink">↓ questions.csv</a>
+        <a href="/api/template/mapping-table.template.csv" class="filelink">↓ mapping-table.template.csv</a>
+      </div>
+      <p class="hint">Sample data (also bundled):</p>
+      <div class="links small">
+        <a href="/api/template/calls.csv">calls.csv</a>
+        <a href="/api/template/agents.csv">agents.csv</a>
+        <a href="/api/template/incidents.csv">incidents.csv</a>
+        <a href="/api/template/ai_systems.csv">ai_systems.csv</a>
+        <a href="/api/template/kb_articles.csv">kb_articles.csv</a>
+      </div>
+      <div class="row">
+        <button id="loadSamplesBtn" class="ghost">Reload sample pack</button>
+        <button id="clearUploadsBtn" class="ghost danger">Clear uploads</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Quick commands</h2>
+      <div class="chips" id="chips">
+        <button data-cmd="help">help</button>
+        <button data-cmd="analyze">analyze</button>
+        <button data-cmd="list">list</button>
+        <button data-cmd="generate all">generate all</button>
+        <button data-cmd="generate QA, WFM as pdf,csv,json">QA + WFM (3 formats)</button>
+        <button data-cmd="generate all as pdf">all as PDF</button>
+        <button data-cmd="evidence --as-of 2026-11-06">evidence pack (90-day)</button>
+        <button data-cmd="library --as-of 2026-11-06">system library</button>
+        <button data-cmd="handoff --as-of 2026-11-06">hand-off packs</button>
+        <button data-cmd="web: ISO 8601 timestamp standard">web: ISO 8601</button>
+        <button data-cmd="status">status</button>
+        <button data-cmd="preview">preview</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Integration status</h2>
+      <pre id="statusBox" class="statusbox">loading…</pre>
+    </section>
+
+  </aside>
+
+  <main class="main">
+
+    <section class="card chatcard">
+      <div class="cardhead">
+        <h2>2 · Talk to Engeznee</h2>
+        <span class="hint">Executive assistant · reasons and uses tools · commands still work</span>
+      </div>
+      <div id="chatLog" class="chatlog"></div>
+      <div id="chatStatus" class="hint chatstatus" hidden></div>
+      <div class="inputrow">
+        <input id="msgInput" type="text" autocomplete="off"
+               placeholder="Ask anything — e.g. what is blocking Helix-Codex? · build the hand-off packs · generate all as pdf,csv">
+        <button id="sendBtn" class="primary">Send</button>
+      </div>
+    </section>
+
+    <section class="card review" id="reviewPanel" hidden>
+      <div class="cardhead">
+        <h2>3 · Review &amp; approve <span class="pill warn">required before anything is saved or sent</span></h2>
+      </div>
+      <p class="hint">Generation only stages drafts. Open each preview, then approve. Nothing leaves this machine before that.</p>
+      <div id="stagedList" class="staged-list"></div>
+
+      <div class="approval">
+        <label class="checkline">
+          <input type="checkbox" id="reviewedChk">
+          <b>I have opened and reviewed every selected document and approve its release.</b>
+        </label>
+
+        <div class="formgrid">
+          <label>Action
+            <select id="actionSel">
+              <option value="save">Save to outputs (download here)</option>
+              <option value="email">Email to third party</option>
+              <option value="both">Save &amp; Email</option>
+            </select>
+          </label>
+          <label>Recipient <input id="emailTo" type="email" placeholder="name@company.com"></label>
+          <label class="wide">Subject <input id="emailSubject" type="text" placeholder="Createlee / Engeznee — generated operations documents"></label>
+          <label class="wide">Message
+            <textarea id="emailBody" rows="2" placeholder="Attached are the approved operations documents."></textarea>
+          </label>
+        </div>
+        <div class="row">
+          <button id="approveBtn" class="primary big" disabled>Approve &amp; Execute</button>
+          <span id="approveHint" class="hint">Tick the review checkbox to enable.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="cardhead">
+        <h2>4 · Generated files</h2>
+        <button id="refreshFilesBtn" class="ghost">Refresh</button>
+      </div>
+      <p class="hint">Only approved files appear here. Download them directly.</p>
+      <div id="filesList" class="files-list"></div>
+    </section>
+
+    <section class="card libcard">
+      <div class="cardhead">
+        <h2>5 · System library</h2>
+        <div class="row tight">
+          <button id="buildLibraryBtn" class="primary">Build / refresh library</button>
+          <button id="refreshLibraryBtn" class="ghost">Refresh</button>
+        </div>
+      </div>
+      <p class="hint">Reusable corpus of operational system files (procedures, expected-outcome
+        labels, two-export reconciliation, <b>your 6 real signoff files</b> and the 8 evidence CSVs).</p>
+      <div id="librarySummary" class="libsummary"></div>
+      <div id="libraryTree" class="libtree"></div>
+    </section>
+
+    <section class="card">
+      <div class="cardhead">
+        <h2>6 · Hand-off packs</h2>
+        <div class="row tight">
+          <button id="buildHandoffBtn" class="primary">Build / refresh hand-off packs</button>
+        </div>
+      </div>
+      <p class="hint">One ready-to-send folder per production-NOT-ready project —
+        <b>Signoff</b> (8 evidence CSVs), <b>Helix-Codex</b> (9 gate templates + 2 ownership CSVs),
+        <b>live-support-assistant</b> (corpus + labels) and <b>CompliProof</b> (two exports + P0 checklist).
+        The client replaces only the data rows; the header, column order and filenames stay identical.</p>
+      <div id="handoffSummary" class="libsummary"></div>
+      <div id="handoffTree" class="libtree"></div>
+    </section>
+
+  </main>
+</div>
+
+<div id="modal" class="modal" hidden>
+  <div class="modalbox">
+    <div class="modalhead"><b id="modalTitle">Preview</b><button id="modalClose">✕</button></div>
+    <pre id="modalText"></pre>
+    <div id="modalTable" class="modaltable" hidden></div>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+<script src="/static/app.js?v=4"></script>
+</body>
+</html>

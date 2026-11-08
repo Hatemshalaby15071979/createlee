@@ -1,0 +1,11 @@
+asset_id,asset_name,asset_type,major_version,dotnet_name,module_id,responsible_team,last_updated,active,notes
+INV-001,AI.Core.Base Agent,Base Agent,v2026.0825,Microsoft.AI.Core.Agent,BASE,false,"Core runtime agent - deprecated"
+INV-002,Customer.Support.AI.Main,Support Agent,v2026.1005,Microsoft.AI.SupportAgent,CUSTOMER,true,Active support AI in production
+INV-003,Airline.Specific.AI.Bookings,Support Agent,v2026.1010,Microsoft.AI.AirlineBookingsAI,CUSTOMER,true,Integrated with airline booking API
+INV-004,Airline.Specific.AI.Complaints,Support Agent,v2026.1010,Microsoft.AI.AirlineComplaintsAI,CUSTOMER,true,Handles airline complaint processing
+INV-005,Finance.AI.Fiscal,Finance Agent,v2026.0928,Microsoft.AI.FinanceAgent,FINANCE,true,"Fiscal AI v3 - active in Prod env"
+INV-006,Pricing.AI.Pipeline,Finance Agent,v2026.1004,Microsoft.AI.PricingEngine,FINANCE,false,"Deprecated - replaced by subscription module"
+INV-007,PaymentProcessing.AI.Gateway,Finance Agent,v2026.1004,Microsoft.AI.PaymentGateway,FINANCE,true,Active payment processing AI
+INV-008,SubscriptionManagement.AI.Churn,Prediction Engine,v2026.0915,Microsoft.AI.SubscriptionChurnPred,BLUESKY,true,Subsription churn prediction active
+INV-009,Airline.Specific.AI.VehicleRouting,Logistics Agent,v2026.1018,Microsoft.AI.AirlineVehicleAI,LOGISTICS,true,"Route AI - active in Prod env"
+INV-010,DemandForecasting.AI.Revenue,Logistics Agent,v2026.1018,Microsoft.AI.AirlineDemandAI,LOGISTICS,true,Revenue demand forecasting AI

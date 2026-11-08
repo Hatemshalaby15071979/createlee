@@ -1,0 +1,101 @@
+# Signoff Evidence Validation Report
+Domain: Operational Evidence Pack (EVIDENCE)
+Document ID: CL-20261106T233408Z-EVID-20261106
+Generated: 2026-11-06T23:34:08Z (ISO-8601 UTC)
+Review status: EXAMPLE_PREVIEW — PENDING OPERATOR REVIEW
+
+## Scope & As-Of Date
+Synthetic example exports generated from Createlee bundled sample data. These are NOT real compliance evidence. Replace with genuine system exports before any actual signoff. Gaps are preserved and reported, never deleted.
+  - As-of date (--as-of): 2026-11-06
+  - Coverage window (90 days ending on as-of): 2026-08-08 .. 2026-11-06
+  - Window handling: Events older than 90 days are still parsed but excluded from coverage percentages
+  - Generated at (ISO-8601 UTC): 2026-11-06T23:34:08Z
+  - Review status: EXAMPLE_PREVIEW — PENDING OPERATOR REVIEW
+  - Approvals: No external organisational approval required for this export step; Createlee's own operator review gate still applies
+
+## Per-File Results (required columns checked, rows never deleted)
+  | # | Expected filename | Actual filename | Status | Rows | In window | Out of window | Coverage | Findings |
+  | 1 | qa_reviews.csv | qa_reviews.csv | PASS_WITH_FINDINGS | 13 | 12 | 1 | 92.3% | 2 |
+  | 2 | ai_audit_log.csv | ai_audit_log.csv | PASS_WITH_FINDINGS | 10 | 9 | 1 | 90.0% | 1 |
+  | 3 | ai_approvals.csv | ai_approvals.csv | PASS_WITH_FINDINGS | 9 | 8 | 1 | 88.9% | 1 |
+  | 4 | escalations.csv | escalations.csv | PASS_WITH_FINDINGS | 7 | 6 | 1 | 85.7% | 2 |
+  | 5 | role_spec.csv | role_spec.csv | PASS_WITH_FINDINGS | 5 | 4 | 1 | 80.0% | 1 |
+  | 6 | ai_inventory.csv | ai_inventory.csv | PASS_WITH_FINDINGS | 14 | 14 | 0 | 100.0% | 1 |
+  | 7 | ai_training.csv | ai_training.csv | PASS_WITH_FINDINGS | 11 | 10 | 1 | 90.9% | 2 |
+  | 8 | incident_notifications.csv | incident_notifications.csv | PASS_WITH_FINDINGS | 11 | 10 | 1 | 90.9% | 2 |
+
+## Column & Row-Count Checks
+  | File # | Check | Result | Detail |
+  | 1 | file readable as CSV | PASS | 5 columns, 13 data rows |
+  | 1 | required columns present | PASS | all present |
+  | 1 | at least 1 data row(s) | PASS | 13 row(s) — header-only file fails |
+  | 1 | 90-day coverage computed | PASS | 12/13 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage |
+  | 2 | file readable as CSV | PASS | 3 columns, 10 data rows |
+  | 2 | required columns present | PASS | all present |
+  | 2 | at least 1 data row(s) | PASS | 10 row(s) — header-only file fails |
+  | 2 | 90-day coverage computed | PASS | 9/10 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage |
+  | 2 | event type: kill_switch or access_revoked | PASS | present |
+  | 2 | event type: access_review | PASS | present |
+  | 2 | event type: retention_check or pii_log_check | PASS | present |
+  | 3 | file readable as CSV | PASS | 4 columns, 9 data rows |
+  | 3 | required columns present | PASS | all present |
+  | 3 | at least 1 data row(s) | PASS | 9 row(s) — header-only file fails |
+  | 3 | 90-day coverage computed | PASS | 8/9 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage |
+  | 3 | >=1 ai_proposed decision | PASS | 7 row(s) |
+  | 4 | file readable as CSV | PASS | 4 columns, 7 data rows |
+  | 4 | required columns present | PASS | all present |
+  | 4 | at least 1 data row(s) | PASS | 7 row(s) — header-only file fails |
+  | 4 | 90-day coverage computed | PASS | 6/7 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage |
+  | 5 | file readable as CSV | PASS | 5 columns, 5 data rows |
+  | 5 | required columns present | PASS | all present |
+  | 5 | at least 1 data row(s) | PASS | 5 row(s) — header-only file fails |
+  | 5 | 90-day coverage computed | PASS | 4/5 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage |
+  | 5 | exactly one named_accountable=yes | PASS | 1 row(s) |
+  | 6 | file readable as CSV | PASS | 6 columns, 14 data rows |
+  | 6 | required columns present | PASS | all present |
+  | 6 | at least 1 data row(s) | PASS | 14 row(s) — header-only file fails |
+  | 6 | 90-day coverage computed | PASS | 14/14 rows in window 2026-08-08 .. 2026-11-06; 0 older row(s) parsed but excluded from coverage |
+  | 6 | row_type 'provider' present | PASS | present |
+  | 6 | row_type 'contract_term' present | PASS | present |
+  | 7 | file readable as CSV | PASS | 4 columns, 11 data rows |
+  | 7 | required columns present | PASS | all present |
+  | 7 | at least 1 data row(s) | PASS | 11 row(s) — header-only file fails |
+  | 7 | 90-day coverage computed | PASS | 10/11 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage |
+  | 7 | >=1 completed=yes (lowercase) | PASS | 9 row(s) |
+  | 8 | file readable as CSV | PASS | 4 columns, 11 data rows |
+  | 8 | required columns present | PASS | all present |
+  | 8 | at least 1 data row(s) | PASS | 11 row(s) — header-only file fails |
+  | 8 | 90-day coverage computed | PASS | 10/11 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage |
+
+## Honest Findings / Gaps (preserved, not cleaned)
+  - Total gaps reported: 12
+  - Rows deleted: 0
+  - Rows preserved: 80
+  | File # | Filename | Finding |
+  | 1 | qa_reviews.csv | 2 row(s) with blank reviewer_id — not deleted. |
+  | 1 | qa_reviews.csv | 1 event(s) older than 90 days: parsed, excluded from coverage percentages. |
+  | 2 | ai_audit_log.csv | 1 event(s) older than 90 days: parsed, excluded from coverage percentages. |
+  | 3 | ai_approvals.csv | 1 event(s) older than 90 days: parsed, excluded from coverage percentages. |
+  | 4 | escalations.csv | 1 row(s) with authorised=no — control exception, reported not removed. |
+  | 4 | escalations.csv | 1 event(s) older than 90 days: parsed, excluded from coverage percentages. |
+  | 5 | role_spec.csv | 1 event(s) older than 90 days: parsed, excluded from coverage percentages. |
+  | 6 | ai_inventory.csv | 2 provider(s) with no signed no-training contract term: Internal, Vendor D |
+  | 7 | ai_training.csv | 2 staff training row(s) not completed/verified. |
+  | 7 | ai_training.csv | 1 event(s) older than 90 days: parsed, excluded from coverage percentages. |
+  | 8 | incident_notifications.csv | 3 row(s) with notified_within_sla=no — control exception, reported not removed. |
+  | 8 | incident_notifications.csv | 1 event(s) older than 90 days: parsed, excluded from coverage percentages. |
+
+## Accepted Column Aliases
+Excel content saved with a .csv extension is supported: UTF-8/UTF-8-BOM/UTF-16/CP1252/Latin-1 encoding and comma / semicolon / tab / pipe delimiters are auto-detected.
+  | Canonical | Accepted aliases |
+  | ts | timestamp, time, date, created_at, date_time, datetime |
+  | reviewer_id | reviewer, reviewedBy, reviewed_by, approved_by, approver |
+  | agent_id | agent, handled_by, handledBy, employee_id |
+  | approver_id | approver, approved_by, reviewedBy, reviewer, reviewer_id, actor |
+  | supervisor_id | supervisor, team_lead, teamLead, manager |
+  | authorised | authorized, is_authorised, authorized_flag |
+  | named_accountable | accountable, accountable_named, accountable_owner |
+  | completed | status, state |
+  | notified_within_sla | within_sla, notification_sla_met |
+
+NOTE: Synthetic example exports generated from Createlee bundled sample data. These are NOT real compliance evidence. Replace with genuine system exports before any actual signoff. Gaps are preserved and reported, never deleted.

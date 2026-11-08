@@ -1,0 +1,219 @@
+{
+  "schema": "createlee_system_library/v1",
+  "platform": "Createlee",
+  "agent": "Engeznee",
+  "schema_version": "1.0",
+  "as_of": "2026-11-06",
+  "generated_at_iso8601": "2026-11-06T07:40:31Z",
+  "time_standard": "ISO-8601 / UTC",
+  "root": "/workspace/system_library",
+  "review_status": "EXAMPLE_PREVIEW - PENDING OPERATOR REVIEW",
+  "file_count": 43,
+  "row_counts": {
+    "corpus": 24,
+    "labels": 64,
+    "corpus_published_active": 22,
+    "corpus_draft_or_retired": 2,
+    "labels_answer": 38,
+    "labels_escalate": 26,
+    "labels_real": 10,
+    "labels_synthetic": 54
+  },
+  "reconciliation": {
+    "keys_total": 21,
+    "in_system_a": 20,
+    "in_system_b": 19,
+    "fully_reconciled": 15,
+    "a_only": 2,
+    "b_only": 1,
+    "field_mismatches": 3,
+    "findings": [
+      "ACC-1003: field mismatch: plan",
+      "ACC-1007: field mismatch: status",
+      "ACC-1012: field mismatch: customer_name",
+      "key present only in system A - unmatched row preserved",
+      "key present only in system A - unmatched row preserved",
+      "key present only in system B - unmatched row preserved"
+    ],
+    "rows_deleted": 0
+  },
+  "web_references": [
+    {
+      "ref_id": "WEB-01",
+      "title": "ITU-T: Misuse of E.164 numbering resources (SG2 / WTSA Res.20 / E.156)",
+      "url": "https://www.itu.int/en/ITU-T/inr/Pages/misuse.aspx",
+      "publisher": "ITU",
+      "topic": "E.164 numbering misuse, E.156 notification procedure",
+      "used_for": "SOP-004, SOP-020",
+      "retrieved_at_iso8601": "2026-11-06T07:40:31Z",
+      "verification": "direct fetch - full page read"
+    },
+    {
+      "ref_id": "WEB-02",
+      "title": "ITU-T: Universal International Freephone Number (UIFN) format",
+      "url": "https://www.itu.int/en/ITU-T/inr/unum/Pages/uifn.aspx",
+      "publisher": "ITU",
+      "topic": "+800 8-digit GSN, 11-digit fixed format, E.169.1 / E.152",
+      "used_for": "SOP-005",
+      "retrieved_at_iso8601": "2026-11-06T07:40:31Z",
+      "verification": "search result / reference lead - page not fully verified"
+    },
+    {
+      "ref_id": "WEB-03",
+      "title": "DEKRA: Navigating AI Governance — EU AI Act & ISO 42001:2023",
+      "url": "https://www.dekra.com/en/the-european-ai-act-iso-42001-2023-certification/",
+      "publisher": "DEKRA",
+      "topic": "AI Act in force 2024-08-01; majority of obligations 2026-08-02; ISO 42001 AIMS",
+      "used_for": "SOP-007, SOP-008, SOP-011, SOP-014, SOP-017",
+      "retrieved_at_iso8601": "2026-11-06T07:40:31Z",
+      "verification": "search result / reference lead - page not fully verified"
+    },
+    {
+      "ref_id": "WEB-04",
+      "title": "SGS: ISO/IEC 42001 AI Management System certification",
+      "url": "https://www.sgsgroup.com.cn/en-cn/services/iso-iec-42001-certification-artificial-intelligence-ai-management-system",
+      "publisher": "SGS",
+      "topic": "Certifiable AIMS framework, AI assurance ecosystem",
+      "used_for": "SOP-011, SOP-017",
+      "retrieved_at_iso8601": "2026-11-06T07:40:31Z",
+      "verification": "search result / reference lead - page not fully verified"
+    },
+    {
+      "ref_id": "WEB-05",
+      "title": "ScienceDirect Topics: Telemanagement Forum (eTOM / SID / TAM)",
+      "url": "https://www.sciencedirect.com/topics/computer-science/telemanagement-forum",
+      "publisher": "ScienceDirect",
+      "topic": "eTOM processes: service design, assurance, charging & billing",
+      "used_for": "SOP-001, SOP-019, SOP-021",
+      "retrieved_at_iso8601": "2026-11-06T07:40:31Z",
+      "verification": "search result / reference lead - page not fully verified"
+    },
+    {
+      "ref_id": "WEB-06",
+      "title": "Virtusa: Modernizing BSS/OSS with TM Forum eTOM, ODA, SID, TAM",
+      "url": "https://www.virtusa.com/insights/whitepaper/modernizing-bss-oss",
+      "publisher": "Virtusa",
+      "topic": "Global best practices for telco BSS/OSS integration",
+      "used_for": "SOP-001, SOP-019",
+      "retrieved_at_iso8601": "2026-11-06T07:40:31Z",
+      "verification": "search result / reference lead - page not fully verified"
+    },
+    {
+      "ref_id": "WEB-07",
+      "title": "ITU-T E.800 QoS terminology (third-party summary)",
+      "url": "https://www.cnblogs.com/leixiaohua1020/p/3901987.html",
+      "publisher": "third-party blog (summary of ITU-T E.800)",
+      "topic": "QoS definitions for users, providers, manufacturers, regulators - NOT the ITU original",
+      "used_for": "SOP-003",
+      "retrieved_at_iso8601": "2026-11-06T07:40:31Z",
+      "verification": "search result / reference lead - page not fully verified"
+    },
+    {
+      "ref_id": "WEB-08",
+      "title": "Jumio: Trusted identity solutions for telcos / SIM swap fraud",
+      "url": "https://www.jumio.com/industries/telcos/",
+      "publisher": "Jumio",
+      "topic": "Subscription origination, SIM swap fraud prevention, KYC",
+      "used_for": "SOP-002",
+      "retrieved_at_iso8601": "2026-11-06T07:40:31Z",
+      "verification": "search result / reference lead - page not fully verified"
+    },
+    {
+      "ref_id": "WEB-09",
+      "title": "Group-IB: The evolution of SIM swapping fraud",
+      "url": "https://www.group-ib.com/blog/the-evolution-of-sim-swapping-fraud-how-fraudsters-bypass-security-layers/",
+      "publisher": "Group-IB",
+      "topic": "SIM swap / port-out attack chain",
+      "used_for": "SOP-002",
+      "retrieved_at_iso8601": "2026-11-06T07:40:31Z",
+      "verification": "search result / reference lead - page not fully verified"
+    },
+    {
+      "ref_id": "WEB-10",
+      "title": "Mitratech: AI third-party risk management under global AI regulations",
+      "url": "https://mitratech.com/es-la/centro-de-recursos/blog/global-ai-regulations-and-tprm/",
+      "publisher": "Mitratech",
+      "topic": "ISO 42001 as governance benchmark for AI vendor evaluation",
+      "used_for": "SOP-012",
+      "retrieved_at_iso8601": "2026-11-06T07:40:31Z",
+      "verification": "search result / reference lead - page not fully verified"
+    },
+    {
+      "ref_id": "WEB-11",
+      "title": "Baidu Baike: ISO/IEC 42001 (PDCA, GB/T 45081-2024)",
+      "url": "https://baike.baidu.com/item/ISO%2FIEC%2042001/67441065",
+      "publisher": "Baidu Baike",
+      "topic": "First international AIMS standard, published 2023-12, PDCA cycle",
+      "used_for": "SOP-017",
+      "retrieved_at_iso8601": "2026-11-06T07:40:31Z",
+      "verification": "search result / reference lead - page not fully verified"
+    },
+    {
+      "ref_id": "WEB-12",
+      "title": "TM Forum Inform — AI in customer experience operations",
+      "url": "https://inform.tmforum.org/",
+      "publisher": "TM Forum",
+      "topic": "Integrating AI into customer experience operations",
+      "used_for": "SOP-007, SOP-017",
+      "retrieved_at_iso8601": "2026-11-06T07:40:31Z",
+      "verification": "search result / reference lead - page not fully verified"
+    },
+    {
+      "ref_id": "WEB-13",
+      "title": "ISO: ISO/IEC 42001 explained (official AIMS guidance)",
+      "url": "https://www.iso.org/home/insights-news/resources/iso-42001-explained-what-it-is.html",
+      "publisher": "ISO (official)",
+      "topic": "First international AI management system standard; AIMS requirements: leadership, AI policy, risk management, data governance, transparency, performance evaluation, continual improvement; certification is voluntary and performed by independent bodies",
+      "used_for": "SOP-007, SOP-008, SOP-011, SOP-013, SOP-016, SOP-017",
+      "retrieved_at_iso8601": "2026-11-06T07:40:31Z",
+      "verification": "direct fetch - full page read"
+    }
+  ],
+  "limitations": [
+    [
+      "Tenant isolation",
+      "Data/BSS segregation, per-tenant access control and cross-tenant leakage tests"
+    ],
+    [
+      "Authenticated end-to-end flows",
+      "Real SSO/IAM, session handling and end-to-end auth traces"
+    ],
+    [
+      "Hosted telemetry / escalation transport",
+      "Live message bus, hosted logging and escalation delivery"
+    ],
+    [
+      "External security audit",
+      "Independent penetration test, certification and attestation"
+    ],
+    [
+      "Billing integration",
+      "Live charging, invoicing, payments and revenue reconciliation"
+    ]
+  ],
+  "honesty": "Simulated real-life operational data grounded in REAL published standards fetched from the web (ITU-T, TM Forum, ISO/IEC 42001, EU AI Act). Web sources are reference material only, NOT customer data. All operational rows are simulated and must be replaced with genuine system exports before any real signoff. The 6 files under uploaded/ are the user's actual records and are preserved row-for-row; no row was deleted or rewritten.",
+  "rows_deleted": 0,
+  "report_exports": {
+    "csv": "library_build_report_20261106T074032Z.csv",
+    "txt": "library_build_report_20261106T074032Z.txt",
+    "json": "library_build_report_20261106T074032Z.json",
+    "pdf": "library_build_report_20261106T074032Z.pdf",
+    "docx": "library_build_report_20261106T074032Z.docx"
+  },
+  "report_document_id": "CL-20261106T074032Z-LIB-20261106",
+  "findings": [
+    "TKT-0061 references draft/retired procedure SOP-023 - not served to agents",
+    "TKT-0062 references draft/retired procedure SOP-023 - not served to agents",
+    "TKT-0063 references draft/retired procedure SOP-024 - not served to agents",
+    "TKT-0064 references draft/retired procedure SOP-024 - not served to agents",
+    "ACC-1003: field mismatch: plan",
+    "ACC-1007: field mismatch: status",
+    "ACC-1012: field mismatch: customer_name",
+    "key present only in system A - unmatched row preserved",
+    "key present only in system A - unmatched row preserved",
+    "key present only in system B - unmatched row preserved",
+    "delivery_manifest.csv references 3 files that were not supplied (rolespec_export.csv, qa_review_export.csv, incident_sla_log.csv) - Createlee generated simulated versions under systems/",
+    "training_records.csv uses status=Yes / completion_status=Completed; Signoff expects lowercase completed=yes - alias mapping required",
+    "Tenant isolation, authenticated E2E flows, hosted telemetry, external audit and billing integration are NOT closable by generated files"
+  ]
+}

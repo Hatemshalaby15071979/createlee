@@ -1,0 +1,4 @@
+ts,incident_id,notified_within_sla,owner
+2026-11-05T08:42:11+02:00,INC-20261105-001,no,NOC Duty Manager
+2026-11-05T10:15:00+02:00,INC-20261105-002,yes,CRM Platform Lead
+2026-11-05T12:05:00+02:00,INC-20261105-003,yes,Network Ops Lead

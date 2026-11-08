@@ -1,0 +1,98 @@
+{
+  "project": "helix-codex",
+  "title": "Helix-Codex (Helix-Prime) — nine production gates",
+  "purpose": "Each gate needs <gate>.evidence.json + .sig stored OUTSIDE the repo, scope production, signed with a key the audited system does not hold.",
+  "as_of": "2026-11-06",
+  "generated_at_iso8601": "2026-11-06T23:38:19Z",
+  "files": [
+    {
+      "filename": "gate-evidence/signed_production_evidence.evidence.json",
+      "kind": "GENERATABLE_PARTIAL",
+      "client_action": "owner_completes_and_signs",
+      "what_it_proves": "A cryptographically signed evidence pack produced by an off-system key.",
+      "operator_note": "Createlee produces the 8-file pack. The SIGNATURE must come from a key the audited system does not hold. Declare the public key to the release gate."
+    },
+    {
+      "filename": "gate-evidence/certified_data_isolation.evidence.json",
+      "kind": "ORG_ONLY",
+      "client_action": "org_evidence_only",
+      "what_it_proves": "Independent certification of tenant/data isolation at production scale.",
+      "operator_note": "Requires a certification body your organisation appoints. No CSV closes this."
+    },
+    {
+      "filename": "gate-evidence/external_observer_audit.evidence.json",
+      "kind": "ORG_ONLY",
+      "client_action": "org_evidence_only",
+      "what_it_proves": "Third-party audit of the control plane and audit chain.",
+      "operator_note": "Requires an external auditor. No CSV closes this."
+    },
+    {
+      "filename": "gate-evidence/production_deployment_architecture.evidence.json",
+      "kind": "ORG_ONLY",
+      "client_action": "org_evidence_only",
+      "what_it_proves": "Approved production deployment topology and review sign-off.",
+      "operator_note": "Requires an architecture review by your infrastructure owner."
+    },
+    {
+      "filename": "gate-evidence/disaster_recovery_evidence.evidence.json",
+      "kind": "ORG_ONLY",
+      "client_action": "org_evidence_only",
+      "what_it_proves": "Validated DR / backup plan exercised against the production environment.",
+      "operator_note": "Requires a real DR test in production. No CSV closes this."
+    },
+    {
+      "filename": "gate-evidence/operational_ownership.evidence.json",
+      "kind": "GENERATABLE",
+      "client_action": "owner_completes_and_signs",
+      "what_it_proves": "Named production operations owner and rotation.",
+      "operator_note": "Createlee supplies role_spec.csv with exactly one named_accountable=yes; the client fills the name and signs."
+    },
+    {
+      "filename": "gate-evidence/incident_oncall_ownership.evidence.json",
+      "kind": "GENERATABLE_PARTIAL",
+      "client_action": "owner_completes_and_signs",
+      "what_it_proves": "Named production on-call and escalation contract.",
+      "operator_note": "Createlee supplies incident_notifications.csv with named owners."
+    },
+    {
+      "filename": "gate-evidence/security_review.evidence.json",
+      "kind": "ORG_ONLY",
+      "client_action": "org_evidence_only",
+      "what_it_proves": "Completed independent security review / penetration test.",
+      "operator_note": "Requires a signed security review. No CSV closes this."
+    },
+    {
+      "filename": "gate-evidence/legal_privacy_review.evidence.json",
+      "kind": "ORG_ONLY",
+      "client_action": "org_evidence_only",
+      "what_it_proves": "Legal and data-privacy review for the production jurisdiction.",
+      "operator_note": "Requires legal sign-off. No CSV closes this."
+    },
+    {
+      "filename": "operational_ownership.csv",
+      "kind": "GENERATABLE",
+      "client_action": "replace_data_rows_only",
+      "what_it_proves": "Named accountable person + least-privilege roster",
+      "operator_note": "Keep exactly ONE row with named_accountable=yes."
+    },
+    {
+      "filename": "incident_oncall_ownership.csv",
+      "kind": "GENERATABLE_PARTIAL",
+      "client_action": "replace_data_rows_only",
+      "what_it_proves": "Incident/on-call ownership with named owner",
+      "operator_note": "Owner is never blank; SLA misses stay as honest findings."
+    }
+  ],
+  "gates_generatable": 1,
+  "gates_partial": 2,
+  "gates_org_only": 6,
+  "cannot_generate": [
+    "certified_data_isolation — needs an appointed certification body",
+    "external_observer_audit — needs an independent auditor",
+    "production_deployment_architecture — needs an infrastructure review",
+    "disaster_recovery_evidence — needs a real production DR test",
+    "security_review — needs a signed independent security review",
+    "legal_privacy_review — needs legal sign-off"
+  ],
+  "honesty": "Simulated, format-exact template data. The client must replace ONLY the data rows with their own real rows and keep the header, column order and value conventions unchanged. Passing a validator does not make simulated data real compliance evidence."
+}

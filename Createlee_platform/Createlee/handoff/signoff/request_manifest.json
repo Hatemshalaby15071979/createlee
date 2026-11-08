@@ -1,0 +1,87 @@
+{
+  "project": "signoff",
+  "title": "Signoff — 8 operational evidence exports",
+  "purpose": "Input B for the Signoff gate. These 8 files are the evidence that unblocks the signed_production_evidence gate for Helix-Codex and supplies the ownership / on-call gates.",
+  "as_of": "2026-11-06",
+  "generated_at_iso8601": "2026-11-06T23:38:19Z",
+  "files": [
+    {
+      "filename": "qa_reviews.csv",
+      "required_columns": "ts, ai_action, human_action, reviewer_id, agent_id",
+      "what_it_proves": "Every AI-proposed QA action reviewed by a named human",
+      "min_rows": 1,
+      "generated_rows": 13,
+      "client_action": "replace_data_rows_only",
+      "validation": "strict + permissive"
+    },
+    {
+      "filename": "ai_audit_log.csv",
+      "required_columns": "ts, actor, event_type",
+      "what_it_proves": "Kill switch / access revocation / access review / retention / PII log checks",
+      "min_rows": 1,
+      "generated_rows": 10,
+      "client_action": "replace_data_rows_only",
+      "validation": "strict + permissive"
+    },
+    {
+      "filename": "ai_approvals.csv",
+      "required_columns": "ts, gate, decision, approver_id",
+      "what_it_proves": "AI-proposed decisions named by approver",
+      "min_rows": 1,
+      "generated_rows": 9,
+      "client_action": "replace_data_rows_only",
+      "validation": "strict + permissive"
+    },
+    {
+      "filename": "escalations.csv",
+      "required_columns": "ts, escalated_by, supervisor_id, authorised",
+      "what_it_proves": "Escalations go only to authorised supervisors",
+      "min_rows": 1,
+      "generated_rows": 7,
+      "client_action": "replace_data_rows_only",
+      "validation": "strict + permissive"
+    },
+    {
+      "filename": "role_spec.csv",
+      "required_columns": "ts, role, assigned_to, is_authorised_supervisor, named_accountable",
+      "what_it_proves": "Named accountable person + least-privilege roster",
+      "min_rows": 1,
+      "generated_rows": 5,
+      "client_action": "replace_data_rows_only",
+      "validation": "strict + permissive"
+    },
+    {
+      "filename": "ai_inventory.csv",
+      "required_columns": "ts, row_type, provider_name, reference, term_or_version, owner",
+      "what_it_proves": "AI provider inventory + signed no-training contract term",
+      "min_rows": 1,
+      "generated_rows": 14,
+      "client_action": "replace_data_rows_only",
+      "validation": "strict + permissive"
+    },
+    {
+      "filename": "ai_training.csv",
+      "required_columns": "ts, staff_id, module_name, completed",
+      "what_it_proves": "Staff AI-training completed + verified",
+      "min_rows": 1,
+      "generated_rows": 11,
+      "client_action": "replace_data_rows_only",
+      "validation": "strict + permissive"
+    },
+    {
+      "filename": "incident_notifications.csv",
+      "required_columns": "ts, incident_id, notified_within_sla, owner",
+      "what_it_proves": "Incident notifications within SLA with named owner",
+      "min_rows": 1,
+      "generated_rows": 11,
+      "client_action": "replace_data_rows_only",
+      "validation": "strict + permissive"
+    }
+  ],
+  "validate_command": "python3.11 evidence.py --out <this folder> --as-of <date> --validate-only",
+  "strict_verdict": "ACCEPTABLE",
+  "strict_failed": 0,
+  "cannot_generate": [],
+  "note": "All 8 files are generatable as FORMAT-EXACT templates. The ROWS must be the client's real exports before Signoff can treat them as evidence.",
+  "honesty": "Simulated, format-exact template data. The client must replace ONLY the data rows with their own real rows and keep the header, column order and value conventions unchanged. Passing a validator does not make simulated data real compliance evidence."
+}

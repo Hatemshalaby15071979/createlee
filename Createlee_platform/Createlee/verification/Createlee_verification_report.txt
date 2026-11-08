@@ -1,0 +1,152 @@
+Createlee / Engeznee — End-to-End Reliability Verification
+===========================================================
+Generated at (ISO-8601 UTC): 2026-11-07T01:18:02Z
+Schema version:              1.0
+Result:                      101/101 checks passed (ALL PASS)
+
+Scope: every HTTP route, every Engeznee command, all 5 exporters, the human
+approval gate, the email draft fallback, the 8-file Signoff evidence task,
+read-only validation, Excel-saved-as-CSV tolerance, column aliases, and
+checklist-mode questions.csv.
+
+CHECKS
+------
+   1. [PASS] GET / renders UI
+        200
+   2. [PASS] GET /api/status
+        formats=['csv', 'txt', 'json', 'pdf', 'docx']
+   3. [PASS] status has 5 formats
+        ['csv', 'txt', 'json', 'pdf', 'docx']
+   4. [PASS] POST /api/session seeds samples
+        8 uploads, sid=sbb72c946e75740d2
+   5. [PASS] session state has ISO-8601 created_at
+   6. [PASS] GET /api/state/<sid>
+   7. [PASS] GET /api/template/questions.csv
+        10355
+   8. [PASS] GET /api/template/mapping-table.template.csv
+   9. [PASS] chat: help
+  10. [PASS] chat: status
+  11. [PASS] chat: analyze
+  12. [PASS] chat: list
+        Documents defined by your CSV schemas (9):
+  13. [PASS] list detects canonical 11-column schema
+  14. [PASS] chat: web: reference pack
+        0.4s
+  15. [PASS] chat: generate all (5 formats)
+        staged=9
+  16. [PASS] generate only STAGES (nothing saved)
+  17. [PASS] all staged drafts pending review
+        PENDING_APPROVAL
+  18. [PASS] GET /api/preview/<sid>/0
+  19. [PASS] approve WITHOUT approved=true -> 403
+        Explicit approval required. Nothing was saved or emailed.
+  20. [PASS] approve with empty selection -> 400
+        Select at least one document.
+  21. [PASS] gate left drafts intact
+  22. [PASS] approved save creates 45 files
+        45
+  23. [PASS] all 5 formats exported 9x
+        {'csv': 9, 'pdf': 9, 'txt': 9, 'json': 9, 'docx': 9}
+  24. [PASS] PDF magic valid
+        9 pdfs
+  25. [PASS] DOCX magic valid
+        9 docx
+  26. [PASS] JSON parses + ISO-8601 metadata
+        9 json
+  27. [PASS] approval log written
+  28. [PASS] GET /download/<file>
+  29. [PASS] GET /api/files lists outputs and hides audit log
+  30. [PASS] re-stage for email test
+        2 QA doc type(s)
+  31. [PASS] email action returns a mode (no silent send)
+        eml-draft
+  32. [PASS] .eml draft produced without SMTP creds
+        portable draft
+  33. [PASS] chat: evidence command
+  34. [PASS] evidence reports as-of + 90-day window
+  35. [PASS] evidence reports 8/8 files and 0 deletions
+  36. [PASS] evidence stages report for operator review
+  37. [PASS] POST /api/evidence
+  38. [PASS] POST /api/evidence exposes 5 report formats
+        ['csv', 'docx', 'json', 'pdf', 'txt']
+  39. [PASS] POST /api/evidence rejects bad date -> 400
+  40. [PASS] validate-only never touches the 8 evidence CSVs
+        8/8 byte-identical
+  41. [PASS] validate-only still reports honest gaps / 0 deletions
+        12
+  42. [PASS] Excel-as-CSV demo files present
+  43. [PASS] BOM+semicolon+aliases resolved
+        {'ts': 'timestamp', 'reviewer_id': 'approved_by', 'agent_id': 'employee_id'}
+  44. [PASS] UTF-16+TAB read
+  45. [PASS] strict contract: 8/8 files found, 0 FAIL
+        ACCEPTABLE
+  46. [PASS] strict contract: verdict ACCEPTABLE
+  47. [PASS] chat: library command
+  48. [PASS] library reports corpus >= 20 and labels >= 50
+  49. [PASS] library reports reconciliation by id key
+  50. [PASS] POST /api/library
+  51. [PASS] library corpus >= 20
+        24
+  52. [PASS] library labels >= 50
+        64
+  53. [PASS] library rows_deleted = 0
+  54. [PASS] library honours 5 named limitations
+  55. [PASS] library records web references with ISO-8601
+  56. [PASS] POST /api/library rejects bad date -> 400
+  57. [PASS] procedure_corpus.csv has the 7 required columns
+  58. [PASS] expected_outcome_labels.csv has the 6 required columns
+  59. [PASS] label decisions are answer/escalate only
+  60. [PASS] system_a/system_b share the id key column
+  61. [PASS] reconciliation report preserves all union keys
+  62. [PASS] library ingests 6 REAL uploaded files
+  63. [PASS] library copies the 8 evidence CSVs
+  64. [PASS] library systems/ folder populated
+  65. [PASS] library build report exported in 5 formats
+        5
+  66. [PASS] INDEX.csv / LIBRARY_MANIFEST.json / README.txt present
+  67. [PASS] library report still goes through operator review gate
+  68. [PASS] chat: handoff command
+  69. [PASS] POST /api/handoff
+  70. [PASS] handoff covers all four projects
+        ['compliproof', 'helix-codex', 'live-support-assistant', 'signoff']
+  71. [PASS] handoff signoff pack passes the strict contract
+  72. [PASS] handoff signoff supplies all 8 evidence files
+  73. [PASS] handoff helix templates all 9 gates
+  74. [PASS] handoff helix names 6 org-only gates
+  75. [PASS] handoff live-support corpus >= 20, labels >= 50
+  76. [PASS] handoff compliproof lists 7 open P0 gates
+  77. [PASS] handoff rejects bad date -> 400
+  78. [PASS] handoff writes REQUESTED-FILES-BY-PROJECT.md + INDEX.csv
+  79. [PASS] handoff writes per-project REQUEST_LIST.md + requests
+  80. [PASS] GET /api/settings
+  81. [PASS] settings exposes a models list
+  82. [PASS] settings exposes the agent tool names
+  83. [PASS] GET /api/models
+  84. [PASS] POST /api/settings saves values
+  85. [PASS] POST /api/settings rejects bad temperature -> 400
+  86. [PASS] POST /api/settings rejects bad max_steps -> 400
+  87. [PASS] agent tool: project_readiness
+  88. [PASS] agent tool: list_documents
+  89. [PASS] agent tool: platform_status
+  90. [PASS] agent tool: unknown tool fails cleanly
+  91. [PASS] agent answers free-form chat without a model
+  92. [PASS] agent reports its source
+        fallback
+  93. [PASS] agent returns a trace list
+  94. [PASS] agent fallback names the blocker
+  95. [PASS] POST /api/upload replaces questions.csv
+  96. [PASS] list auto-detects checklist schema
+  97. [PASS] checklist generate stages 1 fillable doc
+        1
+  98. [PASS] checklist preview has fillable [  ] boxes
+  99. [PASS] chat: clear discards drafts
+  100. [PASS] POST /api/load-samples restores canonical pack
+  101. [PASS] unknown command handled gracefully (no crash)
+
+NOTES
+-----
+  - Test ran in an isolated temp sandbox; /workspace deliverables were not modified.
+  - Web enrichment is optional and network-dependent; 0 sources is not a failure.
+  - Ollama is absent in this VM by design; deterministic generation needs no LLM.
+  - Email with no SMTP credentials produces a portable .eml draft, never a send.
+  - The 8 evidence CSVs are synthetic fixtures, not real compliance evidence.

@@ -1,0 +1,7 @@
+plan_id,plan_name,monthly_fee_eur,data_gb,voice,contract_months,status
+PL-001,Pay Monthly 10GB,19.90,10,unlimited,24,active
+PL-002,Unlimited Max,34.90,unlimited,unlimited,24,active
+PL-003,Business Fibre 200,59.00,unlimited,unlimited,36,active
+PL-004,Pay As You Go,0.00,0,per-minute,0,active
+PL-005,Roaming Plus,9.50,5,100,1,active
+PL-006,Family Share 40GB,44.00,40,unlimited,24,active

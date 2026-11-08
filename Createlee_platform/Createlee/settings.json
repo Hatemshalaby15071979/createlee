@@ -1,0 +1,7 @@
+{
+  "model": "qwen3:8b",
+  "autostart": true,
+  "temperature": 0.3,
+  "max_steps": 6,
+  "num_predict": 600
+}

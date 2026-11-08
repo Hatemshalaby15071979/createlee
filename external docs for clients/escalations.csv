@@ -1,0 +1,5 @@
+module,timestamp,severity,type,resolved_by,status,cost_currency,cost_amount,notes
+AI.Core,2026-08-22T10:15:00+02:00,HIGH,breaking_change,AI Core Trainer,resolved,N/A,0,"Critical breaking change in core module"
+Customer.Support.AI,2026-09-10T14:30:00+02:00,MEDIUM,user_error,Support Team,resolved,N/A,0,"Persistent user error requiring escalation"
+Finance.AI,2026-10-03T16:45:00+02:00,HIGH,third_party,AI Finance Specialist,resolved,N/A,0,"Third-party payment provider outage"
+AI.Core,2026-10-28T09:00:00+02:00,MEDIUM,deprecation_alert,AI Core Trainer,resolved,N/A,0,"Module deprecation notice requiring action"

@@ -1,0 +1,11 @@
+agent_id,full_name,team,role,shift_start_utc,shift_end_utc,occupancy_pct,adherence_pct,training_completed,email
+A-1042,Nadia Rahman,TIER1_EAST,Customer Advisor,2026-11-06T06:00:00Z,2026-11-06T14:00:00Z,82.4,96.1,7,nadia.rahman@example-operator.com
+A-1043,Omar Haddad,TECH_L2,Technical Advisor,2026-11-06T07:00:00Z,2026-11-06T15:00:00Z,78.9,91.3,9,omar.haddad@example-operator.com
+A-1044,Priya Menon,RETENTION,Retention Advisor,2026-11-06T08:00:00Z,2026-11-06T16:00:00Z,85.1,98.0,8,priya.menon@example-operator.com
+A-1045,Lukas Weber,TIER1_WEST,Customer Advisor,2026-11-06T06:00:00Z,2026-11-06T14:00:00Z,80.7,88.5,5,lukas.weber@example-operator.com
+A-1046,Sofia Costa,SALES,Sales Advisor,2026-11-06T09:00:00Z,2026-11-06T17:00:00Z,88.2,94.7,8,sofia.costa@example-operator.com
+A-1047,Daniel Okafor,COMPLAINTS,Complaints Handler,2026-11-06T10:00:00Z,2026-11-06T18:00:00Z,76.3,92.9,10,daniel.okafor@example-operator.com
+A-1048,Hana Kim,BILLING,Billing Advisor,2026-11-06T06:00:00Z,2026-11-06T14:00:00Z,83.6,95.4,6,hana.kim@example-operator.com
+A-1049,Marcus Silva,TIER1_EAST,Team Leader,2026-11-06T06:00:00Z,2026-11-06T14:00:00Z,64.0,97.2,11,marcus.silva@example-operator.com
+A-1050,Aisha Bello,QA,QA Analyst,2026-11-06T08:00:00Z,2026-11-06T16:00:00Z,58.5,96.8,12,aisha.bello@example-operator.com
+A-1051,Tomas Novak,WFM,WFM Analyst,2026-11-06T07:00:00Z,2026-11-06T15:00:00Z,55.2,99.1,10,tomas.novak@example-operator.com

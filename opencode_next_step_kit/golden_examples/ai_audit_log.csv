@@ -1,0 +1,9 @@
+﻿ts,actor,event_type
+2026-10-03T14:00:00+02:00,ops-lead,kill_switch
+2026-10-15T09:30:00+02:00,AJ-002,access_review
+2026-10-20T11:45:00+02:00,R-4421,retention_check
+2026-09-18T10:00:00+02:00,EJ-003,pii_log_check
+2026-10-28T15:20:00+02:00,S-901,access_revoked
+2026-10-05T08:45:00Z,policy-bot,kill_switch
+2026-10-25T12:30:00+02:00,RJ-003,access_review
+2026-09-28T07:15:00+02:00,A-773,pii_log_check

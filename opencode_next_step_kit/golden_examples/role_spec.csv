@@ -1,0 +1,6 @@
+﻿ts,role,assigned_to,is_authorised_supervisor,named_accountable
+2026-10-01T00:00:00+02:00,AI Ops Lead,ACCT-01,yes,yes
+2026-10-01T00:00:00+02:00,QA Reviewer,R-4421,yes,no
+2026-10-01T00:00:00+02:00,Audit Manager,ACCT-02,yes,no
+2026-10-01T00:00:00+02:00,Approver,R-3301,yes,no
+2026-10-01T00:00:00+02:00,Incident Owner,J-551,yes,no

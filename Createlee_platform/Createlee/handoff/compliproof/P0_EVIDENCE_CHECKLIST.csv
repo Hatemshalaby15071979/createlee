@@ -1,0 +1,8 @@
+p0_id,area,required_evidence,closable_by_createlee,status
+P0-1,Packaging / deployment,wheel manifest; clean-venv install log; docker build log; CI run URL,NO — needs a hosted CI run and a clean-runner install matrix,OPEN
+P0-2,Evidence integrity,tamper test log; seal manifest; independent review,NO — needs an independent reviewer and a non-symmetric key lifecycle,OPEN
+P0-3,Audit ledger,concurrency test; tamper test; external anchor receipt; test-isolation test; ledger inventory,NO — needs an external timestamp anchor receipt (e.g. freetsa),OPEN
+P0-4,Reporting / reconciliation,golden test suite; served report artifact; CSV parse test; report audit event,PARTIAL — the two CSVs let you run the reconciliation; the served report and audit event must be produced by CompliProof itself,OPEN
+P0-5,Server reporting,route test suite; auth test; security scan,"NO — needs routes, auth and a security scan",OPEN
+P0-6,Authentication,auth test suite; session store inspection; RBAC test; security review,NO — needs a real auth implementation and security review,OPEN
+P0-7,Dashboard / UI security,UI test; route inventory; security scan,NO — needs a browser acceptance test and route inventory,OPEN

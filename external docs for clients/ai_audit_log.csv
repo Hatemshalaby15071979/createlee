@@ -1,0 +1,4 @@
+ts,severity,incident_id,assigned_to,resolution
+2026-08-28T13:10:00+01:00,MITRE_A3,draft_policy_change_request,Tech.Lead_B02,Resolved
+2026-09-20T15:30:00+01:00,MITRE_A7,knowledge_base_update,Sarah.Jones,Resolved
+2026-10-08T09:45:00+01:00,MITRE_A3,daily_transcription,Tech.Lead_B02,Resolved

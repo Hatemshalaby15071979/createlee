@@ -1,0 +1,8 @@
+ts,ai_action,human_action,reviewer_id,agent_id
+2026-08-15T09:30:00+01:00,calls_route_request,approved,Sarah.Jones,Agent_A001
+2026-08-22T14:15:00+01:00,daily_transcription,verified,Tech.Lead_B02,Agent_A003
+2026-09-05T11:00:00+01:00,knowledge_base_update,approved,Sarah.Jones,Agent_A002
+2026-09-18T16:45:00+01:00,calls_route_request,flagged,Tech.Lead_B02,Agent_A005
+2026-10-03T08:30:00+01:00,personal_info_access,approved,Compliance.O,Agent_A007
+2026-10-20T13:00:00+01:00,welcome_message_change,rejected,Manager_Chen,Agent_A010
+2026-11-01T10:20:00+01:00,escalation_handling,approved,Sarah.Jones,Agent_A004

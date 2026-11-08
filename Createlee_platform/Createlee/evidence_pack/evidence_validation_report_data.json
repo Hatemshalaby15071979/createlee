@@ -1,0 +1,511 @@
+{
+  "as_of": "2026-11-06",
+  "window_start": "2026-08-08",
+  "window_end": "2026-11-06",
+  "window_days": 90,
+  "generated_at_iso8601": "2026-11-06T23:34:08Z",
+  "generator": "Createlee / Engeznee",
+  "schema_version": "1.0",
+  "directory": "[LOCAL_PATH]/[REDACTED_VOLUME]/Career/cloned_repos/CreateLee/Createlee_platform/Createlee/evidence_pack",
+  "files": [
+    {
+      "n": 1,
+      "expected_filename": "qa_reviews.csv",
+      "glob": "qa_review*.csv",
+      "proves": "Every AI-proposed QA action reviewed by a named human",
+      "required_columns": [
+        "ts",
+        "ai_action",
+        "human_action",
+        "reviewer_id",
+        "agent_id"
+      ],
+      "filename": "qa_reviews.csv",
+      "found": true,
+      "status": "PASS_WITH_FINDINGS",
+      "checks": [
+        [
+          "file readable as CSV",
+          "PASS",
+          "5 columns, 13 data rows"
+        ],
+        [
+          "required columns present",
+          "PASS",
+          "all present"
+        ],
+        [
+          "at least 1 data row(s)",
+          "PASS",
+          "13 row(s) — header-only file fails"
+        ],
+        [
+          "90-day coverage computed",
+          "PASS",
+          "12/13 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage"
+        ]
+      ],
+      "gaps": [
+        "2 row(s) with blank reviewer_id — not deleted.",
+        "1 event(s) older than 90 days: parsed, excluded from coverage percentages."
+      ],
+      "total_rows": 13,
+      "in_window_rows": 12,
+      "out_of_window_rows": 1,
+      "coverage_pct": 92.3,
+      "alias_columns_used": {},
+      "event_types": [],
+      "extra_columns": []
+    },
+    {
+      "n": 2,
+      "expected_filename": "ai_audit_log.csv",
+      "glob": "*audit*.csv",
+      "proves": "Kill switch / access revocation / access review / retention / PII log checks",
+      "required_columns": [
+        "ts",
+        "actor",
+        "event_type"
+      ],
+      "filename": "ai_audit_log.csv",
+      "found": true,
+      "status": "PASS_WITH_FINDINGS",
+      "checks": [
+        [
+          "file readable as CSV",
+          "PASS",
+          "3 columns, 10 data rows"
+        ],
+        [
+          "required columns present",
+          "PASS",
+          "all present"
+        ],
+        [
+          "at least 1 data row(s)",
+          "PASS",
+          "10 row(s) — header-only file fails"
+        ],
+        [
+          "90-day coverage computed",
+          "PASS",
+          "9/10 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage"
+        ],
+        [
+          "event type: kill_switch or access_revoked",
+          "PASS",
+          "present"
+        ],
+        [
+          "event type: access_review",
+          "PASS",
+          "present"
+        ],
+        [
+          "event type: retention_check or pii_log_check",
+          "PASS",
+          "present"
+        ]
+      ],
+      "gaps": [
+        "1 event(s) older than 90 days: parsed, excluded from coverage percentages."
+      ],
+      "total_rows": 10,
+      "in_window_rows": 9,
+      "out_of_window_rows": 1,
+      "coverage_pct": 90.0,
+      "alias_columns_used": {},
+      "event_types": [
+        "access_review",
+        "access_revoked",
+        "config_change",
+        "kill_switch",
+        "login",
+        "pii_log_check",
+        "retention_check"
+      ],
+      "extra_columns": []
+    },
+    {
+      "n": 3,
+      "expected_filename": "ai_approvals.csv",
+      "glob": "*approval*.csv",
+      "proves": "AI-proposed decisions named by approver",
+      "required_columns": [
+        "ts",
+        "gate",
+        "decision",
+        "approver_id"
+      ],
+      "filename": "ai_approvals.csv",
+      "found": true,
+      "status": "PASS_WITH_FINDINGS",
+      "checks": [
+        [
+          "file readable as CSV",
+          "PASS",
+          "4 columns, 9 data rows"
+        ],
+        [
+          "required columns present",
+          "PASS",
+          "all present"
+        ],
+        [
+          "at least 1 data row(s)",
+          "PASS",
+          "9 row(s) — header-only file fails"
+        ],
+        [
+          "90-day coverage computed",
+          "PASS",
+          "8/9 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage"
+        ],
+        [
+          ">=1 ai_proposed decision",
+          "PASS",
+          "7 row(s)"
+        ]
+      ],
+      "gaps": [
+        "1 event(s) older than 90 days: parsed, excluded from coverage percentages."
+      ],
+      "total_rows": 9,
+      "in_window_rows": 8,
+      "out_of_window_rows": 1,
+      "coverage_pct": 88.9,
+      "alias_columns_used": {},
+      "event_types": [],
+      "extra_columns": []
+    },
+    {
+      "n": 4,
+      "expected_filename": "escalations.csv",
+      "glob": "*escalation*.csv",
+      "proves": "Escalations go only to authorised supervisors",
+      "required_columns": [
+        "ts",
+        "escalated_by",
+        "supervisor_id",
+        "authorised"
+      ],
+      "filename": "escalations.csv",
+      "found": true,
+      "status": "PASS_WITH_FINDINGS",
+      "checks": [
+        [
+          "file readable as CSV",
+          "PASS",
+          "4 columns, 7 data rows"
+        ],
+        [
+          "required columns present",
+          "PASS",
+          "all present"
+        ],
+        [
+          "at least 1 data row(s)",
+          "PASS",
+          "7 row(s) — header-only file fails"
+        ],
+        [
+          "90-day coverage computed",
+          "PASS",
+          "6/7 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage"
+        ]
+      ],
+      "gaps": [
+        "1 row(s) with authorised=no — control exception, reported not removed.",
+        "1 event(s) older than 90 days: parsed, excluded from coverage percentages."
+      ],
+      "total_rows": 7,
+      "in_window_rows": 6,
+      "out_of_window_rows": 1,
+      "coverage_pct": 85.7,
+      "alias_columns_used": {},
+      "event_types": [],
+      "extra_columns": []
+    },
+    {
+      "n": 5,
+      "expected_filename": "role_spec.csv",
+      "glob": "role*spec*.csv",
+      "proves": "Named accountable person + least-privilege roster",
+      "required_columns": [
+        "ts",
+        "role",
+        "assigned_to",
+        "is_authorised_supervisor"
+      ],
+      "filename": "role_spec.csv",
+      "found": true,
+      "status": "PASS_WITH_FINDINGS",
+      "checks": [
+        [
+          "file readable as CSV",
+          "PASS",
+          "5 columns, 5 data rows"
+        ],
+        [
+          "required columns present",
+          "PASS",
+          "all present"
+        ],
+        [
+          "at least 1 data row(s)",
+          "PASS",
+          "5 row(s) — header-only file fails"
+        ],
+        [
+          "90-day coverage computed",
+          "PASS",
+          "4/5 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage"
+        ],
+        [
+          "exactly one named_accountable=yes",
+          "PASS",
+          "1 row(s)"
+        ]
+      ],
+      "gaps": [
+        "1 event(s) older than 90 days: parsed, excluded from coverage percentages."
+      ],
+      "total_rows": 5,
+      "in_window_rows": 4,
+      "out_of_window_rows": 1,
+      "coverage_pct": 80.0,
+      "alias_columns_used": {},
+      "event_types": [],
+      "extra_columns": [
+        "named_accountable"
+      ]
+    },
+    {
+      "n": 6,
+      "expected_filename": "ai_inventory.csv",
+      "glob": "*ai*inventory*.csv",
+      "proves": "AI provider inventory + signed no-training contract term",
+      "required_columns": [
+        "ts",
+        "row_type",
+        "provider_name"
+      ],
+      "filename": "ai_inventory.csv",
+      "found": true,
+      "status": "PASS_WITH_FINDINGS",
+      "checks": [
+        [
+          "file readable as CSV",
+          "PASS",
+          "6 columns, 14 data rows"
+        ],
+        [
+          "required columns present",
+          "PASS",
+          "all present"
+        ],
+        [
+          "at least 1 data row(s)",
+          "PASS",
+          "14 row(s) — header-only file fails"
+        ],
+        [
+          "90-day coverage computed",
+          "PASS",
+          "14/14 rows in window 2026-08-08 .. 2026-11-06; 0 older row(s) parsed but excluded from coverage"
+        ],
+        [
+          "row_type 'provider' present",
+          "PASS",
+          "present"
+        ],
+        [
+          "row_type 'contract_term' present",
+          "PASS",
+          "present"
+        ]
+      ],
+      "gaps": [
+        "2 provider(s) with no signed no-training contract term: Internal, Vendor D"
+      ],
+      "total_rows": 14,
+      "in_window_rows": 14,
+      "out_of_window_rows": 0,
+      "coverage_pct": 100.0,
+      "alias_columns_used": {},
+      "event_types": [],
+      "extra_columns": [
+        "reference",
+        "term_or_version",
+        "owner"
+      ]
+    },
+    {
+      "n": 7,
+      "expected_filename": "ai_training.csv",
+      "glob": "*training*.csv",
+      "proves": "Staff AI-training completed + verified",
+      "required_columns": [
+        "ts",
+        "staff_id",
+        "module_name",
+        "completed"
+      ],
+      "filename": "ai_training.csv",
+      "found": true,
+      "status": "PASS_WITH_FINDINGS",
+      "checks": [
+        [
+          "file readable as CSV",
+          "PASS",
+          "4 columns, 11 data rows"
+        ],
+        [
+          "required columns present",
+          "PASS",
+          "all present"
+        ],
+        [
+          "at least 1 data row(s)",
+          "PASS",
+          "11 row(s) — header-only file fails"
+        ],
+        [
+          "90-day coverage computed",
+          "PASS",
+          "10/11 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage"
+        ],
+        [
+          ">=1 completed=yes (lowercase)",
+          "PASS",
+          "9 row(s)"
+        ]
+      ],
+      "gaps": [
+        "2 staff training row(s) not completed/verified.",
+        "1 event(s) older than 90 days: parsed, excluded from coverage percentages."
+      ],
+      "total_rows": 11,
+      "in_window_rows": 10,
+      "out_of_window_rows": 1,
+      "coverage_pct": 90.9,
+      "alias_columns_used": {},
+      "event_types": [],
+      "extra_columns": []
+    },
+    {
+      "n": 8,
+      "expected_filename": "incident_notifications.csv",
+      "glob": "*incident*.csv",
+      "proves": "Incident notifications within SLA with named owner",
+      "required_columns": [
+        "ts",
+        "incident_id",
+        "notified_within_sla",
+        "owner"
+      ],
+      "filename": "incident_notifications.csv",
+      "found": true,
+      "status": "PASS_WITH_FINDINGS",
+      "checks": [
+        [
+          "file readable as CSV",
+          "PASS",
+          "4 columns, 11 data rows"
+        ],
+        [
+          "required columns present",
+          "PASS",
+          "all present"
+        ],
+        [
+          "at least 1 data row(s)",
+          "PASS",
+          "11 row(s) — header-only file fails"
+        ],
+        [
+          "90-day coverage computed",
+          "PASS",
+          "10/11 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage"
+        ]
+      ],
+      "gaps": [
+        "3 row(s) with notified_within_sla=no — control exception, reported not removed.",
+        "1 event(s) older than 90 days: parsed, excluded from coverage percentages."
+      ],
+      "total_rows": 11,
+      "in_window_rows": 10,
+      "out_of_window_rows": 1,
+      "coverage_pct": 90.9,
+      "alias_columns_used": {},
+      "event_types": [],
+      "extra_columns": []
+    }
+  ],
+  "summary": {
+    "files_expected": 8,
+    "files_found": 8,
+    "passed": 0,
+    "passed_with_findings": 8,
+    "failed": 0,
+    "total_rows_preserved": 80,
+    "total_gaps_reported": 12,
+    "rows_deleted": 0
+  },
+  "alias_map": {
+    "ts": [
+      "timestamp",
+      "time",
+      "date",
+      "created_at",
+      "date_time",
+      "datetime"
+    ],
+    "reviewer_id": [
+      "reviewer",
+      "reviewedBy",
+      "reviewed_by",
+      "approved_by",
+      "approver"
+    ],
+    "agent_id": [
+      "agent",
+      "handled_by",
+      "handledBy",
+      "employee_id"
+    ],
+    "approver_id": [
+      "approver",
+      "approved_by",
+      "reviewedBy",
+      "reviewer",
+      "reviewer_id",
+      "actor"
+    ],
+    "supervisor_id": [
+      "supervisor",
+      "team_lead",
+      "teamLead",
+      "manager"
+    ],
+    "authorised": [
+      "authorized",
+      "is_authorised",
+      "authorized_flag"
+    ],
+    "named_accountable": [
+      "accountable",
+      "accountable_named",
+      "accountable_owner"
+    ],
+    "completed": [
+      "status",
+      "state"
+    ],
+    "notified_within_sla": [
+      "within_sla",
+      "notification_sla_met"
+    ]
+  },
+  "disclaimer": "Synthetic example exports generated from Createlee bundled sample data. These are NOT real compliance evidence. Replace with genuine system exports before any actual signoff. Gaps are preserved and reported, never deleted."
+}

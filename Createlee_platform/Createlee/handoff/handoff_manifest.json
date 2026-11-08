@@ -1,0 +1,308 @@
+{
+  "ok": true,
+  "out_dir": "[LOCAL_PATH]/[REDACTED_VOLUME]/Career/cloned_repos/CreateLee/Createlee_platform/Createlee/handoff",
+  "as_of": "2026-11-06",
+  "generated_at_iso8601": "2026-11-06T23:38:19Z",
+  "projects": [
+    {
+      "project": "signoff",
+      "title": "Signoff — 8 operational evidence exports",
+      "purpose": "Input B for the Signoff gate. These 8 files are the evidence that unblocks the signed_production_evidence gate for Helix-Codex and supplies the ownership / on-call gates.",
+      "as_of": "2026-11-06",
+      "generated_at_iso8601": "2026-11-06T23:38:19Z",
+      "files": [
+        {
+          "filename": "qa_reviews.csv",
+          "required_columns": "ts, ai_action, human_action, reviewer_id, agent_id",
+          "what_it_proves": "Every AI-proposed QA action reviewed by a named human",
+          "min_rows": 1,
+          "generated_rows": 13,
+          "client_action": "replace_data_rows_only",
+          "validation": "strict + permissive"
+        },
+        {
+          "filename": "ai_audit_log.csv",
+          "required_columns": "ts, actor, event_type",
+          "what_it_proves": "Kill switch / access revocation / access review / retention / PII log checks",
+          "min_rows": 1,
+          "generated_rows": 10,
+          "client_action": "replace_data_rows_only",
+          "validation": "strict + permissive"
+        },
+        {
+          "filename": "ai_approvals.csv",
+          "required_columns": "ts, gate, decision, approver_id",
+          "what_it_proves": "AI-proposed decisions named by approver",
+          "min_rows": 1,
+          "generated_rows": 9,
+          "client_action": "replace_data_rows_only",
+          "validation": "strict + permissive"
+        },
+        {
+          "filename": "escalations.csv",
+          "required_columns": "ts, escalated_by, supervisor_id, authorised",
+          "what_it_proves": "Escalations go only to authorised supervisors",
+          "min_rows": 1,
+          "generated_rows": 7,
+          "client_action": "replace_data_rows_only",
+          "validation": "strict + permissive"
+        },
+        {
+          "filename": "role_spec.csv",
+          "required_columns": "ts, role, assigned_to, is_authorised_supervisor, named_accountable",
+          "what_it_proves": "Named accountable person + least-privilege roster",
+          "min_rows": 1,
+          "generated_rows": 5,
+          "client_action": "replace_data_rows_only",
+          "validation": "strict + permissive"
+        },
+        {
+          "filename": "ai_inventory.csv",
+          "required_columns": "ts, row_type, provider_name, reference, term_or_version, owner",
+          "what_it_proves": "AI provider inventory + signed no-training contract term",
+          "min_rows": 1,
+          "generated_rows": 14,
+          "client_action": "replace_data_rows_only",
+          "validation": "strict + permissive"
+        },
+        {
+          "filename": "ai_training.csv",
+          "required_columns": "ts, staff_id, module_name, completed",
+          "what_it_proves": "Staff AI-training completed + verified",
+          "min_rows": 1,
+          "generated_rows": 11,
+          "client_action": "replace_data_rows_only",
+          "validation": "strict + permissive"
+        },
+        {
+          "filename": "incident_notifications.csv",
+          "required_columns": "ts, incident_id, notified_within_sla, owner",
+          "what_it_proves": "Incident notifications within SLA with named owner",
+          "min_rows": 1,
+          "generated_rows": 11,
+          "client_action": "replace_data_rows_only",
+          "validation": "strict + permissive"
+        }
+      ],
+      "validate_command": "python3.11 evidence.py --out <this folder> --as-of <date> --validate-only",
+      "strict_verdict": "ACCEPTABLE",
+      "strict_failed": 0,
+      "cannot_generate": [],
+      "note": "All 8 files are generatable as FORMAT-EXACT templates. The ROWS must be the client's real exports before Signoff can treat them as evidence.",
+      "honesty": "Simulated, format-exact template data. The client must replace ONLY the data rows with their own real rows and keep the header, column order and value conventions unchanged. Passing a validator does not make simulated data real compliance evidence."
+    },
+    {
+      "project": "helix-codex",
+      "title": "Helix-Codex (Helix-Prime) — nine production gates",
+      "purpose": "Each gate needs <gate>.evidence.json + .sig stored OUTSIDE the repo, scope production, signed with a key the audited system does not hold.",
+      "as_of": "2026-11-06",
+      "generated_at_iso8601": "2026-11-06T23:38:19Z",
+      "files": [
+        {
+          "filename": "gate-evidence/signed_production_evidence.evidence.json",
+          "kind": "GENERATABLE_PARTIAL",
+          "client_action": "owner_completes_and_signs",
+          "what_it_proves": "A cryptographically signed evidence pack produced by an off-system key.",
+          "operator_note": "Createlee produces the 8-file pack. The SIGNATURE must come from a key the audited system does not hold. Declare the public key to the release gate."
+        },
+        {
+          "filename": "gate-evidence/certified_data_isolation.evidence.json",
+          "kind": "ORG_ONLY",
+          "client_action": "org_evidence_only",
+          "what_it_proves": "Independent certification of tenant/data isolation at production scale.",
+          "operator_note": "Requires a certification body your organisation appoints. No CSV closes this."
+        },
+        {
+          "filename": "gate-evidence/external_observer_audit.evidence.json",
+          "kind": "ORG_ONLY",
+          "client_action": "org_evidence_only",
+          "what_it_proves": "Third-party audit of the control plane and audit chain.",
+          "operator_note": "Requires an external auditor. No CSV closes this."
+        },
+        {
+          "filename": "gate-evidence/production_deployment_architecture.evidence.json",
+          "kind": "ORG_ONLY",
+          "client_action": "org_evidence_only",
+          "what_it_proves": "Approved production deployment topology and review sign-off.",
+          "operator_note": "Requires an architecture review by your infrastructure owner."
+        },
+        {
+          "filename": "gate-evidence/disaster_recovery_evidence.evidence.json",
+          "kind": "ORG_ONLY",
+          "client_action": "org_evidence_only",
+          "what_it_proves": "Validated DR / backup plan exercised against the production environment.",
+          "operator_note": "Requires a real DR test in production. No CSV closes this."
+        },
+        {
+          "filename": "gate-evidence/operational_ownership.evidence.json",
+          "kind": "GENERATABLE",
+          "client_action": "owner_completes_and_signs",
+          "what_it_proves": "Named production operations owner and rotation.",
+          "operator_note": "Createlee supplies role_spec.csv with exactly one named_accountable=yes; the client fills the name and signs."
+        },
+        {
+          "filename": "gate-evidence/incident_oncall_ownership.evidence.json",
+          "kind": "GENERATABLE_PARTIAL",
+          "client_action": "owner_completes_and_signs",
+          "what_it_proves": "Named production on-call and escalation contract.",
+          "operator_note": "Createlee supplies incident_notifications.csv with named owners."
+        },
+        {
+          "filename": "gate-evidence/security_review.evidence.json",
+          "kind": "ORG_ONLY",
+          "client_action": "org_evidence_only",
+          "what_it_proves": "Completed independent security review / penetration test.",
+          "operator_note": "Requires a signed security review. No CSV closes this."
+        },
+        {
+          "filename": "gate-evidence/legal_privacy_review.evidence.json",
+          "kind": "ORG_ONLY",
+          "client_action": "org_evidence_only",
+          "what_it_proves": "Legal and data-privacy review for the production jurisdiction.",
+          "operator_note": "Requires legal sign-off. No CSV closes this."
+        },
+        {
+          "filename": "operational_ownership.csv",
+          "kind": "GENERATABLE",
+          "client_action": "replace_data_rows_only",
+          "what_it_proves": "Named accountable person + least-privilege roster",
+          "operator_note": "Keep exactly ONE row with named_accountable=yes."
+        },
+        {
+          "filename": "incident_oncall_ownership.csv",
+          "kind": "GENERATABLE_PARTIAL",
+          "client_action": "replace_data_rows_only",
+          "what_it_proves": "Incident/on-call ownership with named owner",
+          "operator_note": "Owner is never blank; SLA misses stay as honest findings."
+        }
+      ],
+      "gates_generatable": 1,
+      "gates_partial": 2,
+      "gates_org_only": 6,
+      "cannot_generate": [
+        "certified_data_isolation — needs an appointed certification body",
+        "external_observer_audit — needs an independent auditor",
+        "production_deployment_architecture — needs an infrastructure review",
+        "disaster_recovery_evidence — needs a real production DR test",
+        "security_review — needs a signed independent security review",
+        "legal_privacy_review — needs legal sign-off"
+      ],
+      "honesty": "Simulated, format-exact template data. The client must replace ONLY the data rows with their own real rows and keep the header, column order and value conventions unchanged. Passing a validator does not make simulated data real compliance evidence."
+    },
+    {
+      "project": "live-support-assistant",
+      "title": "live-support-assistant — corpus + expected-outcome labels",
+      "purpose": "The evidence that lets the assistant be evaluated against the client's own procedures and a labelled ticket sample.",
+      "as_of": "2026-11-06",
+      "generated_at_iso8601": "2026-11-06T23:38:19Z",
+      "files": [
+        {
+          "filename": "procedure_corpus.csv",
+          "required_columns": "doc_id, title, content, tenant_id, published, version, retired",
+          "min_rows": 20,
+          "generated_rows": 24,
+          "client_action": "replace_data_rows_keep_doc_ids_unique",
+          "what_it_proves": "The SOPs/knowledge base the assistant answers from"
+        },
+        {
+          "filename": "procedure_corpus.json",
+          "required_columns": "same as CSV (JSON array under 'documents')",
+          "min_rows": 20,
+          "generated_rows": 24,
+          "client_action": "replace_data_rows_keep_doc_ids_unique",
+          "what_it_proves": "Same corpus in JSON form (either form is accepted)"
+        },
+        {
+          "filename": "expected_outcome_labels.csv",
+          "required_columns": "ticket_id, tenant_id, question, expected_decision, expected_sop_id, source",
+          "min_rows": 50,
+          "generated_rows": 64,
+          "client_action": "replace_data_rows",
+          "what_it_proves": "Labelled ticket outcomes for evaluation"
+        }
+      ],
+      "cannot_generate": [
+        "Tenant isolation proof — needs an authenticated cross-tenant negative control",
+        "Authenticated end-to-end flow evidence — needs a hosted runtime",
+        "Hosted telemetry / escalation transport evidence",
+        "External security audit",
+        "Billing integration evidence",
+        "Per-tenant threshold calibration record (0.18 is a starting point, not validated)"
+      ],
+      "honesty": "Simulated, format-exact template data. The client must replace ONLY the data rows with their own real rows and keep the header, column order and value conventions unchanged. Passing a validator does not make simulated data real compliance evidence."
+    },
+    {
+      "project": "compliproof",
+      "title": "CompliProof — two reconciled exports + P0 evidence checklist",
+      "purpose": "Run the reconciliation command against the client's two systems. The 7 P0 production gates are infrastructure evidence, NOT CSVs.",
+      "as_of": "2026-11-06",
+      "generated_at_iso8601": "2026-11-06T23:38:19Z",
+      "files": [
+        {
+          "filename": "system_a.csv",
+          "required_columns": "id (key, non-empty, no duplicates) + business columns",
+          "min_rows": 1,
+          "generated_rows": 20,
+          "client_action": "replace_data_rows_keep_unique_id",
+          "what_it_proves": "System A side of the reconciliation"
+        },
+        {
+          "filename": "system_b.csv",
+          "required_columns": "id (key, non-empty, no duplicates) + matching business columns",
+          "min_rows": 1,
+          "generated_rows": 19,
+          "client_action": "replace_data_rows_keep_unique_id",
+          "what_it_proves": "System B side of the reconciliation"
+        },
+        {
+          "filename": "reconciliation_report.csv",
+          "required_columns": "generated by CompliProof, not filled by the client",
+          "min_rows": 1,
+          "generated_rows": 21,
+          "client_action": "none_generated",
+          "what_it_proves": "Expected reconciliation shape (matched / A-only / B-only / mismatched)"
+        },
+        {
+          "filename": "P0_EVIDENCE_CHECKLIST.csv",
+          "required_columns": "p0_id, area, required_evidence, closable_by_createlee, status",
+          "min_rows": 7,
+          "generated_rows": 7,
+          "client_action": "none_generated",
+          "what_it_proves": "The 7 open P0 gates and exactly what closes each one"
+        }
+      ],
+      "reconcile_command": "PYTHONPATH=src python -m compliproof.cli reconcile system_a.csv system_b.csv id",
+      "reconciliation_summary": {
+        "keys_total": 21,
+        "in_system_a": 20,
+        "in_system_b": 19,
+        "fully_reconciled": 15,
+        "a_only": 2,
+        "b_only": 1,
+        "field_mismatches": 3,
+        "findings": [
+          "ACC-1003: field mismatch: plan",
+          "ACC-1007: field mismatch: status",
+          "ACC-1012: field mismatch: customer_name",
+          "key present only in system A - unmatched row preserved",
+          "key present only in system A - unmatched row preserved",
+          "key present only in system B - unmatched row preserved"
+        ],
+        "rows_deleted": 0
+      },
+      "cannot_generate": [
+        "P0-1 Packaging / deployment — NO — needs a hosted CI run and a clean-runner install matrix",
+        "P0-2 Evidence integrity — NO — needs an independent reviewer and a non-symmetric key lifecycle",
+        "P0-3 Audit ledger — NO — needs an external timestamp anchor receipt (e.g. freetsa)",
+        "P0-4 Reporting / reconciliation — PARTIAL — the two CSVs let you run the reconciliation; the served report and audit event must be produced by CompliProof itself",
+        "P0-5 Server reporting — NO — needs routes, auth and a security scan",
+        "P0-6 Authentication — NO — needs a real auth implementation and security review",
+        "P0-7 Dashboard / UI security — NO — needs a browser acceptance test and route inventory"
+      ],
+      "honesty": "Simulated, format-exact template data. The client must replace ONLY the data rows with their own real rows and keep the header, column order and value conventions unchanged. Passing a validator does not make simulated data real compliance evidence."
+    }
+  ],
+  "overview": "[LOCAL_PATH]/[REDACTED_VOLUME]/Career/cloned_repos/CreateLee/Createlee_platform/Createlee/handoff/REQUESTED-FILES-BY-PROJECT.md",
+  "client_instructions": "[LOCAL_PATH]/[REDACTED_VOLUME]/Career/cloned_repos/CreateLee/Createlee_platform/Createlee/handoff/CLIENT-INSTRUCTIONS.md",
+  "files_written": 52
+}

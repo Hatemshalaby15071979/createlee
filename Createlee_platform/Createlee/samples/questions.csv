@@ -1,0 +1,83 @@
+question_id,domain,document_type,section,prompt,answer_type,required,weight,options,default_value,tags
+Q-QA-001,QA,qa_scorecard,Identification,Call / ticket reference recorded,text,true,2,,,reference;traceability
+Q-QA-002,QA,qa_scorecard,Identification,Agent ID and ACD queue captured,text,true,3,,,acd;identification
+Q-QA-003,QA,qa_scorecard,Identification,Interaction timestamp recorded in ISO-8601 UTC,yes_no,true,3,,Yes,iso8601;audit
+Q-QA-004,QA,qa_scorecard,Compliance & Security,Customer identity verified before account disclosure,yes_no,true,12,,No,compliance;security
+Q-QA-005,QA,qa_scorecard,Compliance & Security,Consent / DNC preference checked against CRM,yes_no,true,8,,No,compliance;crm
+Q-QA-006,QA,qa_scorecard,Compliance & Security,No prohibited payment-card data captured in notes,yes_no,true,10,,Yes,pci;security
+Q-QA-007,QA,qa_scorecard,Customer Experience,Branded opening and agent name given,yes_no,true,5,,No,cx;script
+Q-QA-008,QA,qa_scorecard,Customer Experience,Active listening and minimal dead air,score_1_5,true,8,1|2|3|4|5,3,cx
+Q-QA-009,QA,qa_scorecard,Customer Experience,Hold / transfer announced and confirmed,yes_no,true,5,,No,cx;telephony
+Q-QA-010,QA,qa_scorecard,Resolution & Closing,First-contact resolution achieved,yes_no,true,10,,No,fcr;kpi
+Q-QA-011,QA,qa_scorecard,Resolution & Closing,Correct troubleshooting flow followed from knowledge base,yes_no,true,8,,No,kb;process
+Q-QA-012,QA,qa_scorecard,Resolution & Closing,"Next steps, reference number and SLA communicated",yes_no,true,6,,No,sla;closure
+Q-QA-013,QA,qa_scorecard,Scoring Summary,Total weighted score,number,true,0,,0,scoring
+Q-QA-014,QA,qa_scorecard,Scoring Summary,Calibration required (score below 85%),yes_no,false,0,,No,calibration
+Q-QA-101,QA,qa_calibration_sheet,Calibration Session,Session timestamp recorded in ISO-8601 UTC,yes_no,true,4,,Yes,iso8601;calibration
+Q-QA-102,QA,qa_calibration_sheet,Calibration Session,At least 2 analysts scored the same interaction,yes_no,true,8,,No,calibration
+Q-QA-103,QA,qa_calibration_sheet,Variance Review,Score variance above 5% escalated to QA lead,yes_no,true,6,,No,variance;escalation
+Q-WFM-001,WFM,wfm_schedule,Forecast Summary,Forecast interval defined (15 / 30 / 60 min),choice,true,3,15|30|60,30,forecast
+Q-WFM-002,WFM,wfm_schedule,Forecast Summary,Forecast volume sourced from at least 8 weeks of ACD history,yes_no,true,8,,Yes,forecast;data
+Q-WFM-003,WFM,wfm_schedule,Forecast Summary,AHT (seconds) and occupancy target documented,text,true,6,,,aht;occupancy
+Q-WFM-004,WFM,wfm_schedule,Staffing Requirement,Erlang-C or equivalent staffing model applied,yes_no,true,8,,Yes,erlang;capacity
+Q-WFM-005,WFM,wfm_schedule,Staffing Requirement,Service level target stated,text,true,6,,80% in 20s,sla
+Q-WFM-006,WFM,wfm_schedule,Staffing Requirement,Shrinkage allowance (%) applied,number,true,5,,12,shrinkage
+Q-WFM-007,WFM,wfm_schedule,Shift Roster,Shift start/end in ISO-8601 UTC with local offset,yes_no,true,6,,Yes,iso8601;roster
+Q-WFM-008,WFM,wfm_schedule,Shift Roster,"Break, lunch and training blocks scheduled",yes_no,true,4,,No,roster
+Q-WFM-009,WFM,wfm_schedule,Adherence & Shrinkage,Real-time adherence monitoring enabled,yes_no,true,5,,Yes,rta
+Q-WFM-010,WFM,wfm_schedule,Adherence & Shrinkage,Overtime pre-approved by WFM lead,yes_no,true,4,,No,overtime;approval
+Q-WFM-011,WFM,wfm_schedule,Approval,Schedule published at least 72h ahead (ISO-8601 timestamp),yes_no,true,5,,No,publish;iso8601
+Q-INC-001,INCIDENT,incident_report,Incident Identification,Incident ID (INC-YYYYMMDD-###) assigned,text,true,3,,,id
+Q-INC-002,INCIDENT,incident_report,Incident Identification,Detected at (ISO-8601 UTC),date_iso8601,true,5,,,iso8601;timeline
+Q-INC-003,INCIDENT,incident_report,Incident Identification,Severity P1-P4 per telecom incident matrix,choice,true,10,P1|P2|P3|P4,P3,severity
+Q-INC-004,INCIDENT,incident_report,Impact Assessment,Affected services (voice / data / SMS / billing / CRM),text,true,8,,,impact
+Q-INC-005,INCIDENT,incident_report,Impact Assessment,Estimated affected subscribers,number,true,8,,0,impact
+Q-INC-006,INCIDENT,incident_report,Impact Assessment,Geographic / switch / MSC scope,text,true,5,,,scope
+Q-INC-007,INCIDENT,incident_report,Timeline (ISO-8601),All timeline entries use ISO-8601 UTC,yes_no,true,6,,Yes,iso8601;timeline
+Q-INC-008,INCIDENT,incident_report,Timeline (ISO-8601),Acknowledge / mitigate / resolve timestamps present,yes_no,true,6,,No,timeline;sla
+Q-INC-009,INCIDENT,incident_report,Root Cause,Root cause category recorded,choice,true,8,Network|Platform|Process|Vendor|Human,Platform,rca
+Q-INC-010,INCIDENT,incident_report,Containment & Resolution,Workaround / traffic reroute applied,yes_no,true,6,,No,containment
+Q-INC-011,INCIDENT,incident_report,Containment & Resolution,Subscriber / regulator notification evaluated,yes_no,true,8,,No,compliance;notification
+Q-INC-012,INCIDENT,incident_report,Post-Incident Actions,Post-incident review scheduled within 5 business days,yes_no,true,5,,No,pir
+Q-INC-013,INCIDENT,incident_report,Post-Incident Actions,Corrective actions carry an owner and ISO-8601 due date,yes_no,true,6,,No,action;iso8601
+Q-INC-101,INCIDENT,incident_log,Log Integrity,Every log row carries an ISO-8601 UTC timestamp,yes_no,true,6,,Yes,iso8601;audit
+Q-INC-102,INCIDENT,incident_log,Log Integrity,Open incidents above SLA are flagged,yes_no,true,6,,No,sla;monitoring
+Q-TRN-001,TRAINING,training_material,Course Overview,Course code and version recorded,text,true,3,,,version
+Q-TRN-002,TRAINING,training_material,Course Overview,Target role identified,choice,true,4,Agent|Team Leader|QA Analyst|WFM Analyst,Agent,audience
+Q-TRN-003,TRAINING,training_material,Course Overview,Duration (minutes) and delivery mode stated,text,true,3,,,logistics
+Q-TRN-004,TRAINING,training_material,Learning Objectives,Objectives written as measurable behaviours,yes_no,true,6,,Yes,objective
+Q-TRN-005,TRAINING,training_material,Learning Objectives,Regulatory / compliance objectives included,yes_no,true,6,,No,compliance
+Q-TRN-006,TRAINING,training_material,Module Content,Content aligned to current SOP and knowledge base version,yes_no,true,8,,No,sop;kb
+Q-TRN-007,TRAINING,training_material,Module Content,Telecom product facts checked against current tariff / catalogue,yes_no,true,8,,No,product;accuracy
+Q-TRN-008,TRAINING,training_material,Assessment,Pass mark defined,number,true,5,,80,assessment
+Q-TRN-009,TRAINING,training_material,Assessment,Assessment items mapped to questions.csv criteria,yes_no,true,5,,Yes,qa;mapping
+Q-TRN-010,TRAINING,training_material,Attendance & Sign-off,Attendance carries an ISO-8601 completion timestamp,yes_no,true,5,,Yes,iso8601;audit
+Q-AI-001,AI_INVENTORY,ai_inventory_register,Register Overview,AI system ID and accountable business owner,text,true,5,,,governance
+Q-AI-002,AI_INVENTORY,ai_inventory_register,Register Overview,Inventory last reviewed (ISO-8601 date),date_iso8601,true,5,,,iso8601;review
+Q-AI-003,AI_INVENTORY,ai_inventory_register,System Details,Use case within the call-centre workflow,text,true,8,,,usecase
+Q-AI-004,AI_INVENTORY,ai_inventory_register,System Details,Vendor / model / version recorded,text,true,6,,,model;version
+Q-AI-005,AI_INVENTORY,ai_inventory_register,Data & Model,Customer data categories processed (PII / recordings / CDR),text,true,10,,,data;privacy
+Q-AI-006,AI_INVENTORY,ai_inventory_register,Data & Model,Training / inference data retention period defined,yes_no,true,7,,No,retention;privacy
+Q-AI-007,AI_INVENTORY,ai_inventory_register,Risk Classification,Risk tier assigned,choice,true,10,Prohibited|High|Limited|Minimal,Limited,risk
+Q-AI-008,AI_INVENTORY,ai_inventory_register,Risk Classification,DPIA / AI impact assessment completed,yes_no,true,8,,No,dpia;compliance
+Q-AI-009,AI_INVENTORY,ai_inventory_register,Human Oversight,Human-in-the-loop review before customer-facing output,yes_no,true,10,,Yes,hitl;oversight
+Q-AI-010,AI_INVENTORY,ai_inventory_register,Human Oversight,Override / kill-switch documented and tested,yes_no,true,7,,No,control
+Q-AI-011,AI_INVENTORY,ai_inventory_register,Compliance & Review,Next review due (ISO-8601 date),date_iso8601,true,5,,,iso8601;review
+Q-SOP-001,SOP,sop_document,Purpose & Scope,"SOP ID, version and effective date (ISO-8601)",text,true,5,,,version;iso8601
+Q-SOP-002,SOP,sop_document,Purpose & Scope,Scope: queues / products / channels covered,text,true,6,,,scope
+Q-SOP-003,SOP,sop_document,Roles & Responsibilities,RACI defined (agent / TL / QA / WFM / NOC),yes_no,true,6,,Yes,raci
+Q-SOP-004,SOP,sop_document,Procedure,Numbered steps match current CRM / OSS screen flow,yes_no,true,10,,No,process;accuracy
+Q-SOP-005,SOP,sop_document,Procedure,Each step has a verification checkpoint,yes_no,true,6,,No,control
+Q-SOP-006,SOP,sop_document,Escalation Matrix,L1/L2/L3 escalation with target response times,yes_no,true,8,,Yes,escalation;sla
+Q-SOP-007,SOP,sop_document,Escalation Matrix,NOC / vendor bridge contacts are current,yes_no,true,6,,No,contact;vendor
+Q-SOP-008,SOP,sop_document,Exceptions,Exception handling and system-down fallback documented,yes_no,true,7,,No,bcp;fallback
+Q-SOP-009,SOP,sop_document,Revision History,Change log with ISO-8601 timestamps and approver,yes_no,true,6,,Yes,iso8601;audit
+Q-KB-001,KNOWLEDGE_BASE,kb_article,Article Metadata,"Article ID, title, owner and product recorded",text,true,4,,,metadata
+Q-KB-002,KNOWLEDGE_BASE,kb_article,Article Metadata,Published / last reviewed (ISO-8601 UTC),date_iso8601,true,5,,,iso8601;freshness
+Q-KB-003,KNOWLEDGE_BASE,kb_article,Summary,One-paragraph resolution summary present,text,true,5,,,summary
+Q-KB-004,KNOWLEDGE_BASE,kb_article,Symptoms,Customer-reported symptoms / error codes listed,text,true,6,,,symptom
+Q-KB-005,KNOWLEDGE_BASE,kb_article,Diagnosis,Diagnostic checks required before applying fix,yes_no,true,7,,No,diagnosis
+Q-KB-006,KNOWLEDGE_BASE,kb_article,Resolution Steps,Steps verified against current network / tariff configuration,yes_no,true,10,,No,accuracy;product
+Q-KB-007,KNOWLEDGE_BASE,kb_article,Resolution Steps,Expected duration and SLA impact stated,yes_no,true,5,,No,sla
+Q-KB-008,KNOWLEDGE_BASE,kb_article,Related Articles,"Cross-links to SOP, incident and training records",yes_no,true,4,,No,linking
+Q-KB-009,KNOWLEDGE_BASE,kb_article,Review Cycle,Review frequency (days) and next ISO-8601 review date,text,true,5,,90,review;iso8601

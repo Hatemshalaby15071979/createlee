@@ -1,0 +1,5 @@
+provider_id,provider_name,service_type,use_case,contract_ref,training_on_customer_data_prohibited,data_residency,sla_hours,renewal_date,contract_owner,status,last_reviewed
+PRV-001,Provider A (LLM),Foundation model API,Code & QA assistance,CT-2024-118,Yes,EU,24,2025-12-31,[REDACTED_PERSON],Active,2026-10-15
+PRV-002,Provider B (Embeddings),Vector embeddings,RAG retrieval,CT-2024-203,Yes,US,48,2026-03-15,[REDACTED_PERSON],Active,2026-10-15
+PRV-003,Provider C (Speech),STT / TTS,Support transcription,CT-2026-087,Yes,US,72,2027-01-31,[REDACTED_PERSON],Remediated - no-training clause effective 2026-10-20; contract renewed (W-06 closed),2026-10-20
+PRV-004,Provider D (Analytics),Usage analytics,Ops monitoring,CT-2025-001,Yes,EU,24,2027-01-01,[REDACTED_PERSON],Active,2026-10-15

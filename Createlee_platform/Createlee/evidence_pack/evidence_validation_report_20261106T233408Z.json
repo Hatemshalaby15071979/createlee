@@ -1,0 +1,730 @@
+{
+  "document_id": "CL-20261106T233408Z-EVID-20261106",
+  "meta": {
+    "document_id": "CL-20261106T233408Z-EVID-20261106",
+    "title": "Signoff Evidence Validation Report",
+    "domain": "EVIDENCE",
+    "domain_label": "Operational Evidence Pack",
+    "document_type": "evidence_validation_report",
+    "generated_at_iso8601": "2026-11-06T23:34:08Z",
+    "time_standard": "ISO-8601 / UTC",
+    "schema_version": "1.0",
+    "generator": "Createlee / Engeznee",
+    "review_status": "EXAMPLE_PREVIEW — PENDING OPERATOR REVIEW",
+    "source_files": [
+      "qa_reviews.csv",
+      "ai_audit_log.csv",
+      "ai_approvals.csv",
+      "escalations.csv",
+      "role_spec.csv",
+      "ai_inventory.csv",
+      "ai_training.csv",
+      "incident_notifications.csv"
+    ],
+    "source_file_count": 8,
+    "include_timestamp": true,
+    "as_of": "2026-11-06",
+    "window_start": "2026-08-08",
+    "window_end": "2026-11-06"
+  },
+  "sections": [
+    {
+      "heading": "Scope & As-Of Date",
+      "fields": [
+        {
+          "label": "As-of date (--as-of)",
+          "value": "2026-11-06",
+          "type": "date"
+        },
+        {
+          "label": "Coverage window (90 days ending on as-of)",
+          "value": "2026-08-08 .. 2026-11-06",
+          "type": "text"
+        },
+        {
+          "label": "Window handling",
+          "value": "Events older than 90 days are still parsed but excluded from coverage percentages",
+          "type": "text"
+        },
+        {
+          "label": "Generated at (ISO-8601 UTC)",
+          "value": "2026-11-06T23:34:08Z",
+          "type": "timestamp"
+        },
+        {
+          "label": "Review status",
+          "value": "EXAMPLE_PREVIEW — PENDING OPERATOR REVIEW",
+          "type": "text"
+        },
+        {
+          "label": "Approvals",
+          "value": "No external organisational approval required for this export step; Createlee's own operator review gate still applies",
+          "type": "text"
+        }
+      ],
+      "paragraphs": [
+        "Synthetic example exports generated from Createlee bundled sample data. These are NOT real compliance evidence. Replace with genuine system exports before any actual signoff. Gaps are preserved and reported, never deleted."
+      ],
+      "table": null
+    },
+    {
+      "heading": "Per-File Results (required columns checked, rows never deleted)",
+      "fields": [],
+      "paragraphs": [],
+      "table": {
+        "columns": [
+          "#",
+          "Expected filename",
+          "Actual filename",
+          "Status",
+          "Rows",
+          "In window",
+          "Out of window",
+          "Coverage",
+          "Findings"
+        ],
+        "rows": [
+          [
+            1,
+            "qa_reviews.csv",
+            "qa_reviews.csv",
+            "PASS_WITH_FINDINGS",
+            "13",
+            "12",
+            "1",
+            "92.3%",
+            "2"
+          ],
+          [
+            2,
+            "ai_audit_log.csv",
+            "ai_audit_log.csv",
+            "PASS_WITH_FINDINGS",
+            "10",
+            "9",
+            "1",
+            "90.0%",
+            "1"
+          ],
+          [
+            3,
+            "ai_approvals.csv",
+            "ai_approvals.csv",
+            "PASS_WITH_FINDINGS",
+            "9",
+            "8",
+            "1",
+            "88.9%",
+            "1"
+          ],
+          [
+            4,
+            "escalations.csv",
+            "escalations.csv",
+            "PASS_WITH_FINDINGS",
+            "7",
+            "6",
+            "1",
+            "85.7%",
+            "2"
+          ],
+          [
+            5,
+            "role_spec.csv",
+            "role_spec.csv",
+            "PASS_WITH_FINDINGS",
+            "5",
+            "4",
+            "1",
+            "80.0%",
+            "1"
+          ],
+          [
+            6,
+            "ai_inventory.csv",
+            "ai_inventory.csv",
+            "PASS_WITH_FINDINGS",
+            "14",
+            "14",
+            "0",
+            "100.0%",
+            "1"
+          ],
+          [
+            7,
+            "ai_training.csv",
+            "ai_training.csv",
+            "PASS_WITH_FINDINGS",
+            "11",
+            "10",
+            "1",
+            "90.9%",
+            "2"
+          ],
+          [
+            8,
+            "incident_notifications.csv",
+            "incident_notifications.csv",
+            "PASS_WITH_FINDINGS",
+            "11",
+            "10",
+            "1",
+            "90.9%",
+            "2"
+          ]
+        ],
+        "source_file": "8 evidence CSVs",
+        "row_count": 8
+      }
+    },
+    {
+      "heading": "Column & Row-Count Checks",
+      "fields": [],
+      "paragraphs": [],
+      "table": {
+        "columns": [
+          "File #",
+          "Check",
+          "Result",
+          "Detail"
+        ],
+        "rows": [
+          [
+            "1",
+            "file readable as CSV",
+            "PASS",
+            "5 columns, 13 data rows"
+          ],
+          [
+            "1",
+            "required columns present",
+            "PASS",
+            "all present"
+          ],
+          [
+            "1",
+            "at least 1 data row(s)",
+            "PASS",
+            "13 row(s) — header-only file fails"
+          ],
+          [
+            "1",
+            "90-day coverage computed",
+            "PASS",
+            "12/13 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage"
+          ],
+          [
+            "2",
+            "file readable as CSV",
+            "PASS",
+            "3 columns, 10 data rows"
+          ],
+          [
+            "2",
+            "required columns present",
+            "PASS",
+            "all present"
+          ],
+          [
+            "2",
+            "at least 1 data row(s)",
+            "PASS",
+            "10 row(s) — header-only file fails"
+          ],
+          [
+            "2",
+            "90-day coverage computed",
+            "PASS",
+            "9/10 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage"
+          ],
+          [
+            "2",
+            "event type: kill_switch or access_revoked",
+            "PASS",
+            "present"
+          ],
+          [
+            "2",
+            "event type: access_review",
+            "PASS",
+            "present"
+          ],
+          [
+            "2",
+            "event type: retention_check or pii_log_check",
+            "PASS",
+            "present"
+          ],
+          [
+            "3",
+            "file readable as CSV",
+            "PASS",
+            "4 columns, 9 data rows"
+          ],
+          [
+            "3",
+            "required columns present",
+            "PASS",
+            "all present"
+          ],
+          [
+            "3",
+            "at least 1 data row(s)",
+            "PASS",
+            "9 row(s) — header-only file fails"
+          ],
+          [
+            "3",
+            "90-day coverage computed",
+            "PASS",
+            "8/9 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage"
+          ],
+          [
+            "3",
+            ">=1 ai_proposed decision",
+            "PASS",
+            "7 row(s)"
+          ],
+          [
+            "4",
+            "file readable as CSV",
+            "PASS",
+            "4 columns, 7 data rows"
+          ],
+          [
+            "4",
+            "required columns present",
+            "PASS",
+            "all present"
+          ],
+          [
+            "4",
+            "at least 1 data row(s)",
+            "PASS",
+            "7 row(s) — header-only file fails"
+          ],
+          [
+            "4",
+            "90-day coverage computed",
+            "PASS",
+            "6/7 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage"
+          ],
+          [
+            "5",
+            "file readable as CSV",
+            "PASS",
+            "5 columns, 5 data rows"
+          ],
+          [
+            "5",
+            "required columns present",
+            "PASS",
+            "all present"
+          ],
+          [
+            "5",
+            "at least 1 data row(s)",
+            "PASS",
+            "5 row(s) — header-only file fails"
+          ],
+          [
+            "5",
+            "90-day coverage computed",
+            "PASS",
+            "4/5 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage"
+          ],
+          [
+            "5",
+            "exactly one named_accountable=yes",
+            "PASS",
+            "1 row(s)"
+          ],
+          [
+            "6",
+            "file readable as CSV",
+            "PASS",
+            "6 columns, 14 data rows"
+          ],
+          [
+            "6",
+            "required columns present",
+            "PASS",
+            "all present"
+          ],
+          [
+            "6",
+            "at least 1 data row(s)",
+            "PASS",
+            "14 row(s) — header-only file fails"
+          ],
+          [
+            "6",
+            "90-day coverage computed",
+            "PASS",
+            "14/14 rows in window 2026-08-08 .. 2026-11-06; 0 older row(s) parsed but excluded from coverage"
+          ],
+          [
+            "6",
+            "row_type 'provider' present",
+            "PASS",
+            "present"
+          ],
+          [
+            "6",
+            "row_type 'contract_term' present",
+            "PASS",
+            "present"
+          ],
+          [
+            "7",
+            "file readable as CSV",
+            "PASS",
+            "4 columns, 11 data rows"
+          ],
+          [
+            "7",
+            "required columns present",
+            "PASS",
+            "all present"
+          ],
+          [
+            "7",
+            "at least 1 data row(s)",
+            "PASS",
+            "11 row(s) — header-only file fails"
+          ],
+          [
+            "7",
+            "90-day coverage computed",
+            "PASS",
+            "10/11 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage"
+          ],
+          [
+            "7",
+            ">=1 completed=yes (lowercase)",
+            "PASS",
+            "9 row(s)"
+          ],
+          [
+            "8",
+            "file readable as CSV",
+            "PASS",
+            "4 columns, 11 data rows"
+          ],
+          [
+            "8",
+            "required columns present",
+            "PASS",
+            "all present"
+          ],
+          [
+            "8",
+            "at least 1 data row(s)",
+            "PASS",
+            "11 row(s) — header-only file fails"
+          ],
+          [
+            "8",
+            "90-day coverage computed",
+            "PASS",
+            "10/11 rows in window 2026-08-08 .. 2026-11-06; 1 older row(s) parsed but excluded from coverage"
+          ]
+        ],
+        "source_file": "validator",
+        "row_count": 40
+      }
+    },
+    {
+      "heading": "Honest Findings / Gaps (preserved, not cleaned)",
+      "fields": [
+        {
+          "label": "Total gaps reported",
+          "value": "12",
+          "type": "number"
+        },
+        {
+          "label": "Rows deleted",
+          "value": "0",
+          "type": "number"
+        },
+        {
+          "label": "Rows preserved",
+          "value": "80",
+          "type": "number"
+        }
+      ],
+      "paragraphs": [],
+      "table": {
+        "columns": [
+          "File #",
+          "Filename",
+          "Finding"
+        ],
+        "rows": [
+          [
+            "1",
+            "qa_reviews.csv",
+            "2 row(s) with blank reviewer_id — not deleted."
+          ],
+          [
+            "1",
+            "qa_reviews.csv",
+            "1 event(s) older than 90 days: parsed, excluded from coverage percentages."
+          ],
+          [
+            "2",
+            "ai_audit_log.csv",
+            "1 event(s) older than 90 days: parsed, excluded from coverage percentages."
+          ],
+          [
+            "3",
+            "ai_approvals.csv",
+            "1 event(s) older than 90 days: parsed, excluded from coverage percentages."
+          ],
+          [
+            "4",
+            "escalations.csv",
+            "1 row(s) with authorised=no — control exception, reported not removed."
+          ],
+          [
+            "4",
+            "escalations.csv",
+            "1 event(s) older than 90 days: parsed, excluded from coverage percentages."
+          ],
+          [
+            "5",
+            "role_spec.csv",
+            "1 event(s) older than 90 days: parsed, excluded from coverage percentages."
+          ],
+          [
+            "6",
+            "ai_inventory.csv",
+            "2 provider(s) with no signed no-training contract term: Internal, Vendor D"
+          ],
+          [
+            "7",
+            "ai_training.csv",
+            "2 staff training row(s) not completed/verified."
+          ],
+          [
+            "7",
+            "ai_training.csv",
+            "1 event(s) older than 90 days: parsed, excluded from coverage percentages."
+          ],
+          [
+            "8",
+            "incident_notifications.csv",
+            "3 row(s) with notified_within_sla=no — control exception, reported not removed."
+          ],
+          [
+            "8",
+            "incident_notifications.csv",
+            "1 event(s) older than 90 days: parsed, excluded from coverage percentages."
+          ]
+        ],
+        "source_file": "validator",
+        "row_count": 12
+      }
+    },
+    {
+      "heading": "Accepted Column Aliases",
+      "fields": [],
+      "paragraphs": [
+        "Excel content saved with a .csv extension is supported: UTF-8/UTF-8-BOM/UTF-16/CP1252/Latin-1 encoding and comma / semicolon / tab / pipe delimiters are auto-detected."
+      ],
+      "table": {
+        "columns": [
+          "Canonical",
+          "Accepted aliases"
+        ],
+        "rows": [
+          [
+            "ts",
+            "timestamp, time, date, created_at, date_time, datetime"
+          ],
+          [
+            "reviewer_id",
+            "reviewer, reviewedBy, reviewed_by, approved_by, approver"
+          ],
+          [
+            "agent_id",
+            "agent, handled_by, handledBy, employee_id"
+          ],
+          [
+            "approver_id",
+            "approver, approved_by, reviewedBy, reviewer, reviewer_id, actor"
+          ],
+          [
+            "supervisor_id",
+            "supervisor, team_lead, teamLead, manager"
+          ],
+          [
+            "authorised",
+            "authorized, is_authorised, authorized_flag"
+          ],
+          [
+            "named_accountable",
+            "accountable, accountable_named, accountable_owner"
+          ],
+          [
+            "completed",
+            "status, state"
+          ],
+          [
+            "notified_within_sla",
+            "within_sla, notification_sla_met"
+          ]
+        ],
+        "source_file": "Signoff spec",
+        "row_count": 9
+      }
+    }
+  ],
+  "records": [
+    {
+      "_n": 1,
+      "expected_filename": "qa_reviews.csv",
+      "actual_filename": "qa_reviews.csv",
+      "status": "PASS_WITH_FINDINGS",
+      "required_columns": "ts|ai_action|human_action|reviewer_id|agent_id",
+      "columns_ok": "yes",
+      "total_rows": 13,
+      "in_window_rows": 12,
+      "out_of_window_rows": 1,
+      "coverage_pct": 92.3,
+      "findings": 2,
+      "as_of": "2026-11-06",
+      "window_start": "2026-08-08",
+      "window_end": "2026-11-06",
+      "generated_at_iso8601": "2026-11-06T23:34:08Z",
+      "review_status": "EXAMPLE_PREVIEW — PENDING OPERATOR REVIEW"
+    },
+    {
+      "_n": 2,
+      "expected_filename": "ai_audit_log.csv",
+      "actual_filename": "ai_audit_log.csv",
+      "status": "PASS_WITH_FINDINGS",
+      "required_columns": "ts|actor|event_type",
+      "columns_ok": "yes",
+      "total_rows": 10,
+      "in_window_rows": 9,
+      "out_of_window_rows": 1,
+      "coverage_pct": 90.0,
+      "findings": 1,
+      "as_of": "2026-11-06",
+      "window_start": "2026-08-08",
+      "window_end": "2026-11-06",
+      "generated_at_iso8601": "2026-11-06T23:34:08Z",
+      "review_status": "EXAMPLE_PREVIEW — PENDING OPERATOR REVIEW"
+    },
+    {
+      "_n": 3,
+      "expected_filename": "ai_approvals.csv",
+      "actual_filename": "ai_approvals.csv",
+      "status": "PASS_WITH_FINDINGS",
+      "required_columns": "ts|gate|decision|approver_id",
+      "columns_ok": "yes",
+      "total_rows": 9,
+      "in_window_rows": 8,
+      "out_of_window_rows": 1,
+      "coverage_pct": 88.9,
+      "findings": 1,
+      "as_of": "2026-11-06",
+      "window_start": "2026-08-08",
+      "window_end": "2026-11-06",
+      "generated_at_iso8601": "2026-11-06T23:34:08Z",
+      "review_status": "EXAMPLE_PREVIEW — PENDING OPERATOR REVIEW"
+    },
+    {
+      "_n": 4,
+      "expected_filename": "escalations.csv",
+      "actual_filename": "escalations.csv",
+      "status": "PASS_WITH_FINDINGS",
+      "required_columns": "ts|escalated_by|supervisor_id|authorised",
+      "columns_ok": "yes",
+      "total_rows": 7,
+      "in_window_rows": 6,
+      "out_of_window_rows": 1,
+      "coverage_pct": 85.7,
+      "findings": 2,
+      "as_of": "2026-11-06",
+      "window_start": "2026-08-08",
+      "window_end": "2026-11-06",
+      "generated_at_iso8601": "2026-11-06T23:34:08Z",
+      "review_status": "EXAMPLE_PREVIEW — PENDING OPERATOR REVIEW"
+    },
+    {
+      "_n": 5,
+      "expected_filename": "role_spec.csv",
+      "actual_filename": "role_spec.csv",
+      "status": "PASS_WITH_FINDINGS",
+      "required_columns": "ts|role|assigned_to|is_authorised_supervisor",
+      "columns_ok": "yes",
+      "total_rows": 5,
+      "in_window_rows": 4,
+      "out_of_window_rows": 1,
+      "coverage_pct": 80.0,
+      "findings": 1,
+      "as_of": "2026-11-06",
+      "window_start": "2026-08-08",
+      "window_end": "2026-11-06",
+      "generated_at_iso8601": "2026-11-06T23:34:08Z",
+      "review_status": "EXAMPLE_PREVIEW — PENDING OPERATOR REVIEW"
+    },
+    {
+      "_n": 6,
+      "expected_filename": "ai_inventory.csv",
+      "actual_filename": "ai_inventory.csv",
+      "status": "PASS_WITH_FINDINGS",
+      "required_columns": "ts|row_type|provider_name",
+      "columns_ok": "yes",
+      "total_rows": 14,
+      "in_window_rows": 14,
+      "out_of_window_rows": 0,
+      "coverage_pct": 100.0,
+      "findings": 1,
+      "as_of": "2026-11-06",
+      "window_start": "2026-08-08",
+      "window_end": "2026-11-06",
+      "generated_at_iso8601": "2026-11-06T23:34:08Z",
+      "review_status": "EXAMPLE_PREVIEW — PENDING OPERATOR REVIEW"
+    },
+    {
+      "_n": 7,
+      "expected_filename": "ai_training.csv",
+      "actual_filename": "ai_training.csv",
+      "status": "PASS_WITH_FINDINGS",
+      "required_columns": "ts|staff_id|module_name|completed",
+      "columns_ok": "yes",
+      "total_rows": 11,
+      "in_window_rows": 10,
+      "out_of_window_rows": 1,
+      "coverage_pct": 90.9,
+      "findings": 2,
+      "as_of": "2026-11-06",
+      "window_start": "2026-08-08",
+      "window_end": "2026-11-06",
+      "generated_at_iso8601": "2026-11-06T23:34:08Z",
+      "review_status": "EXAMPLE_PREVIEW — PENDING OPERATOR REVIEW"
+    },
+    {
+      "_n": 8,
+      "expected_filename": "incident_notifications.csv",
+      "actual_filename": "incident_notifications.csv",
+      "status": "PASS_WITH_FINDINGS",
+      "required_columns": "ts|incident_id|notified_within_sla|owner",
+      "columns_ok": "yes",
+      "total_rows": 11,
+      "in_window_rows": 10,
+      "out_of_window_rows": 1,
+      "coverage_pct": 90.9,
+      "findings": 2,
+      "as_of": "2026-11-06",
+      "window_start": "2026-08-08",
+      "window_end": "2026-11-06",
+      "generated_at_iso8601": "2026-11-06T23:34:08Z",
+      "review_status": "EXAMPLE_PREVIEW — PENDING OPERATOR REVIEW"
+    }
+  ],
+  "disclaimer": "Synthetic example exports generated from Createlee bundled sample data. These are NOT real compliance evidence. Replace with genuine system exports before any actual signoff. Gaps are preserved and reported, never deleted."
+}

@@ -1,0 +1,5 @@
+module,timestamp,incident_type,severity,notification_channel,recipient_team,action_taken,status,notes\nAI.Core,2026-08-15T11:23:45+02:00,downtime,HIGH,email,cx_ops,"Initiated rollback to last known good build","resolved","Service restored after 45 min"
+Customer.Support.AI,2026-09-05T08:45:12+02:00,hallucination,MEDIUM,sms,cx_ops,"Updated knowledge base with verified content","resolved","Accuracy improved to 98%"
+Finance.AI,2026-09-28T23:15:30+02:00,payment_failure,HIGH,priority_email,payments_team,"Retry failed transactions after provider restoration","resolved","Process completed successfully"
+AI.Core,2026-10-15T14:20:00+02:00,api_rate_limit,LOW,sms,devops_team,"Scaled infrastructure to handle traffic spike","resolved","Rate limit reset automatically"
+Customer.Support.AI,2026-10-30T17:45:22+02:00,context_overflow,MEDIUM,email,cx_ops,"Increased token context window allocation","resolved","No further incidents reported"

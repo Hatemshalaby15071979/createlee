@@ -1,0 +1,5 @@
+rec_id,staff_ref,training_module,completion_date,verified_by,status,completion_status,related_control
+TR-001,EMP-101,Responsible AI Basics,2026-09-10,[REDACTED_PERSON],Yes,Completed,W-09
+TR-002,EMP-102,AI Ops & Kill-Switch,2026-09-22,[REDACTED_PERSON],Yes,Completed,W-09
+TR-003,EMP-103,Data Handling & Privacy,2026-10-08,[REDACTED_PERSON],Yes,Completed,W-09
+TR-004,EMP-104,Incident Response SLA,2026-10-19,[REDACTED_PERSON],Yes,Completed,W-09

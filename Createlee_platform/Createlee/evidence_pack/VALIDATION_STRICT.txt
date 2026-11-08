@@ -1,0 +1,39 @@
+Createlee — STRICT Signoff generator contract check
+===================================================
+This is the acceptance gate the *generated* fixtures must pass before they
+are shipped to a client. It mirrors validate_signoff_csv.mjs exactly.
+The permissive validator in the report is for REAL client exports.
+
+As-of:                       2026-11-06
+Generated at (ISO-8601 UTC): 2026-11-06T23:34:08Z
+
+RESULT
+------
+Verdict:                     ACCEPTABLE
+Files expected:              8
+Files found:                 8
+PASS:                        5
+PASS_WITH_FINDINGS:          3
+FAIL:                        0
+Rows preserved:              80
+Width clean:                 True
+Rows deleted:                0
+
+PER-FILE
+--------
+  qa_reviews.csv                 PASS                 rows= 13 header=5/5
+  ai_audit_log.csv               PASS                 rows= 10 header=3/3
+  ai_approvals.csv               PASS                 rows=  9 header=4/4
+  escalations.csv                PASS_WITH_FINDINGS   rows=  7 header=4/4
+      FINDING: 1 row(s) with authorised=no — honest control exception, keep it
+  role_spec.csv                  PASS                 rows=  5 header=5/5
+  ai_inventory.csv               PASS_WITH_FINDINGS   rows= 14 header=6/6
+      FINDING: provider Vendor D has no matching no-training contract term
+      FINDING: provider Internal has no matching no-training contract term
+  ai_training.csv                PASS_WITH_FINDINGS   rows= 11 header=4/4
+      FINDING: 2 training row(s) not completed — honest finding, keep it
+  incident_notifications.csv     PASS                 rows= 11 header=4/4
+
+NOTE
+----
+  Simulated data only. Passing is not real compliance evidence.

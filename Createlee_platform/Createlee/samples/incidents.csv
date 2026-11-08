@@ -1,0 +1,11 @@
+incident_id,detected_at_iso8601,severity,service,affected_subscribers,status,mttr_minutes,root_cause,owner
+INC-20261105-001,2026-11-05T06:42:11Z,P1,Mobile Voice,184000,RESOLVED,97,Network,NOC Duty Manager
+INC-20261105-002,2026-11-05T08:15:00Z,P2,CRM / Siebel,3200,RESOLVED,142,Platform,CRM Platform Lead
+INC-20261105-003,2026-11-05T09:03:44Z,P3,SMS A2P,870,MITIGATED,68,Vendor,Messaging Ops
+INC-20261105-004,2026-11-05T10:21:09Z,P2,Billing / Mediation,45600,RESOLVED,211,Platform,Billing Ops Lead
+INC-20261105-005,2026-11-05T11:47:32Z,P3,IVR / Contact Centre,2100,OPEN,0,Process,Contact Centre Ops
+INC-20261105-006,2026-11-05T13:05:18Z,P4,Self-Service App,140,RESOLVED,39,Human,Digital Ops
+INC-20261105-007,2026-11-05T14:38:52Z,P1,Mobile Data / 5G,312000,RESOLVED,126,Network,NOC Duty Manager
+INC-20261105-008,2026-11-05T16:12:07Z,P3,Roaming,5400,MITIGATED,88,Vendor,Roaming Lead
+INC-20261105-009,2026-11-05T18:55:41Z,P2,Number Portability,9800,RESOLVED,174,Process,Service Assurance
+INC-20261105-010,2026-11-05T20:30:00Z,P4,Reporting / BI,60,OPEN,0,Platform,WFM Systems

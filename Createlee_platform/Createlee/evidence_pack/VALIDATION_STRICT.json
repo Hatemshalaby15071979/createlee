@@ -1,0 +1,106 @@
+{
+  "gate": "strict generator contract (validate_signoff_csv.mjs port)",
+  "as_of": "2026-11-06",
+  "generated_at_iso8601": "2026-11-06T23:34:08Z",
+  "files": [
+    {
+      "filename": "qa_reviews.csv",
+      "status": "PASS",
+      "failures": [],
+      "findings": [],
+      "rows": 13,
+      "header_cols": 5,
+      "expected_cols": 5,
+      "width_mismatch_lines": []
+    },
+    {
+      "filename": "ai_audit_log.csv",
+      "status": "PASS",
+      "failures": [],
+      "findings": [],
+      "rows": 10,
+      "header_cols": 3,
+      "expected_cols": 3,
+      "width_mismatch_lines": []
+    },
+    {
+      "filename": "ai_approvals.csv",
+      "status": "PASS",
+      "failures": [],
+      "findings": [],
+      "rows": 9,
+      "header_cols": 4,
+      "expected_cols": 4,
+      "width_mismatch_lines": []
+    },
+    {
+      "filename": "escalations.csv",
+      "status": "PASS_WITH_FINDINGS",
+      "failures": [],
+      "findings": [
+        "1 row(s) with authorised=no — honest control exception, keep it"
+      ],
+      "rows": 7,
+      "header_cols": 4,
+      "expected_cols": 4,
+      "width_mismatch_lines": []
+    },
+    {
+      "filename": "role_spec.csv",
+      "status": "PASS",
+      "failures": [],
+      "findings": [],
+      "rows": 5,
+      "header_cols": 5,
+      "expected_cols": 5,
+      "width_mismatch_lines": []
+    },
+    {
+      "filename": "ai_inventory.csv",
+      "status": "PASS_WITH_FINDINGS",
+      "failures": [],
+      "findings": [
+        "provider Vendor D has no matching no-training contract term",
+        "provider Internal has no matching no-training contract term"
+      ],
+      "rows": 14,
+      "header_cols": 6,
+      "expected_cols": 6,
+      "width_mismatch_lines": []
+    },
+    {
+      "filename": "ai_training.csv",
+      "status": "PASS_WITH_FINDINGS",
+      "failures": [],
+      "findings": [
+        "2 training row(s) not completed — honest finding, keep it"
+      ],
+      "rows": 11,
+      "header_cols": 4,
+      "expected_cols": 4,
+      "width_mismatch_lines": []
+    },
+    {
+      "filename": "incident_notifications.csv",
+      "status": "PASS",
+      "failures": [],
+      "findings": [],
+      "rows": 11,
+      "header_cols": 4,
+      "expected_cols": 4,
+      "width_mismatch_lines": []
+    }
+  ],
+  "summary": {
+    "files_expected": 8,
+    "files_found": 8,
+    "passed": 5,
+    "passed_with_findings": 3,
+    "failed": 0,
+    "total_rows_preserved": 80,
+    "width_clean": true,
+    "rows_deleted": 0,
+    "verdict": "ACCEPTABLE"
+  },
+  "note": "Simulated data only. Passing is not real compliance evidence."
+}

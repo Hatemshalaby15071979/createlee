@@ -1,0 +1,7 @@
+channel_id,channel,direction,authenticated,notes
+CH-01,voice,inbound,partial,CLI is not proof of identity
+CH-02,chat,inbound,no,Unauthenticated web chat
+CH-03,email,inbound,no,Verify before disclosing account data
+CH-04,web,inbound,partial,Session-based
+CH-05,social,inbound,no,"Public channel, no account data"
+CH-06,api,outbound,yes,mTLS service-to-service

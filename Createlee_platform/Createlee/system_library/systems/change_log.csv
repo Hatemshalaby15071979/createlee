@@ -1,0 +1,4 @@
+change_id,ts,system,description,owner,status
+CHG-2026-1042,2026-10-16T07:40:00+02:00,AI-001,Scheduled kill-switch drill,Sec Lead,completed
+CHG-2026-1088,2026-10-20T09:00:00+02:00,PRV-003,No-training clause remediated and contract renewed,Legal,completed
+CHG-2026-1101,2026-11-03T10:30:00+02:00,rolespec,3 supervisor roster rows added,Ops Lead,completed

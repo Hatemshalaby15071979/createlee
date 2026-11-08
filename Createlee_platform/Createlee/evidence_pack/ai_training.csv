@@ -1,0 +1,12 @@
+ts,staff_id,module_name,completed
+2026-09-15T00:00:00+02:00,A-1042,Responsible AI,yes
+2026-09-16T00:00:00+02:00,A-1043,Prompt Safety,yes
+2026-09-17T00:00:00+02:00,A-1044,Data Privacy,no
+2026-09-18T00:00:00+02:00,A-1045,Bias Detection,yes
+2026-09-19T00:00:00+02:00,A-1046,Model Governance,yes
+2026-09-20T00:00:00+02:00,A-1047,Incident Response,yes
+2026-09-21T00:00:00+02:00,A-1048,PII Handling,no
+2026-09-22T00:00:00+02:00,A-1049,Access Control,yes
+2026-09-23T00:00:00+02:00,A-1050,Responsible AI,yes
+2026-09-24T00:00:00+02:00,A-1051,Prompt Safety,yes
+2026-07-15T09:00:00+02:00,ST-331,Responsible AI,yes

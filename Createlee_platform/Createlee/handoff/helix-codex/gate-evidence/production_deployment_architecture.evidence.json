@@ -1,0 +1,22 @@
+{
+  "gate": "production_deployment_architecture",
+  "scope": "production",
+  "status": "ORG_MUST_COMPLETE",
+  "generated_at_iso8601": "2026-11-06T23:38:19Z",
+  "as_of": "2026-11-06",
+  "demand": "Approved production deployment topology and review sign-off.",
+  "payload": {
+    "topology_diagram_sha256": "",
+    "network": "",
+    "tls": "",
+    "ha": "",
+    "secrets_management": "",
+    "reviewer": "",
+    "review_date": "",
+    "signature": null
+  },
+  "signature": null,
+  "signature_instruction": "Sign the canonical JSON of this file with an RSA key held OUTSIDE the audited repository and store <gate>.evidence.json.sig beside it, also outside the repository. Never commit the private key.",
+  "operator_note": "Requires an architecture review by your infrastructure owner.",
+  "generated_by": "Createlee / Engeznee — UNSIGNED TEMPLATE"
+}

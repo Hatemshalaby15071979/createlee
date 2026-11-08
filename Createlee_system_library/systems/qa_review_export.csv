@@ -1,0 +1,4 @@
+ts,ai_action,human_action,reviewer_id,agent_id
+2026-08-20T09:12:00+02:00,QA action proposal,accepted,R-4421,agent-qa-12
+2026-09-05T11:30:00+02:00,Response draft,accepted,R-4422,agent-support-07
+2026-10-02T14:05:00+02:00,QA action proposal,pending,,agent-qa-12

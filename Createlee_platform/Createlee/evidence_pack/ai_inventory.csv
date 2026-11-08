@@ -1,0 +1,15 @@
+ts,row_type,provider_name,reference,term_or_version,owner
+2026-09-20T00:00:00+02:00,provider,Internal / Ollama,AI-001,llama3.2:8b,Head of Contact Centre Ops
+2026-09-21T00:00:00+02:00,provider,Vendor A,AI-002,sentinel-v2.1,QA Lead
+2026-09-22T00:00:00+02:00,provider,Internal / Ollama,AI-003,nomic-embed-text:v1.5,Knowledge Manager
+2026-09-23T00:00:00+02:00,provider,Vendor B,AI-004,qascore-3.0,Head of QA
+2026-09-24T00:00:00+02:00,provider,Vendor C,AI-005,forecaster-4.2,WFM Manager
+2026-09-25T00:00:00+02:00,provider,Vendor A,AI-006,nba-1.8,Retention Lead
+2026-09-26T00:00:00+02:00,provider,Vendor D,AI-007,asr-tts-5.1,Digital Channel Lead
+2026-09-27T00:00:00+02:00,provider,Internal,AI-008,xgb-fraud-2.3,Fraud & Security Lead
+2026-09-22T00:00:00+02:00,contract_term,Internal / Ollama,AI-001,no_training,Head of Contact Centre Ops
+2026-09-23T00:00:00+02:00,contract_term,Vendor A,AI-002,no_training,QA Lead
+2026-09-24T00:00:00+02:00,contract_term,Internal / Ollama,AI-003,no_training,Knowledge Manager
+2026-09-25T00:00:00+02:00,contract_term,Vendor B,AI-004,no_training,Head of QA
+2026-09-26T00:00:00+02:00,contract_term,Vendor C,AI-005,no_training,WFM Manager
+2026-09-27T00:00:00+02:00,contract_term,Vendor A,AI-006,no_training,Retention Lead

@@ -1,0 +1,6 @@
+ts,role,assigned_to,is_authorised_supervisor,named_accountable
+2026-10-01T00:00:00+02:00,AI Ops Lead,ACCT-01,yes,yes
+2026-10-09T00:00:00+02:00,Team Leader,A-1049,yes,no
+2026-10-10T00:00:00+02:00,QA Analyst,A-1050,no,no
+2026-10-11T00:00:00+02:00,WFM Analyst,A-1051,no,no
+2026-07-01T00:00:00+02:00,Deputy AI Ops Lead,ACCT-02,yes,no

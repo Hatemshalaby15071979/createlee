@@ -1,0 +1,18 @@
+filename,kind,size_bytes,as_of,generated_at_iso8601
+README.txt,pack readme,5567,2026-11-06,2026-11-06T23:34:09Z
+VALIDATION_STRICT.json,strict generator-contract check,2590,2026-11-06,2026-11-06T23:34:09Z
+VALIDATION_STRICT.txt,strict generator-contract check,1708,2026-11-06,2026-11-06T23:34:09Z
+ai_approvals.csv,evidence CSV export,575,2026-11-06,2026-11-06T23:34:09Z
+ai_audit_log.csv,evidence CSV export,506,2026-11-06,2026-11-06T23:34:09Z
+ai_inventory.csv,evidence CSV export,1244,2026-11-06,2026-11-06T23:34:09Z
+ai_training.csv,evidence CSV export,603,2026-11-06,2026-11-06T23:34:09Z
+escalations.csv,evidence CSV export,348,2026-11-06,2026-11-06T23:34:09Z
+evidence_validation_report_20261106T233408Z.csv,validation report (document export),4280,2026-11-06,2026-11-06T23:34:09Z
+evidence_validation_report_20261106T233408Z.json,validation report (document export),20146,2026-11-06,2026-11-06T23:34:09Z
+evidence_validation_report_20261106T233408Z.pdf,validation report (document export),11028,2026-11-06,2026-11-06T23:34:09Z
+evidence_validation_report_20261106T233408Z.txt,validation report (document export),7523,2026-11-06,2026-11-06T23:34:09Z
+evidence_validation_report_20261106T233409Z.docx,validation report (document export),39663,2026-11-06,2026-11-06T23:34:09Z
+evidence_validation_report_data.json,validation report (document export),13082,2026-11-06,2026-11-06T23:34:09Z
+incident_notifications.csv,evidence CSV export,709,2026-11-06,2026-11-06T23:34:09Z
+qa_reviews.csv,evidence CSV export,904,2026-11-06,2026-11-06T23:34:09Z
+role_spec.csv,evidence CSV export,330,2026-11-06,2026-11-06T23:34:09Z

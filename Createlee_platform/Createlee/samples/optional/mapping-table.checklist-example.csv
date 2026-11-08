@@ -1,0 +1,6 @@
+Source Field,Target Field,Source File,Domain,Document Type,Transform
+Ref,Control Ref,questions.csv,AI_INVENTORY,ai_governance_checklist,upper
+Question,Control Question,questions.csv,AI_INVENTORY,ai_governance_checklist,none
+Yes,Yes,questions.csv,AI_INVENTORY,ai_governance_checklist,none
+Partly,Partly,questions.csv,AI_INVENTORY,ai_governance_checklist,none
+No,No,questions.csv,AI_INVENTORY,ai_governance_checklist,none

@@ -1,0 +1,42 @@
+{
+  "project": "live-support-assistant",
+  "title": "live-support-assistant — corpus + expected-outcome labels",
+  "purpose": "The evidence that lets the assistant be evaluated against the client's own procedures and a labelled ticket sample.",
+  "as_of": "2026-11-06",
+  "generated_at_iso8601": "2026-11-06T23:38:19Z",
+  "files": [
+    {
+      "filename": "procedure_corpus.csv",
+      "required_columns": "doc_id, title, content, tenant_id, published, version, retired",
+      "min_rows": 20,
+      "generated_rows": 24,
+      "client_action": "replace_data_rows_keep_doc_ids_unique",
+      "what_it_proves": "The SOPs/knowledge base the assistant answers from"
+    },
+    {
+      "filename": "procedure_corpus.json",
+      "required_columns": "same as CSV (JSON array under 'documents')",
+      "min_rows": 20,
+      "generated_rows": 24,
+      "client_action": "replace_data_rows_keep_doc_ids_unique",
+      "what_it_proves": "Same corpus in JSON form (either form is accepted)"
+    },
+    {
+      "filename": "expected_outcome_labels.csv",
+      "required_columns": "ticket_id, tenant_id, question, expected_decision, expected_sop_id, source",
+      "min_rows": 50,
+      "generated_rows": 64,
+      "client_action": "replace_data_rows",
+      "what_it_proves": "Labelled ticket outcomes for evaluation"
+    }
+  ],
+  "cannot_generate": [
+    "Tenant isolation proof — needs an authenticated cross-tenant negative control",
+    "Authenticated end-to-end flow evidence — needs a hosted runtime",
+    "Hosted telemetry / escalation transport evidence",
+    "External security audit",
+    "Billing integration evidence",
+    "Per-tenant threshold calibration record (0.18 is a starting point, not validated)"
+  ],
+  "honesty": "Simulated, format-exact template data. The client must replace ONLY the data rows with their own real rows and keep the header, column order and value conventions unchanged. Passing a validator does not make simulated data real compliance evidence."
+}

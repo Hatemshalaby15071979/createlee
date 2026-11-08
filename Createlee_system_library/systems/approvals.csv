@@ -1,0 +1,5 @@
+ts,gate,decision,approver_id
+2026-10-04T11:00:00+02:00,pricing_change,ai_proposed,A-773
+2026-10-05T11:00:00+02:00,refund_approval,ai_proposed,A-774
+2026-10-06T11:00:00+02:00,qa_override,ai_proposed,
+2026-10-22T13:15:00+02:00,refund_approval,human_approved,A-1050

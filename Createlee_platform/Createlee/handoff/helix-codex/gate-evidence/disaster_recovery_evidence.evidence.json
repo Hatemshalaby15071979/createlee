@@ -1,0 +1,20 @@
+{
+  "gate": "disaster_recovery_evidence",
+  "scope": "production",
+  "status": "ORG_MUST_COMPLETE",
+  "generated_at_iso8601": "2026-11-06T23:38:19Z",
+  "as_of": "2026-11-06",
+  "demand": "Validated DR / backup plan exercised against the production environment.",
+  "payload": {
+    "dr_test_date": "",
+    "rpo_minutes": null,
+    "rto_minutes": null,
+    "restore_log_sha256": "",
+    "operator": "",
+    "signature": null
+  },
+  "signature": null,
+  "signature_instruction": "Sign the canonical JSON of this file with an RSA key held OUTSIDE the audited repository and store <gate>.evidence.json.sig beside it, also outside the repository. Never commit the private key.",
+  "operator_note": "Requires a real DR test in production. No CSV closes this.",
+  "generated_by": "Createlee / Engeznee — UNSIGNED TEMPLATE"
+}

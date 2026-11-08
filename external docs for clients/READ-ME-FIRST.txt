@@ -1,0 +1,30 @@
+READ-ME-FIRST — these files are NOT the reference set
+======================================================
+
+The 8 CSVs in this folder are the output of a local Ollama/opencode run that
+FAILED the Signoff CSV acceptance check (1 PASS / 7 FAIL — see
+`../opencode_next_step_kit/00_EVALUATION_AND_NEXT_STEPS.txt`).
+
+They are kept only as evidence of that failed run. Do NOT send them to a client
+and do NOT use them as a template.
+
+Use the correct, validated sets instead:
+
+  ../opencode_next_step_kit/golden_examples/     ACCEPTABLE (6 PASS, 2 findings, 0 FAIL)
+  ../Createlee_platform/Createlee/handoff/signoff/   ACCEPTABLE (generated fixtures)
+  ../Createlee_platform/Createlee/evidence_pack/     ACCEPTABLE (generated fixtures)
+
+What went wrong here, concretely:
+  - ai_audit_log.csv   header ts,severity,incident_id,... (missing actor, event_type)
+  - ai_approvals.csv   header date,approver_id,... (missing ts, gate, decision)
+  - escalations.csv    header module,timestamp,... (missing escalated_by, supervisor_id, authorised)
+  - role_spec.csv      header module_id,dotnet_namespace,... (not the Signoff schema)
+  - ai_inventory.csv   header asset_id,asset_name,... (not the Signoff schema)
+  - ai_training.csv    header date,timestamp,module_id,... (not the Signoff schema)
+  - incident_notifications.csv  literal '\n' collapsed into the header
+
+Root cause: the v2 prompt's Section 2 (the eight exact file definitions) was lost
+to context compaction before it reached the model.
+
+The authoritative generator is Createlee:
+  cd ../Createlee_platform/Createlee && python3.11 handoff.py --out handoff --as-of 2026-11-06

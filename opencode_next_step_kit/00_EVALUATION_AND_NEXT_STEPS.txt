@@ -1,0 +1,172 @@
+Createlee - CORRECTED EVALUATION of the opencode / Ollama run, and NEXT STEPS
+=============================================================================
+as-of 2026-11-06 | window 2026-08-08 .. 2026-11-06
+Evaluated (ISO-8601 UTC): 2026-11-06T17:17:09Z
+Prepared: 2026-11-07
+
+Clarification from the user: the 8 CSVs and the "Objective / Requirements /
+Decisions / Work State / Next Move" text are NOT Createlee output. They are a
+local Ollama model driven by opencode (an agentic coding shell) executing the
+v2 prompt. This document re-frames the evaluation accordingly.
+
+=============================================================================
+1. RE-FRAMING -- WHAT WAS AND WAS NOT CREATELEE
+=============================================================================
+  opencode + local Ollama  = the GENERATOR. It wrote the 8 CSVs and produced
+                             the completion report.
+  Createlee                = (a) author of the v2 prompt / spec, and
+                             (b) an INDEPENDENT READ-ONLY VALIDATOR.
+                             It generated none of these files.
+
+  Therefore "1 PASS / 7 FAIL" is a score of THE LOCAL MODEL'S ADHERENCE TO THE
+  SPEC, not a defect in Createlee. In fact the platform behaved as designed:
+  it did not rubber-stamp the agent's "Task complete" and surfaced the gaps.
+  My previous two reports framed the completion text as if it were a Createlee
+  artifact; that attribution was wrong, and is corrected here. The byte-level
+  findings themselves are unchanged and remain objective -- the acceptance
+  spec is the same v2 prompt either way.
+
+=============================================================================
+2. ROOT CAUSE -- THE PROMPT LOST ITS SECTION 2
+=============================================================================
+  The attached long-text block is a CONTEXT-COMPACTION / AGENT-STATE SUMMARY,
+  not a raw model answer. Its structure (Objective / Requirements / Decisions /
+  Work State / Active / Blocked / Next Move / Relevant Files / Important
+  Context) is a classic compaction format.
+
+  Its "Requirements" section contains v2's META-RULES:
+     "exactly 8 blocks wrapped in === FILE / === END markers"      (Section 7/R3)
+     "fixed-width CSV format with exact column headers"             (Section 0/R1)
+     "Boolean fields must use lowercase yes/no only"                (Section 4)
+     "Module names must be exact strings from the allowed list"     (FILE 7)
+     "All timestamps must be valid ISO-8601 with timezone offset"  (Section 5)
+  Its "Objective" has the 90-day window (Section 1).
+
+  What is ABSENT: all of Section 2 -- the eight FILE definitions with their
+  exact headers, column counts and example rows. There is not a single column
+  name from Section 2 anywhere in that summary.
+
+  SMOKING GUN, in the agent's own words:
+     "For incident_notifications.csv, used reasonable placeholder content
+      since no specific content specifications were provided"
+  That is false. The v2 prompt FILE 8 specifies exactly:
+     header      : ts,incident_id,notified_within_sla,owner
+     columns     : 4
+     min rows    : 1
+     example row : 2026-10-02T10:00:00+02:00,INC-102,yes,J-551
+  The specification existed; it simply was not in the model's context when it
+  generated the files.
+
+  CONCLUSION: the prompt was compacted / truncated before reaching Ollama.
+  With no schema to copy, the model invented a plausible one (an AI asset
+  inventory with .NET namespaces, asset_id, major_version, MITRE severity
+  codes and deployment/training logs) and reused the 8 correct filenames.
+  That is why 7 of 8 headers are wrong while the filenames are all right.
+
+  Correction to my earlier note: I wrote "most likely the model did not
+  receive the 8-file prompt". More precisely, it received a SUMMARY of the
+  prompt's rules but lost Section 2 -- the only part containing the actual
+  file definitions.
+
+=============================================================================
+3. SECOND ROOT CAUSE -- NO VERIFICATION LOOP IN THE RUNTIME
+=============================================================================
+  The agent recorded:
+     "Execute tool runs in JavaScript-only runtime which does not support
+      Python imports"
+     "All file writes use direct write tool calls instead of execute-based
+      Python scripts"
+  So it could WRITE files but believed it could not RUN Createlee's Python
+  validator. With no feedback loop, it asserted compliance from its own intent
+  rather than from the bytes. Its own Requirements correctly restate the rules,
+  so this was not simple ignorance -- it was confident reporting without a
+  verify step. 8 of 11 auditable claims in its report are FALSE, including
+  "correct fixed-width ... accurate column counts" (4 files are width-broken),
+  "proper markers" (0 marker tokens), and "ready for review or distribution"
+  (7 of 8 files FAIL).
+
+  The fix is not a better prompt alone. It is a validator the agent CAN run.
+
+=============================================================================
+4. VERDICT (facts unchanged, attribution corrected)
+=============================================================================
+  8/8 filenames correct | 1/8 required headers correct
+  20 of 32 required columns missing | 4 of 8 files width-broken
+  Createlee : 1 PASS / 0 PASS_WITH_FINDINGS / 7 FAIL
+              46 rows preserved | 0 deleted | 5 honest gaps
+  Node check: NOT ACCEPTABLE (exit 1)
+  Files are BYTE-IDENTICAL (SHA-256) to the previous upload -- nothing was
+  regenerated between the two rounds; only the framing changed.
+
+  It is worth noting what the agent DID get right: 8 files exist, the five row
+  counts it stated (7/3/6/4/10) are accurate, and all 30 timestamp cells are
+  valid ISO-8601 with offsets. The failure is structural schema compliance and
+  the control content, not basic mechanics.
+
+=============================================================================
+5. YOUR NEXT STEPS (ordered)
+=============================================================================
+STEP 1 -- Do not use the agent's "Task complete" as an acceptance gate.
+  Only a validator verdict counts. This is the single most important change.
+
+STEP 2 -- Stop the prompt from being compacted. Two options:
+  (a) BEST: use the 8 SINGLE-FILE PROMPTS shipped in
+      /workspace/opencode_next_step_kit/ (one per CSV, 8 separate calls).
+      Each contains exactly ONE header, its column count, its example row and
+      its rules. A compaction event can no longer drop 7 of 8 definitions at
+      once, and FILE 6 (the fragile one) gets its own dedicated call.
+  (b) Save Createlee_8csv_local_model_prompt_v2.txt as a FILE in the opencode
+      working directory and instruct opencode to READ the file at generation
+      time, rather than pasting the long prompt into a chat that may compact.
+  In both cases, copy the text between <<<BEGIN PROMPT>>> and <<<END PROMPT>>>
+  (or use the single-file .txt verbatim). Do not paraphrase or summarise it.
+
+STEP 3 -- Close the verification loop INSIDE opencode's JS runtime.
+  Ship validate_signoff_csv.mjs (zero-dependency Node 18+, shipped in the kit)
+  into the same folder. It is a pure-JS port of the v2 structural checks; it
+  needs no Python. Add this to every single-file prompt (already included):
+      "After writing, run: node validate_signoff_csv.mjs .
+       Paste its JSON verdict. If you cannot run it, output UNVERIFIED.
+       Never write 'Task complete' or 'ready for distribution'."
+  Verified behaviour:
+      on your current 8 files -> NOT ACCEPTABLE, exit 1, 7 FAIL
+      on the v2 golden set    -> ACCEPTABLE,     exit 0, 6 PASS / 2 findings
+  It agrees with Createlee exactly, so opencode can now self-check locally.
+
+STEP 4 -- Confirm on the host (or here) after generation:
+      node validate_signoff_csv.mjs <folder>          # must print ACCEPTABLE
+      cd /workspace/createlee
+      python3.11 evidence.py --out <folder> --as-of 2026-11-06 --validate-only
+  The second command adds the 5-format report (csv/txt/json/pdf/docx). Upload
+  the 8 files here instead, if that is easier -- that is what you just did.
+
+STEP 5 -- Acceptance target = the golden set:
+      6 PASS / 2 PASS_WITH_FINDINGS / 0 FAIL | width_clean=true
+      42 rows preserved | 0 rows deleted | 100% in-window
+  The 2 findings are INTENTIONAL honest gaps (2 x authorised=no in
+  escalations.csv, 1 x completed=no in ai_training.csv). Do not "fix" those.
+
+STEP 6 -- Only after a clean verdict, run Createlee's operator review gate
+  before saving or emailing anything. Simulated data is still not real
+  compliance evidence; replace with genuine system exports before real signoff.
+
+=============================================================================
+6. ONE-LINE ANSWER TO "WHAT SHOULD I DO NEXT"
+=============================================================================
+  Re-run generation with the 8 single-file prompts (not the long prompt), and
+  put validate_signoff_csv.mjs in the folder so opencode must prove compliance
+  with a command it can actually execute instead of declaring success.
+
+=============================================================================
+DELIVERABLES
+=============================================================================
+  /workspace/Createlee_opencode_evaluation_and_next_steps.txt   this document
+  /workspace/validate_signoff_csv.mjs                           Node validator
+  /workspace/opencode_next_step_kit.zip                         all of the below
+      00_README.txt                 exact command sequence
+      validate_signoff_csv.mjs     the same Node validator
+      01..08_<name>.csv.txt        8 compaction-proof single-file prompts
+      golden_examples/             8 verified CSVs as the acceptance target
+  /workspace/Createlee_model_response_evaluated.zip             prior evidence
+      package (8 unchanged CSVs, 5-format report, CLAIM_AUDIT.csv,
+      row_width_check.py) -- kept for the audit trail

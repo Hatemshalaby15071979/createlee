@@ -1,0 +1,31 @@
+ticket_id,tenant_id,customer_id,channel,category,question,created_at_iso8601,priority,status
+TKT-0001,T-001,CUST-2000,voice,billing,"My bill is 20 EUR higher than last month, can you check the charges?",2026-09-01T00:12:00+02:00,P3,open
+TKT-0002,T-002,CUST-2001,chat,network,I was charged for a roaming day I never used.,2026-10-02T01:12:00+02:00,P2,resolved
+TKT-0003,T-003,CUST-2002,email,account,Can I have a full refund of this disputed invoice without review?,2026-11-03T02:12:00+02:00,P3,resolved
+TKT-0004,T-004,CUST-2003,web,complaint,"I lost my phone, please swap my SIM to a new one.",2026-09-04T03:12:00+02:00,P4,resolved
+TKT-0005,T-005,CUST-2004,social,fraud,Someone tried to port my number out without my consent.,2026-10-05T04:12:00+02:00,P1,open
+TKT-0006,T-001,CUST-2005,voice,billing,My broadband has been down since this morning.,2026-11-06T05:12:00+02:00,P3,resolved
+TKT-0007,T-002,CUST-2006,chat,network,There is a wide-area outage across the whole city.,2026-09-07T06:12:00+02:00,P2,resolved
+TKT-0008,T-003,CUST-2007,email,account,Is +44 7700 900123 a valid international number format?,2026-10-08T07:12:00+02:00,P3,resolved
+TKT-0009,T-004,CUST-2008,web,complaint,How do I dial this +800 12345678 freephone number?,2026-11-09T08:12:00+02:00,P4,open
+TKT-0010,T-005,CUST-2009,social,fraud,I want to complain about how my last call was handled.,2026-09-10T00:12:00+02:00,P1,resolved
+TKT-0011,T-001,CUST-2010,voice,billing,Escalate my complaint to someone outside the supervisor roster.,2026-10-11T01:12:00+02:00,P3,resolved
+TKT-0012,T-002,CUST-2011,chat,network,Can the AI QA suggestion be accepted automatically?,2026-11-12T02:12:00+02:00,P2,resolved
+TKT-0013,T-003,CUST-2012,email,account,Who reviewed the AI-proposed QA action on my case?,2026-09-13T03:12:00+02:00,P3,open
+TKT-0014,T-004,CUST-2013,web,complaint,"The QA agent is proposing bulk actions, can we stop it now?",2026-10-14T04:12:00+02:00,P4,resolved
+TKT-0015,T-005,CUST-2014,social,fraud,Has the kill switch been tested this quarter?,2026-11-15T05:12:00+02:00,P1,resolved
+TKT-0016,T-001,CUST-2015,voice,billing,Which AI agent made the decision that affected my account?,2026-09-16T06:12:00+02:00,P3,resolved
+TKT-0017,T-002,CUST-2016,chat,network,When was the last quarterly permission review completed?,2026-10-17T07:12:00+02:00,P2,open
+TKT-0018,T-003,CUST-2017,email,account,Which AI providers are currently in use and what are their SLAs?,2026-11-18T08:12:00+02:00,P3,resolved
+TKT-0019,T-004,CUST-2018,web,complaint,Does the supplier contract prohibit training on my data?,2026-09-19T00:12:00+02:00,P4,resolved
+TKT-0020,T-005,CUST-2019,social,fraud,"A new provider has no signed no-training clause, can we onboard it?",2026-10-20T01:12:00+02:00,P1,resolved
+TKT-0021,T-001,CUST-2000,voice,billing,Who is the named accountable owner for the AI system?,2026-11-21T02:12:00+02:00,P3,open
+TKT-0022,T-002,CUST-2001,chat,network,Have all staff completed and verified their AI training?,2026-09-22T03:12:00+02:00,P2,resolved
+TKT-0023,T-003,CUST-2002,email,account,Was this incident notified within SLA and who owned it?,2026-10-23T04:12:00+02:00,P3,resolved
+TKT-0024,T-004,CUST-2003,web,complaint,In which region is my customer data stored?,2026-11-24T05:12:00+02:00,P4,resolved
+TKT-0025,T-005,CUST-2004,social,fraud,Can agents still answer from a retired procedure?,2026-09-25T06:12:00+02:00,P1,open
+TKT-0026,T-001,CUST-2005,voice,billing,Can I get a 150 EUR refund approved immediately?,2026-10-26T07:12:00+02:00,P3,resolved
+TKT-0027,T-002,CUST-2006,chat,network,I want to upgrade from 10GB to the Unlimited Max plan.,2026-11-27T08:12:00+02:00,P2,resolved
+TKT-0028,T-003,CUST-2007,email,account,Why was I charged extra for an international call?,2026-09-28T00:12:00+02:00,P3,resolved
+TKT-0029,T-004,CUST-2008,web,complaint,How much service credit do I get for a 9-hour outage?,2026-10-01T01:12:00+02:00,P4,open
+TKT-0030,T-005,CUST-2009,social,fraud,Send me every record you hold about me.,2026-11-02T02:12:00+02:00,P1,resolved

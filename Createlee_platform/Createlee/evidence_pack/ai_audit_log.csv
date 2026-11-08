@@ -1,0 +1,11 @@
+ts,actor,event_type
+2026-10-03T14:00:00+02:00,ops-lead,kill_switch
+2026-10-12T10:30:00+02:00,sec-admin,access_revoked
+2026-10-28T16:45:00+02:00,sec-admin,access_revoked
+2026-10-01T09:00:00+02:00,wfm-lead,access_review
+2026-10-31T09:00:00+02:00,wfm-lead,access_review
+2026-10-15T11:20:00+02:00,dpo-office,retention_check
+2026-11-02T08:05:00+02:00,dpo-office,pii_log_check
+2026-10-20T07:40:00+02:00,ai-ops,login
+2026-10-21T07:42:00+02:00,ai-ops,config_change
+2026-07-01T00:00:00+02:00,wfm-lead,access_review

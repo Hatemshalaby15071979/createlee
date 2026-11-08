@@ -1,0 +1,519 @@
+{
+  "platform": "Createlee",
+  "agent": "Engeznee",
+  "schema_version": "1.0",
+  "generated_at_iso8601": "2026-11-07T01:18:02Z",
+  "time_standard": "ISO-8601 / UTC",
+  "total_checks": 101,
+  "passed": 101,
+  "failed": 0,
+  "all_passed": true,
+  "files_generated_in_test": 48,
+  "checks": [
+    {
+      "check": "GET / renders UI",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "check": "GET /api/status",
+      "ok": true,
+      "detail": "formats=['csv', 'txt', 'json', 'pdf', 'docx']"
+    },
+    {
+      "check": "status has 5 formats",
+      "ok": true,
+      "detail": "['csv', 'txt', 'json', 'pdf', 'docx']"
+    },
+    {
+      "check": "POST /api/session seeds samples",
+      "ok": true,
+      "detail": "8 uploads, sid=sbb72c946e75740d2"
+    },
+    {
+      "check": "session state has ISO-8601 created_at",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "GET /api/state/<sid>",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "GET /api/template/questions.csv",
+      "ok": true,
+      "detail": "10355"
+    },
+    {
+      "check": "GET /api/template/mapping-table.template.csv",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "chat: help",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "chat: status",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "chat: analyze",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "chat: list",
+      "ok": true,
+      "detail": "Documents defined by your CSV schemas (9):"
+    },
+    {
+      "check": "list detects canonical 11-column schema",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "chat: web: reference pack",
+      "ok": true,
+      "detail": "0.4s"
+    },
+    {
+      "check": "chat: generate all (5 formats)",
+      "ok": true,
+      "detail": "staged=9"
+    },
+    {
+      "check": "generate only STAGES (nothing saved)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "all staged drafts pending review",
+      "ok": true,
+      "detail": "PENDING_APPROVAL"
+    },
+    {
+      "check": "GET /api/preview/<sid>/0",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "approve WITHOUT approved=true -> 403",
+      "ok": true,
+      "detail": "Explicit approval required. Nothing was saved or emailed."
+    },
+    {
+      "check": "approve with empty selection -> 400",
+      "ok": true,
+      "detail": "Select at least one document."
+    },
+    {
+      "check": "gate left drafts intact",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "approved save creates 45 files",
+      "ok": true,
+      "detail": "45"
+    },
+    {
+      "check": "all 5 formats exported 9x",
+      "ok": true,
+      "detail": "{'csv': 9, 'pdf': 9, 'txt': 9, 'json': 9, 'docx': 9}"
+    },
+    {
+      "check": "PDF magic valid",
+      "ok": true,
+      "detail": "9 pdfs"
+    },
+    {
+      "check": "DOCX magic valid",
+      "ok": true,
+      "detail": "9 docx"
+    },
+    {
+      "check": "JSON parses + ISO-8601 metadata",
+      "ok": true,
+      "detail": "9 json"
+    },
+    {
+      "check": "approval log written",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "GET /download/<file>",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "GET /api/files lists outputs and hides audit log",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "re-stage for email test",
+      "ok": true,
+      "detail": "2 QA doc type(s)"
+    },
+    {
+      "check": "email action returns a mode (no silent send)",
+      "ok": true,
+      "detail": "eml-draft"
+    },
+    {
+      "check": ".eml draft produced without SMTP creds",
+      "ok": true,
+      "detail": "portable draft"
+    },
+    {
+      "check": "chat: evidence command",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "evidence reports as-of + 90-day window",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "evidence reports 8/8 files and 0 deletions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "evidence stages report for operator review",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "POST /api/evidence",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "POST /api/evidence exposes 5 report formats",
+      "ok": true,
+      "detail": "['csv', 'docx', 'json', 'pdf', 'txt']"
+    },
+    {
+      "check": "POST /api/evidence rejects bad date -> 400",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "validate-only never touches the 8 evidence CSVs",
+      "ok": true,
+      "detail": "8/8 byte-identical"
+    },
+    {
+      "check": "validate-only still reports honest gaps / 0 deletions",
+      "ok": true,
+      "detail": "12"
+    },
+    {
+      "check": "Excel-as-CSV demo files present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "BOM+semicolon+aliases resolved",
+      "ok": true,
+      "detail": "{'ts': 'timestamp', 'reviewer_id': 'approved_by', 'agent_id': 'employee_id'}"
+    },
+    {
+      "check": "UTF-16+TAB read",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "strict contract: 8/8 files found, 0 FAIL",
+      "ok": true,
+      "detail": "ACCEPTABLE"
+    },
+    {
+      "check": "strict contract: verdict ACCEPTABLE",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "chat: library command",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "library reports corpus >= 20 and labels >= 50",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "library reports reconciliation by id key",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "POST /api/library",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "library corpus >= 20",
+      "ok": true,
+      "detail": "24"
+    },
+    {
+      "check": "library labels >= 50",
+      "ok": true,
+      "detail": "64"
+    },
+    {
+      "check": "library rows_deleted = 0",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "library honours 5 named limitations",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "library records web references with ISO-8601",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "POST /api/library rejects bad date -> 400",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "procedure_corpus.csv has the 7 required columns",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "expected_outcome_labels.csv has the 6 required columns",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "label decisions are answer/escalate only",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "system_a/system_b share the id key column",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "reconciliation report preserves all union keys",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "library ingests 6 REAL uploaded files",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "library copies the 8 evidence CSVs",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "library systems/ folder populated",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "library build report exported in 5 formats",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "check": "INDEX.csv / LIBRARY_MANIFEST.json / README.txt present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "library report still goes through operator review gate",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "chat: handoff command",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "POST /api/handoff",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "handoff covers all four projects",
+      "ok": true,
+      "detail": "['compliproof', 'helix-codex', 'live-support-assistant', 'signoff']"
+    },
+    {
+      "check": "handoff signoff pack passes the strict contract",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "handoff signoff supplies all 8 evidence files",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "handoff helix templates all 9 gates",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "handoff helix names 6 org-only gates",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "handoff live-support corpus >= 20, labels >= 50",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "handoff compliproof lists 7 open P0 gates",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "handoff rejects bad date -> 400",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "handoff writes REQUESTED-FILES-BY-PROJECT.md + INDEX.csv",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "handoff writes per-project REQUEST_LIST.md + requests",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "GET /api/settings",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "settings exposes a models list",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "settings exposes the agent tool names",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "GET /api/models",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "POST /api/settings saves values",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "POST /api/settings rejects bad temperature -> 400",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "POST /api/settings rejects bad max_steps -> 400",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "agent tool: project_readiness",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "agent tool: list_documents",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "agent tool: platform_status",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "agent tool: unknown tool fails cleanly",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "agent answers free-form chat without a model",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "agent reports its source",
+      "ok": true,
+      "detail": "fallback"
+    },
+    {
+      "check": "agent returns a trace list",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "agent fallback names the blocker",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "POST /api/upload replaces questions.csv",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "list auto-detects checklist schema",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "checklist generate stages 1 fillable doc",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "check": "checklist preview has fillable [  ] boxes",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "chat: clear discards drafts",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "POST /api/load-samples restores canonical pack",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "unknown command handled gracefully (no crash)",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

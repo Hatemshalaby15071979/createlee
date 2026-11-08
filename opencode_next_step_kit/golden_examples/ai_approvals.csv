@@ -1,0 +1,6 @@
+﻿ts,gate,decision,approver_id
+2026-10-04T11:00:00+02:00,pricing_change,ai_proposed,A-773
+2026-10-10T09:45:00+02:00,prioritize_support_tickets,human_approved,R-4421
+2026-09-28T16:30:00+02:00,deploy_maintenance_window,human_approved,R-3301
+2026-10-22T14:15:00+02:00,review_agent_performance_report,ai_proposed,AJ-002
+2026-10-08T10:00:00Z,approve_holiday_schedule,human_approved,S-901

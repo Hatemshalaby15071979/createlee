@@ -1,0 +1,9 @@
+file_name,controls_covered,row_count,format,status
+audit_events.csv,"W-02, W-04",5,CSV,Final
+ai_inventory.csv,"W-05, W-06",4,CSV,Final - Provider C remediated
+rolespec_export.csv,"W-08, W-02, W-04, W-09, W-10, W-07",8,CSV,Final - 3 supervisor roster rows added
+qa_review_export.csv,W-01,3,CSV,Final
+agent_identity_log.csv,W-03,4,CSV,Final
+escalation_log.csv,W-07,3,CSV,Final - all escalated_to declared in roster
+training_records.csv,W-09,4,CSV,Final - status=Yes (classifier-compatible)
+incident_sla_log.csv,W-10,4,CSV,Final

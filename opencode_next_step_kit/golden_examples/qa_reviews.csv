@@ -1,0 +1,9 @@
+﻿ts,ai_action,human_action,reviewer_id,agent_id
+2026-10-05T09:12:00+02:00,escalate_priority,accepted,R-4421,A-773
+2026-10-12T14:30:00+02:00,retrain_model,rejected,R-4422,A-891
+2026-10-18T11:45:00+02:00,approve_pricing_change,accepted,R-3301,AJ-001
+2026-09-25T08:00:00+02:00,access_grant,approved,R-3302,E-345
+2026-10-30T16:20:00+02:00,deploy_feature_flag,rejected,R-4421,A-773
+2026-09-08T10:15:00Z,batch_export_reviewed,approved,R-3301,EJ-002
+2026-10-01T07:30:00+02:00,review_training_assignment,accepted,R-4423,S-901
+2026-11-01T09:00:00+02:00,approve_vendor_contract,reviewed,R-3302,A-888

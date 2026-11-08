@@ -1,0 +1,11 @@
+Ref,Question,Yes,Partly,No
+W-01,Are AI-proposed QA actions reviewed by a named human before acceptance?,,,
+W-02,Is there a kill switch and are AI agent accesses revocable on request?,,,
+W-03,Is the identity of each AI agent logged on decisions affecting customers?,,,
+W-04,Are agent permissions reviewed at stated intervals (quarterly)?,,,
+W-05,Is there a complete inventory of AI providers in use?,,,
+W-06,Do supplier contracts prohibit training on customer data?,,,
+W-07,Do AI escalations go only to an authorised supervisor?,,,
+W-08,Is there a named accountable person for the AI system?,,,
+W-09,Are staff AI-training records completed and verified?,,,
+W-10,Are incident notifications within SLA recorded with a named owner?,,,

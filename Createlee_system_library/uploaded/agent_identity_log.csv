@@ -1,0 +1,5 @@
+log_id,decision_date,agent_id,agent_name,decision_type,customer_affected,decision_ref,logged_by,related_control
+AG-001,2026-08-20,agent-qa-12,QA Agent,QA action proposal,Yes,DEC-1001,[REDACTED_PERSON],W-03
+AG-002,2026-09-05,agent-support-07,Support Agent,Response draft,Yes,DEC-1002,[REDACTED_PERSON],W-03
+AG-003,2026-10-02,agent-qa-12,QA Agent,QA action proposal,Yes,DEC-1003,[REDACTED_PERSON],W-03
+AG-004,2026-10-28,agent-fin-03,Finance Agent,Refund approval,Yes,DEC-1004,[REDACTED_PERSON],W-03

@@ -1,0 +1,7 @@
+module_id,dotnet_namespace,base_role,derived_roles
+AI.Core,Domain.AI.Core,AI Agent Base,,
+Customer.Support.AI,Domain.CustomerSupport.AI,Support.AI Agent,Airline.Specific.AI.Agent
+Finance.AI,Domain.Finance.AI,Finance.AI Agent,PaymentProcessing.AI.Agent,SubscriptionManagement.AI.Agent
+Healthcare.AI,Domain.Healthcare.AI,Healthcare.AI Agent,MedicalAI.PatientAssistant.DiagnosticAI.TreatmentAI
+Logistics.AI,Domain.Logistics.AI,Logistics.AI Agent,VehicleRouting.AI.Agent,DemandForecasting.AI.Agent
+

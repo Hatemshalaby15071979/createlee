@@ -1,0 +1,22 @@
+id,in_system_a,in_system_b,customer_name_match,plan_match,status_match,finding
+ACC-1001,yes,yes,match,match,match,fully reconciled
+ACC-1002,yes,yes,match,match,match,fully reconciled
+ACC-1003,yes,yes,match,MISMATCH,match,field mismatch: plan
+ACC-1004,yes,yes,match,match,match,fully reconciled
+ACC-1005,yes,yes,match,match,match,fully reconciled
+ACC-1006,yes,yes,match,match,match,fully reconciled
+ACC-1007,yes,yes,match,match,MISMATCH,field mismatch: status
+ACC-1008,yes,yes,match,match,match,fully reconciled
+ACC-1009,yes,yes,match,match,match,fully reconciled
+ACC-1010,yes,yes,match,match,match,fully reconciled
+ACC-1011,yes,yes,match,match,match,fully reconciled
+ACC-1012,yes,yes,MISMATCH,match,match,field mismatch: customer_name
+ACC-1013,yes,yes,match,match,match,fully reconciled
+ACC-1014,yes,yes,match,match,match,fully reconciled
+ACC-1015,yes,yes,match,match,match,fully reconciled
+ACC-1016,yes,yes,match,match,match,fully reconciled
+ACC-1017,yes,yes,match,match,match,fully reconciled
+ACC-1018,yes,yes,match,match,match,fully reconciled
+ACC-1019,yes,no,n/a,n/a,n/a,key present only in system A - unmatched row preserved
+ACC-1020,yes,no,n/a,n/a,n/a,key present only in system A - unmatched row preserved
+ACC-1021,no,yes,n/a,n/a,n/a,key present only in system B - unmatched row preserved

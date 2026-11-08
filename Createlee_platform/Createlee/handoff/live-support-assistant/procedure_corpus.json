@@ -1,0 +1,223 @@
+{
+  "schema": "procedure_corpus/v1",
+  "generated_at_iso8601": "2026-11-06T23:38:19Z",
+  "as_of": "2026-11-06",
+  "documents": [
+    {
+      "doc_id": "SOP-001",
+      "title": "Billing dispute intake and adjustment",
+      "content": "Log the dispute against the customer account and invoice line. Verify the charge against the rated usage record before any adjustment. TM Forum eTOM classifies this under Assurance and Charging/Billing; adjustments above the agent threshold require supervisor approval. Record the outcome, the approver and the ISO-8601 timestamp in the case note.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "2.1",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-002",
+      "title": "SIM swap and port-out identity verification",
+      "content": "Before any SIM swap or port-out, complete strong customer authentication and check for recent account-change or SIM-swap signals. SIM swap fraud is a documented account-takeover vector; if verification fails or a fraud signal is present, refuse the request and escalate. Never accept an inbound caller's number alone as proof of identity.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "3.0",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-003",
+      "title": "Network outage triage and QoS classification",
+      "content": "Confirm whether a known outage exists, then run line/equipment checks. ITU-T E.800 defines quality-of-service terminology shared by users, providers and regulators; classify the impairment (availability, delay, throughput) before raising a fault. Publish customer updates at the SLA cadence defined in sla_policy.csv.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "1.4",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-004",
+      "title": "E.164 MSISDN validation and formatting",
+      "content": "Store all subscriber numbers in ITU-T E.164 international format (+CC NDC SN, max 15 digits). Reject numbers using unassigned or misrouted ranges. Per ITU's official E.164 misuse guidance (WTSA Resolution 20), misuse means use that does not conform to the assignment criteria of the relevant Recommendation, or use of an unassigned resource; ITU-T E.156 governs notification to the TSB via the misuse Notification Form, while purely national numbering issues go to the national numbering plan administrator (see also E.190 clause 6.2.6). Do not silently reformat a number that fails validation.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "1.3",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-005",
+      "title": "International freephone (UIFN) handling",
+      "content": "A UIFN is +800 followed by an 8-digit Global Subscriber Number, an 11-digit fixed format per ITU-T E.169.1 / E.152. Callers must dial an international prefix first. Route UIFN traffic to the IFS platform and do not treat it as a national geographic number.",
+      "tenant_id": "T-002",
+      "published": "yes",
+      "version": "1.1",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-006",
+      "title": "Complaint escalation to an authorised supervisor",
+      "content": "Escalate only to a supervisor listed in the authorised roster. Record escalated_by, supervisor_id, authorisation flag and ISO-8601 timestamp. Any escalation to a person not in the roster is a control exception (W-07) and must be reported, never hidden.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "2.0",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-007",
+      "title": "Human review of AI-proposed QA actions",
+      "content": "Every AI-proposed QA action must be reviewed by a named human before acceptance. This implements W-01 and the human-oversight principle of ISO/IEC 42001 and EU AI Act Article 14. Record reviewer_id, decision and timestamp; unreviewed proposals stay pending.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "2.3",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-008",
+      "title": "AI agent kill switch and access revocation",
+      "content": "Any operator may trigger the kill switch on anomalous AI behaviour; suspend the agent, revoke its credentials and open an audit event (W-02). ISO/IEC 42001 requires continuous monitoring and incident response across the AI lifecycle. Test revocability on a scheduled drill and log the change reference.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "2.2",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-009",
+      "title": "AI agent identity logging on customer-affecting decisions",
+      "content": "Log the AI agent identity, decision type, decision reference and whether a customer was affected for every customer-affecting decision (W-03). The log must be attributable to a named human owner and retained per the retention policy.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "1.3",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-010",
+      "title": "Quarterly access recertification",
+      "content": "Review all human and AI-agent permissions each quarter; revoke stale access and downgrade over-privileged roles (W-04). Record the reviewer, the changed grants and the review date. A missed quarter is a finding, not a reason to back-date a record.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "1.5",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-011",
+      "title": "AI provider inventory maintenance",
+      "content": "Maintain a complete inventory of every AI provider, service type, use case, contract reference, data residency, SLA and renewal date (W-05). ISO/IEC 42001 places third-party and supplier controls inside the AIMS; review the inventory at least quarterly.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "2.0",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-012",
+      "title": "Supplier no-training-on-customer-data contract clause",
+      "content": "Every AI supplier contract must prohibit training on customer data (W-06). Verify the clause at onboarding and renewal; ISO/IEC 42001 is the practical benchmark for AI vendor evaluation. A provider without a signed clause is an open finding until remediated.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "2.1",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-013",
+      "title": "Named accountable owner for each AI system",
+      "content": "Assign exactly one named accountable person per AI system (W-08). The owner approves changes, reviews incidents and is the escalation point. ISO's official ISO/IEC 42001 guidance defines an AI management system as structured policies, processes and controls covering leadership and organisational context, AI policy and objectives, risk management, data governance and lifecycle controls, transparency, performance evaluation and continual improvement. Certification is voluntary and is performed by independent certification bodies, not by ISO itself.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "1.3",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-014",
+      "title": "Staff AI-training completion and verification",
+      "content": "All staff operating AI systems must complete role-appropriate AI training and have it verified (W-09). The EU AI Act's AI-literacy provisions have applied since 2025-02-02. Use lowercase 'yes' in the completed field so classifiers read it correctly.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "1.4",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-015",
+      "title": "Incident notification within SLA with named owner",
+      "content": "Record every incident with a named owner and whether notification met the SLA (W-10). Late or ownerless notifications are control exceptions and stay visible. Use the severity thresholds in sla_policy.csv.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "1.6",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-016",
+      "title": "Customer data handling and residency",
+      "content": "Process customer data only in the residency region declared for the tenant and never in an AI provider's training set. ISO/IEC 42001 requires data governance and security over AI-generated data. Log retention and PII checks as audit events.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "1.3",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-017",
+      "title": "Knowledge base publishing, versioning and retirement",
+      "content": "Each procedure has doc_id, version, published and retired flags. Only published, non-retired procedures may be served to customers or agents. ISO/IEC 42001 uses a PDCA cycle with continuous monitoring and regular system reviews; retire superseded documents rather than deleting them.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "1.5",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-018",
+      "title": "Refund and service-credit approval thresholds",
+      "content": "Refunds below the agent threshold may be applied by an authorised finance agent; above it, escalate to a supervisor with a named approver. AI-proposed refunds always require human approval. Record the approval decision reference and ISO-8601 timestamp.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "1.2",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-019",
+      "title": "Plan change and handset upgrade requests",
+      "content": "Confirm eligibility, contract term and any early-termination charge before applying a plan change. TM Forum SID models product, service and customer entities for order capture. Read back the new monthly fee and effective date to the customer before committing.",
+      "tenant_id": "T-002",
+      "published": "yes",
+      "version": "1.3",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-020",
+      "title": "Roaming and international dialling support",
+      "content": "Validate the dialled number against ITU-T E.164 country codes and the customer's roaming entitlement. Explain international prefix and UIFN behaviour. Unexpected international charges should be handled as a billing dispute under SOP-001.",
+      "tenant_id": "T-002",
+      "published": "yes",
+      "version": "1.1",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-021",
+      "title": "Service credit and compensation calculation",
+      "content": "Calculate credits from the published SLA breach duration and the customer's plan fee; never estimate verbally. TM Forum eTOM covers charging and billing adjustments. Credits above threshold require approval under SOP-018.",
+      "tenant_id": "T-002",
+      "published": "yes",
+      "version": "1.2",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-022",
+      "title": "Data subject access request (DSAR) handling",
+      "content": "Authenticate the requester, scope the request to their tenant and export only that customer's records. Log the request and the disclosure. Cross-tenant data must never appear in a DSAR response; see the tenant-isolation limitation in the report.",
+      "tenant_id": "T-003",
+      "published": "yes",
+      "version": "1.4",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-023",
+      "title": "AI model change control and rollout",
+      "content": "All AI model or prompt changes require a change record, a named owner, a pre-deployment evaluation and a rollback plan. Continuous monitoring per ISO/IEC 42001 applies after rollout. DRAFT - pending signoff; do not serve to agents yet.",
+      "tenant_id": "T-001",
+      "published": "no",
+      "version": "0.9",
+      "retired": "no"
+    },
+    {
+      "doc_id": "SOP-024",
+      "title": "Legacy IVR deflection script (retired)",
+      "content": "Legacy script that deflected calls to an unauthenticated self-service flow. Retired because authenticated end-to-end flows are required. Kept for audit history only; superseded by SOP-006. Any label referencing this ID is a finding.",
+      "tenant_id": "T-001",
+      "published": "yes",
+      "version": "1.0",
+      "retired": "yes"
+    }
+  ]
+}

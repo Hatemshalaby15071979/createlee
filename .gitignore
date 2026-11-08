@@ -1,0 +1,38 @@
+# CreateLee — do not commit secrets, caches, or runtime output
+
+# Secrets / configuration
+.env
+.env.local
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Virtualenv dir created by setup-miniconda / pip
+createlee/
+
+# Runtime output — never commit generated documents or sessions
+outputs/
+sessions/
+evidence/
+verification/*.json
+verification/*.md
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

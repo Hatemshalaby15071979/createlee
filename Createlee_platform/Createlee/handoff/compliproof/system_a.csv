@@ -1,0 +1,21 @@
+id,customer_name,plan,status
+ACC-1001,Amelia Hart,Pay Monthly 10GB,active
+ACC-1002,Omar Nasser,Unlimited Max,active
+ACC-1003,Priya Kaur,Business Fibre 200,active
+ACC-1004,Luca Rossi,Pay As You Go,suspended
+ACC-1005,Sofia Marin,Roaming Plus,active
+ACC-1006,Noah Bennett,Family Share 40GB,cancelled
+ACC-1007,Yara Haddad,Pay Monthly 10GB,pending
+ACC-1008,Ivan Petrov,Unlimited Max,active
+ACC-1009,Mei Chen,Business Fibre 200,active
+ACC-1010,Tomas Novak,Pay As You Go,active
+ACC-1011,Fatima Ali,Roaming Plus,suspended
+ACC-1012,Hugo Moreau,Family Share 40GB,active
+ACC-1013,Aisha Rahman,Pay Monthly 10GB,cancelled
+ACC-1014,Elena Costa,Unlimited Max,pending
+ACC-1015,Ravi Shah,Business Fibre 200,active
+ACC-1016,Nina Berg,Pay As You Go,active
+ACC-1017,Karim Idrissi,Roaming Plus,active
+ACC-1018,Grace Okafor,Family Share 40GB,suspended
+ACC-1019,Diego Silva,Pay Monthly 10GB,active
+ACC-1020,Zoe Weber,Unlimited Max,cancelled

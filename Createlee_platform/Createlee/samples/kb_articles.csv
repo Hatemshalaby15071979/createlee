@@ -1,0 +1,11 @@
+article_id,title,product,owner,last_reviewed_iso8601,review_days,views,status
+KB-1001,No mobile data after SIM swap,Mobile Data / 4G,Knowledge Manager,2026-10-14T09:00:00Z,90,1842,PUBLISHED
+KB-1002,APN settings for 5G handsets,Mobile Data / 5G,Tech L2 Lead,2026-10-02T11:30:00Z,90,2310,PUBLISHED
+KB-1003,Understanding prorated billing on plan change,Billing,Billing Ops Lead,2026-09-21T08:15:00Z,90,976,PUBLISHED
+KB-1004,Roaming not activating abroad,Roaming,Roaming Lead,2026-10-28T14:45:00Z,60,1304,PUBLISHED
+KB-1005,SIM swap identity verification checklist,SIM / eSIM,Compliance Lead,2026-11-01T10:00:00Z,90,2688,PUBLISHED
+KB-1006,Direct debit mandate setup and failures,Payments,Billing Ops Lead,2026-08-19T07:30:00Z,90,641,REVIEW_DUE
+KB-1007,Escalation to NOC for intermittent voice loss,Mobile Voice,NOC Liaison,2026-10-30T16:20:00Z,60,812,PUBLISHED
+KB-1008,Complaint logging and regulator deadline,Complaints,Complaints Lead,2026-10-11T12:00:00Z,90,455,PUBLISHED
+KB-1009,Device upgrade eligibility rules,Handsets / Sales,Sales Ops,2026-09-05T09:40:00Z,90,1109,REVIEW_DUE
+KB-1010,Number portability status codes,Porting,Service Assurance,2026-10-25T13:10:00Z,90,733,PUBLISHED

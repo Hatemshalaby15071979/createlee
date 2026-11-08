@@ -1,0 +1,5 @@
+severity,first_response_minutes,resolution_hours,notify_within_minutes,escalation_role
+P1,15,4,30,Incident Manager
+P2,30,8,60,Team Leader
+P3,120,24,240,Customer Advisor
+P4,480,72,1440,Customer Advisor

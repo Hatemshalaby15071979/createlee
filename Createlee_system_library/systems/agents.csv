@@ -1,0 +1,13 @@
+agent_id,agent_name,role,tenant_id,email,hire_date,status
+A-1000,Amelia Hart,Customer Advisor,T-001,agent0@example.invalid,2023-01-01,active
+A-1001,Omar Nasser,Team Leader,T-002,agent1@example.invalid,2023-02-02,active
+A-1002,Priya Kaur,QA Analyst,T-003,agent2@example.invalid,2023-03-03,active
+A-1003,Luca Rossi,WFM Analyst,T-004,agent3@example.invalid,2023-04-04,active
+A-1004,Sofia Marin,Incident Manager,T-005,agent4@example.invalid,2023-05-05,active
+A-1005,Noah Bennett,Finance Agent,T-001,agent5@example.invalid,2023-06-06,active
+A-1006,Yara Haddad,Customer Advisor,T-002,agent6@example.invalid,2023-07-07,active
+A-1007,Ivan Petrov,Team Leader,T-003,agent7@example.invalid,2023-08-08,active
+A-1008,Mei Chen,QA Analyst,T-004,agent8@example.invalid,2023-09-09,active
+A-1009,Tomas Novak,WFM Analyst,T-005,agent9@example.invalid,2023-10-10,active
+A-1010,Fatima Ali,Incident Manager,T-001,agent10@example.invalid,2023-11-11,active
+A-1011,Hugo Moreau,Finance Agent,T-002,agent11@example.invalid,2023-12-12,active

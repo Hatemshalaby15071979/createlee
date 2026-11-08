@@ -1,0 +1,43 @@
+relative_path,kind,rows,columns,size_bytes,sha256,origin,generated_at_iso8601
+LIBRARY_MANIFEST.json,json,,,10195,b7806519f67a8d465d4c20360feceff0cb7bd40af4f8493982b4e9d08d30fe33,simulated / derived,2026-11-06T07:40:31Z
+README.txt,txt,,,8469,b0c8c497bbfd5e0c0117bb4ff2c5396dc75ea6eaec00434a7acf37b1d98dac28,simulated / derived,2026-11-06T07:40:31Z
+evidence/ai_approvals.csv,csv,9,4,569,2ab43851da6a37c9ca2a3c8089766501c88edbe6d34a0371ba7d75fd476a1260,simulated (Signoff fixture),2026-11-06T07:40:31Z
+evidence/ai_audit_log.csv,csv,10,3,506,5e17e4709ce1986c8a9c5102a4010c2f09dc1f70a3d91da5543bfd7cd4326683,simulated (Signoff fixture),2026-11-06T07:40:31Z
+evidence/ai_inventory.csv,csv,14,6,1321,0949b04206ab943cb6a3fca36f789daca16154bf083c1ba64eacd15265a1a242,simulated (Signoff fixture),2026-11-06T07:40:31Z
+evidence/ai_training.csv,csv,11,5,717,ded5fc681fea5a0a4b579ef6c56addf3df354dd685a26c64f3147f8c969d4515,simulated (Signoff fixture),2026-11-06T07:40:31Z
+evidence/escalations.csv,csv,7,4,348,513f8952800b453b4d76be29f05846137417e7a8f63c9e5f2a74128a72c7d512,simulated (Signoff fixture),2026-11-06T07:40:31Z
+evidence/incident_notifications.csv,csv,11,4,691,32d4e4687c38eb5b03a8b3be419663722bff905f45ba2c0889792e51981931e9,simulated (Signoff fixture),2026-11-06T07:40:31Z
+evidence/qa_reviews.csv,csv,13,5,904,fba60ba43fd81be9df78fb8160c23a2843c5a5fdea0e5f63e507df042cb3aff0,simulated (Signoff fixture),2026-11-06T07:40:31Z
+evidence/role_spec.csv,csv,5,5,330,ecc314ed780248a228484ad333bf7a56ad6d2c5332bed36c1c509c0f0fcd0a3b,simulated (Signoff fixture),2026-11-06T07:40:31Z
+expected_outcome_labels.csv,csv,64,6,6226,7917286a09e80d2a71c2fda36221552c50ea8ebf8efce3d0a8eb92fa9ac82ee3,simulated / derived,2026-11-06T07:40:31Z
+library_build_report_20261106T074032Z.csv,csv,14,14,15793,e057725d72a95f00eef9cd4271276e022e42a1279a415a1b60d6a7da45156d81,simulated / derived,2026-11-06T07:40:31Z
+library_build_report_20261106T074032Z.docx,docx,,,41951,787e0e2ad65daf3c65a63b4a827ad12be8ceb488b3e6ba1675ac6924cdfd8d53,simulated / derived,2026-11-06T07:40:31Z
+library_build_report_20261106T074032Z.json,json,,,23736,57f2506969976a5bb9103e4fb9922edbafd6cfb46caf577d6ac5c6bfaf51bf1d,simulated / derived,2026-11-06T07:40:31Z
+library_build_report_20261106T074032Z.pdf,pdf,,,15088,522761d42a3e97a0901066b9656d6ff26118cea4279effb48d14edad5f9a1308,simulated / derived,2026-11-06T07:40:31Z
+library_build_report_20261106T074032Z.txt,txt,,,10314,4e4d94dd96b206814e08cad290264dfda8bbf48a0b55ab6c1fbb02a08d886673,simulated / derived,2026-11-06T07:40:31Z
+procedure_corpus.csv,csv,24,7,8620,10ef5fccb47e4f7a0e516c8183488536470bdb2fb08488406be770a32cceb2be,simulated / derived,2026-11-06T07:40:31Z
+procedure_corpus.json,json,,,12332,78574a43b9458e52361944310bedbe0ed5997f42fc2ea1d71bd4433855a4eee6,simulated / derived,2026-11-06T07:40:31Z
+reconciliation_report.csv,csv,21,7,1296,f89c5af457793fda4f21f1ff894cfca1592db99d75b714696629471906bee792,simulated / derived,2026-11-06T07:40:31Z
+references.csv,csv,13,8,4153,bc4c8da5d3a79ffb4c8dcb0c42aa37e4bf6a598167c8bd1d006cacccfb12bed5,simulated / derived,2026-11-06T07:40:31Z
+system_a.csv,csv,20,4,918,00e560972f27bbcd3e3e65849a63c433a16df8ca50579bcd35c700cc865759e3,simulated / derived,2026-11-06T07:40:31Z
+system_b.csv,csv,19,4,866,d3e1ac61c729cfe76b9377f3b44bbd151978f7130f1214c056b8186356fd04d6,simulated / derived,2026-11-06T07:40:31Z
+systems/agents.csv,csv,12,7,1013,306736f42019a02d15fc1e3c0844b298cf30d260d18e27e7e2bc5d81811de8d3,simulated,2026-11-06T07:40:31Z
+systems/ai_agents.csv,csv,6,10,698,b8ac08531a83f28133268ea81625c3003423e7c28cb9c3500d660e636cadd6a1,simulated,2026-11-06T07:40:31Z
+systems/approvals.csv,csv,4,4,263,8203ac07208839fb1980d21ca44cf05898f327a26e14ca47d93a011966613277,simulated,2026-11-06T07:40:31Z
+systems/change_log.csv,csv,3,6,353,937c72a6a3a4b9ed862cb9ade5478d9398b9354488d1762d1a553652be1b0f39,simulated,2026-11-06T07:40:31Z
+systems/channels.csv,csv,6,5,359,aa0963a81b1cb9790fbd9c29316f53353c9b2d6e689e67c4241c0fc07e5639b1,simulated,2026-11-06T07:40:31Z
+systems/controls.csv,csv,10,5,980,d480eb358e01fc5ec5ae9be8b256e12357f2f21a70ede1183ed5a2b72691c203,simulated,2026-11-06T07:40:31Z
+systems/customers.csv,csv,20,7,1378,fe2cbb5ab16a676971e1b7f75f64e931809c171a401290b47b93f245fb4ca189,simulated,2026-11-06T07:40:31Z
+systems/incident_sla_log.csv,csv,4,4,211,d58e8e16549731147a939842b9b04a561833c1cdb1d5ca1b7be4aa0321d153e9,simulated,2026-11-06T07:40:31Z
+systems/plans.csv,csv,6,7,385,4ccad7a7439f313e3aa3b023df810005244f0860c8d7363f67383635ae1f90c8,simulated,2026-11-06T07:40:31Z
+systems/qa_review_export.csv,csv,3,5,260,32dc2b3ec024ea6d36af47329ea13103bc432c6146d8099dffa242435293e806,simulated,2026-11-06T07:40:31Z
+systems/rolespec_export.csv,csv,8,5,530,9987254c7196accda755e378eaa70fd83bc0534b24325df2d29960a4067540fb,simulated,2026-11-06T07:40:31Z
+systems/sla_policy.csv,csv,4,5,201,8d6fb00ea5ab5676c196f1f98755add59c8c89840f745bd6b94b10650cdb5b3e,simulated,2026-11-06T07:40:31Z
+systems/tenants.csv,csv,5,6,352,7b55133e39b340575f1c931ca93d320dcc5e2f5720f47635c232f44c7f8cc146,simulated,2026-11-06T07:40:31Z
+systems/tickets.csv,csv,30,9,4003,c88d8d924ab702cc573881ef6000d9ebabff218e5362be10a625b68432a321f7,simulated,2026-11-06T07:40:31Z
+uploaded/agent_identity_log.csv,csv,4,9,461,712fe190412533079dacccf533126c6112647212f7d6e7faa4a2ef851d13bc49,USER-REAL,2026-11-06T07:40:31Z
+uploaded/ai_inventory.csv,csv,4,12,743,91b30e2ceb4b0b5400a1e7058d1cf72df6836a8d5e847674fb9d7685684d65ce,USER-REAL,2026-11-06T07:40:31Z
+uploaded/audit_events.csv,csv,5,12,1139,b59fe0f63a9c0f51d98fbdac2a29ab2c6e620e9b07fe6b646566e4247559b0a7,USER-REAL,2026-11-06T07:40:31Z
+uploaded/delivery_manifest.csv,csv,8,5,526,2bc7e2db398981f4bbe34cc049ae3cdc0755cc43fc212e283bf16acdcae237ba,USER-REAL,2026-11-06T07:40:31Z
+uploaded/escalation_log.csv,csv,3,9,435,2fd9713c3f5be6102c66fb50bebfea7958b1f9ec7e71dcdd702bbabae4af8f2d,USER-REAL,2026-11-06T07:40:31Z
+uploaded/training_records.csv,csv,4,8,407,6539353b46fa92b1ee03956ec80c73cc98e81411af564ef9b7df01be89ae882f,USER-REAL,2026-11-06T07:40:31Z

@@ -1,0 +1,6 @@
+tenant_id,tenant_name,region,data_residency,status,created_at_iso8601
+T-001,Aurora Telecom EU,EU,EU,active,2024-01-15T00:00:00Z
+T-002,Aurora Telecom UK,UK,UK,active,2024-03-02T00:00:00Z
+T-003,Meridian Mobile,EU,EU,active,2024-06-20T00:00:00Z
+T-004,Cedar Business,US,US,active,2025-02-11T00:00:00Z
+T-005,Pilot Sandbox,EU,EU,sandbox,2026-01-05T00:00:00Z

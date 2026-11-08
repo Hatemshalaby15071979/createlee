@@ -1,0 +1,4 @@
+esc_id,escalation_date,agent_id,issue,escalated_to,supervisor_role,authorised,resolved_by,related_control
+ESC-001,2026-08-25,agent-support-07,Conflicting customer instruction,sup-oncall-01,Authorised Supervisor,Yes,[REDACTED_PERSON],W-07
+ESC-002,2026-09-18,agent-qa-12,Out-of-scope QA proposal,sup-qa-02,Authorised Supervisor,Yes,[REDACTED_PERSON],W-07
+ESC-003,2026-10-12,agent-fin-03,Threshold breach,sup-fin-01,Authorised Supervisor,Yes,[REDACTED_PERSON],W-07

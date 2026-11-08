@@ -1,0 +1,4 @@
+﻿ts,incident_id,notified_within_sla,owner
+2026-10-02T10:00:00+02:00,INC-102,yes,J-551
+2026-10-18T08:45:00+02:00,INC-103,yes,J-551
+2026-09-27T07:30:00+02:00,INC-104,yes,J-551

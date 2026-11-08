@@ -1,0 +1,11 @@
+Ref,Question,Yes,Partly,No,Domain,Document_Type,Section,Weight,Owner,Evidence
+W-01,Are AI-proposed QA actions reviewed by a named human before acceptance?,,,,AI_INVENTORY,ai_governance_checklist,Human Oversight & Acceptance,10,,
+W-02,Is there a kill switch and are AI agent accesses revocable on request?,,,,AI_INVENTORY,ai_governance_checklist,Human Oversight & Acceptance,10,,
+W-03,Is the identity of each AI agent logged on decisions affecting customers?,,,,AI_INVENTORY,ai_governance_checklist,Human Oversight & Acceptance,10,,
+W-04,Are agent permissions reviewed at stated intervals (quarterly)?,,,,AI_INVENTORY,ai_governance_checklist,Access Control & Identity,10,,
+W-05,Is there a complete inventory of AI providers in use?,,,,AI_INVENTORY,ai_governance_checklist,Access Control & Identity,10,,
+W-06,Do supplier contracts prohibit training on customer data?,,,,AI_INVENTORY,ai_governance_checklist,Supplier & Third-Party Assurance,10,,
+W-07,Do AI escalations go only to an authorised supervisor?,,,,AI_INVENTORY,ai_governance_checklist,Escalation & Accountability,10,,
+W-08,Is there a named accountable person for the AI system?,,,,AI_INVENTORY,ai_governance_checklist,Escalation & Accountability,10,,
+W-09,Are staff AI-training records completed and verified?,,,,AI_INVENTORY,ai_governance_checklist,Training & Competence,10,,
+W-10,Are incident notifications within SLA recorded with a named owner?,,,,AI_INVENTORY,ai_governance_checklist,Incident & SLA Governance,10,,

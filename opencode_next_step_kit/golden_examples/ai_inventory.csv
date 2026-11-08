@@ -1,0 +1,5 @@
+﻿ts,row_type,provider_name,reference,term_or_version,owner
+2026-09-20T00:00:00+02:00,provider,CloudAI Ltd,CAI-MAIN-v3,v3,ACCT-01
+2026-09-20T00:00:00+02:00,contract_term,CloudAI Ltd,CAI-MAIN-v3,no_training,ACCT-01
+2026-09-25T00:00:00+02:00,provider,DataSage AI Inc,DSAIG-WV-v2,v2,ACCT-01
+2026-09-25T00:00:00+02:00,contract_term,DataSage AI Inc,DSAIG-WV-v2,no_training,ACCT-01

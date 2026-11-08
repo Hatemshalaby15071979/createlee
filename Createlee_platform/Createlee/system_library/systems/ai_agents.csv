@@ -1,0 +1,7 @@
+ai_agent_id,name,provider_id,model,purpose,tenant_id,kill_switch,accountable_owner,status,last_reviewed
+AI-001,QA Assist,PRV-001,foundation-llm-v2,QA action proposals,T-001,armed,ACCT-01,active,2026-10-15
+AI-002,Reply Draft,PRV-001,foundation-llm-v2,Response drafting,T-001,armed,ACCT-01,active,2026-10-15
+AI-003,RAG Retriever,PRV-002,embeddings-v3,KB retrieval,T-001,armed,ACCT-01,active,2026-10-15
+AI-004,Speech Transcriber,PRV-003,stt-v1,Call transcription,T-001,armed,ACCT-01,active,2026-10-20
+AI-005,Refund Advisor,PRV-001,foundation-llm-v2,Refund proposals,T-002,armed,ACCT-01,active,2026-10-15
+AI-006,Usage Analytics,PRV-004,analytics-v1,Ops monitoring,T-004,armed,ACCT-01,active,2026-10-15

@@ -1,0 +1,11 @@
+control_id,requirement,evidence_file,owner,status
+W-01,AI-proposed QA actions reviewed by a named human,qa_review_export.csv / qa_reviews.csv,QA Lead,closed
+W-02,Kill switch and AI agent access revocable,audit_events.csv / ai_audit_log.csv,Sec Lead,closed
+W-03,Identity of each AI agent logged on customer-affecting decisions,agent_identity_log.csv,AI Ops,closed
+W-04,Agent permissions reviewed quarterly,audit_events.csv,Sec Lead,closed
+W-05,Complete inventory of AI providers,ai_inventory.csv,AI Ops,closed
+W-06,Supplier contracts prohibit training on customer data,ai_inventory.csv,Legal,closed - Provider C remediated
+W-07,AI escalations go only to authorised supervisors,escalation_log.csv,Ops Lead,closed
+W-08,Named accountable person for the AI system,rolespec_export.csv,AI Ops,closed
+W-09,Staff AI-training records completed and verified,training_records.csv,HR Lead,closed
+W-10,Incident notifications within SLA with named owner,incident_sla_log.csv,Incident Mgr,closed
