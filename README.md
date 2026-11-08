@@ -7,7 +7,7 @@
 ![licence](https://img.shields.io/badge/licence-MIT-blue)
 ![local verification](https://img.shields.io/badge/local%20verification-format%20rehearsal-blue)
 
-*Local verification measured 2026-11-06 on `master`; every `INDEX.csv` row is tagged `simulated`. This is a synthetic rehearsal library, not a client record and not production evidence.*
+*Local verification measured 2026-11-06 on `master`; every `INDEX.csv` row is tagged `simulated`. This repository includes rehearsal data with unverified provenance; it is not evidence of production use.*
 
 <!-- badges:end -->
 
@@ -21,7 +21,7 @@
 
 ## GitHub shipment status (2026-11-07)
 
-The intended public repository is [Hatemshalaby15071979/createlee](https://github.com/Hatemshalaby15071979/createlee). No hosted Actions result exists for this candidate; this checkout contains the Signoff rehearsal library and its validator only. Local checks are recorded in [`Createlee_deep_verification_report.txt`](Createlee_deep_verification_report.txt) and [`Createlee_verification_report.txt`](Createlee_verification_report.txt). This is synthetic fixture data; it closes no production gate and authenticates nothing.
+The intended public repository is [Hatemshalaby15071979/createlee](https://github.com/Hatemshalaby15071979/createlee). No hosted Actions result exists for this candidate; this checkout contains the Signoff rehearsal library and its validator only. Local checks are recorded in [`Createlee_deep_verification_report.txt`](Createlee_deep_verification_report.txt) and [`Createlee_verification_report.txt`](Createlee_verification_report.txt). This is rehearsal data with unverified provenance; it closes no production gate and authenticates nothing.
 
 ## One-line identity
 
@@ -74,7 +74,7 @@ It feeds the Signoff gate ([Hatemshalaby15071979/Sign-off](https://github.com/Ha
 ## Production status & verification
 
 > [!WARNING]
-> This is a synthetic rehearsal library, not a production deployment. **Validated on simulated fixtures; safety-first by design; intended for format rehearsal only. It is not production-proven and has no real customer data.** No external security audit, certified data isolation, or signed installer is claimed. The operational rows "must be replaced with genuine system exports before any real signoff."
+> This is a rehearsal library, not a production deployment. **Data provenance has not been independently verified. Do not infer that bundled material is synthetic, anonymized, or free of personal data. It is not production-proven.** No external security audit, certified data isolation, or signed installer is claimed. The operational rows "must be replaced with genuine system exports before any real signoff."
 
 | Check | Result | Source |
 | --- | --- | --- |
