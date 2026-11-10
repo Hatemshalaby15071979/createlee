@@ -960,10 +960,10 @@ def agent_ops(state: dict) -> dict:
             return {"ok": False, "summary": "Explicit approval required. Pass approved=true to send."}
         if "@" not in to:
             return {"ok": False, "summary": f"'{to}' is not a valid email address."}
-        pkg = st.get("client_package")
+        pkg = state.get("client_package")
         if not pkg:
             try:
-                res = build_client_package(st, as_of or None)
+                res = build_client_package(state, as_of or None)
                 pkg = res["client_package"]
             except ValueError as exc:
                 return {"ok": False, "summary": f"Invalid --as-of date: {exc}. Use YYYY-MM-DD."}
@@ -980,7 +980,7 @@ def agent_ops(state: dict) -> dict:
             with audit.open("a", encoding="utf-8") as fh:
                 fh.write(json.dumps({
                     "event": "client_package_emailed", "sent_at_iso8601": core.iso_now(),
-                    "session_id": st["sid"], "to": to, "subject": subject,
+                    "session_id": state["sid"], "to": to, "subject": subject,
                     "attachments": [str(a) for a in attach],
                     "attachment_count": len(attach),
                     "as_of": pkg.get("as_of"),
