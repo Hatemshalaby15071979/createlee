@@ -15,6 +15,10 @@
 
 ## What is this?
 
+<!-- docs-sync:start -->
+**CreateLee — Signoff rehearsal library (synthetic fixtures, no release).** No hosted Actions result exists for this candidate; this checkout contains the Signoff rehearsal library and its validator only. The golden acceptance set is ACCEPTABLE (6 PASS, 2 PASS_WITH_FINDINGS) while the rehearsal-library copy fails 4 of 8 against the validator. Hosted GitHub Actions has not yet run on this candidate, and data provenance is unverified.
+<!-- docs-sync:end -->
+
 CreateLee is the practice ground for [Signoff](https://github.com/Hatemshalaby15071979/Sign-off) — the tool that answers *"how did AI touch our customers?"* with an evidence pack.
 
 Before real client exports arrive, you need realistic fake data to rehearse with. That's exactly what this is: **eight kinds of CSV exports per project** (QA reviews, audit events, approvals, escalations, role specs, AI inventory, training records, incident notifications), a validator, and a set of golden examples that show what "good" looks like.

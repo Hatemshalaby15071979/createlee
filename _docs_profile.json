@@ -1,0 +1,13 @@
+{
+  "name": "CreateLee",
+  "repo": "Hatemshalaby15071979/createlee",
+  "status_template": "**CreateLee — Signoff rehearsal library (synthetic fixtures, no release).** No hosted Actions result exists for this candidate; this checkout contains the Signoff rehearsal library and its validator only. The golden acceptance set is ACCEPTABLE (6 PASS, 2 PASS_WITH_FINDINGS) while the rehearsal-library copy fails 4 of 8 against the validator. @DOCS_SYNC_CI@, and data provenance is unverified.",
+  "status_template_html": "<p class=\"status\"><strong>CreateLee — Signoff rehearsal library (synthetic fixtures, no release).</strong> No hosted Actions result exists for this candidate; this checkout contains the Signoff rehearsal library and its validator only. The golden acceptance set is ACCEPTABLE (6 PASS, 2 PASS_WITH_FINDINGS) while the rehearsal-library copy fails 4 of 8 against the validator. @DOCS_SYNC_CI@, and data provenance is unverified.</p>",
+  "facts": {
+    "version": "",
+    "release_date": "",
+    "tests_passed": null,
+    "coverage": null,
+    "ci_label": "Hosted GitHub Actions has not yet run on this candidate"
+  }
+}
