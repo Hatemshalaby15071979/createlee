@@ -21,6 +21,10 @@
 
 ## GitHub shipment status (2026-11-07)
 
+<!-- docs-sync:start -->
+**CreateLee — Signoff rehearsal library (synthetic fixtures, no release).** No hosted Actions result exists for this candidate; this checkout contains the Signoff rehearsal library and its validator only. The golden acceptance set is ACCEPTABLE (6 PASS, 2 PASS_WITH_FINDINGS) while the rehearsal-library copy fails 4 of 8 against the validator. Hosted GitHub Actions has not yet run on this candidate, and data provenance is unverified.
+<!-- docs-sync:end -->
+
 The intended public repository is [Hatemshalaby15071979/createlee](https://github.com/Hatemshalaby15071979/createlee). No hosted Actions result exists for this candidate; this checkout contains the Signoff rehearsal library and its validator only. Local checks are recorded in [`Createlee_deep_verification_report.txt`](Createlee_deep_verification_report.txt) and [`Createlee_verification_report.txt`](Createlee_verification_report.txt). This is rehearsal data with unverified provenance; it closes no production gate and authenticates nothing.
 
 ## One-line identity
