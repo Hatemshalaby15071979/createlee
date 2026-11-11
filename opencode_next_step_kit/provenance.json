@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "artifact": "CreateLee Signoff evidence exports",
+  "data_mode": "synthetic",
+  "note": "Every row here is generated for demonstration. Passing the validator is a structural check, not compliance evidence.",
+  "generator": "CreateLee opencode_next_step_kit",
+  "consumer": "signoff",
+  "consumer_mapping": "opencode_next_step_kit/signoff-mapping.draft.csv",
+  "questionnaire": "opencode_next_step_kit/questionnaire.csv",
+  "files": {
+    "ai_approvals.csv": {
+      "rows": 5,
+      "sha256": "16cca1218fd61a24a9f3a9a61a875452de6210a10ec183769d80ac7db33c6c97"
+    },
+    "ai_audit_log.csv": {
+      "rows": 8,
+      "sha256": "dec025cbe0b42353f8fdd08d4f32b620a2380a54099f476bc608edb55886eae2"
+    },
+    "ai_inventory.csv": {
+      "rows": 4,
+      "sha256": "ebbb61e44dd45873a5ef2a2341a6b62c67d2041c3f9c90af582f64b3b3214918"
+    },
+    "ai_training.csv": {
+      "rows": 4,
+      "sha256": "cb163a2588883e91fac8d7de83664d6a53116979a447b9d5297cd1be02c0170c"
+    },
+    "escalations.csv": {
+      "rows": 5,
+      "sha256": "9fa373ea17bd2c4c09830d64a35cbbd29a24399b8e760b47c0e0d074e1853add"
+    },
+    "incident_notifications.csv": {
+      "rows": 3,
+      "sha256": "cf3a9bac0d6e8ac887a7737469151577e924aa3526da1de6f05eceddb1626e43"
+    },
+    "qa_reviews.csv": {
+      "rows": 8,
+      "sha256": "5fd19225a5d658126a82ae236d7a7f2fe7a4ccb6284774468ccf3e60da150196"
+    },
+    "role_spec.csv": {
+      "rows": 5,
+      "sha256": "b1662e613acc894ea3e6471b6f916ac1599e8cd779a17256bc6c5efe1dcdfcbb"
+    }
+  },
+  "total_rows": 42
+}

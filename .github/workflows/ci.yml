@@ -1,0 +1,54 @@
+name: CI
+
+# WHY THIS WORKFLOW REPLACES python-package-conda.yml
+#
+# The conda workflow built a conda package and ran security_checks.py. It never
+# ran the thing this repository exists to produce: the eight Signoff CSVs and
+# the validator that checks them. It also failed on every master run for three
+# days (2026-11-07 to 2026-11-10) before two runs passed, so the green was
+# meaningless.
+#
+# This workflow runs the validator over the committed golden examples and fails
+# the build on NOT ACCEPTABLE. The validator's own exit code is the gate.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: validate the eight Signoff CSVs
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # The golden examples are the contract: eight CSVs, exact headers,
+      # window and control-content checks. NOT ACCEPTABLE fails the build.
+      - name: Signoff CSV validator (golden examples)
+        run: node opencode_next_step_kit/validate_signoff_csv.mjs opencode_next_step_kit/golden_examples
+
+      # Proves the validator fails closed: a directory that does not exist must
+      # exit non-zero. A validator that only ever passes is not a gate.
+      - name: Validator fails closed on a missing folder
+        run: |
+          if node opencode_next_step_kit/validate_signoff_csv.mjs /tmp/definitely-not-here; then
+            echo 'validator passed on a missing folder — it is not a gate'
+            exit 1
+          else
+            echo 'validator correctly refused a missing folder'
+          fi
+
+      - name: Provenance sidecar is present and machine-readable
+        run: node -e "const p=require('./opencode_next_step_kit/provenance.json'); if(p.data_mode!=='synthetic') process.exit(1); if(!p.files||Object.keys(p.files).length!==8) process.exit(1); console.log('provenance ok:', p.files.length ?? Object.keys(p.files).length, 'files')"

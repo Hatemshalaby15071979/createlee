@@ -45,7 +45,28 @@ node opencode_next_step_kit/validate_signoff_csv.mjs opencode_next_step_kit/gold
 node opencode_next_step_kit/validate_signoff_csv.mjs Createlee_system_library/evidence/
 ```
 
-No hosted CI has run on this repository; the verdicts above were produced locally (2026-11-06) and are recorded in `Createlee_deep_verification_report.txt` and `Createlee_verification_report.txt`.
+CI runs this validator on every push (`.github/workflows/ci.yml`), and it also proves the validator fails closed on a missing folder. The local verdicts above (2026-11-06) are recorded in `Createlee_deep_verification_report.txt` and `Createlee_verification_report.txt`.
+
+## Provenance and hand-off to Signoff
+
+Every file in `opencode_next_step_kit/golden_examples/` is **synthetic** and is
+declared so, per file and with a SHA-256, in
+`opencode_next_step_kit/provenance.json`. Passing the validator is a structural
+check on generated data; it is not compliance evidence.
+
+The output is shaped for [Signoff](https://github.com/Hatemshalaby15071979/Sign-off)
+as the readiness-attestation step. Two files make that hand-off explicit:
+
+| File | Purpose |
+| --- | --- |
+| `opencode_next_step_kit/questionnaire.csv` | The 12 questions the pack answers |
+| `opencode_next_step_kit/signoff-mapping.draft.csv` | Question → evidence-file mapping |
+
+**The mapping is a DRAFT and every row says `verified=no`,
+`decided_by=PENDING_OWNER_SIGNATURE`.** Signoff refuses to build a pack from an
+unsigned mapping, and that refusal is the point: a machine must not sign a
+human's accountability statement. The owner fills in `decided_by`, the date,
+and `verified=yes` after reviewing the mapping.
 
 ## Related work
 
