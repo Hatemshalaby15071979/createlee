@@ -36,3 +36,10 @@ Thumbs.db
 # Editor
 .vscode/
 .idea/
+
+# Synthetic upload fixtures — export-shaped rehearsal CSVs, never client data.
+# They must not be committed: the validator runs against golden_examples, and
+# these folders only ever hold local test uploads.
+**/system_library/uploaded/
+uploads/
+Createlee_system_library/uploaded/
