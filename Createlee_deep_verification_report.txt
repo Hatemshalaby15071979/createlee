@@ -11,6 +11,20 @@ RESULT SUMMARY
   Clean-install checks      : 11/11 PASS
   Final ZIP re-verification : 72/72 PASS, standalone HTTP boot OK, /api/library OK
 
+CORRECTION 2026-11-13 (read this before trusting the INDEX checks below)
+-----------------------------------------------------------------------
+  Checks 30 and 31 below describe the throw-away ZIP build this report was
+  generated from, NOT what was committed to git. The committed INDEX.csv was a
+  Microsoft Excel 2007+ workbook with a .csv extension, its hashes were stale
+  (9 mismatched, 13 missing against the repository), and the report's
+  "missing=[] extra=[]" line was therefore false for the repository.
+
+  Fixed: both library INDEX.csv files are now real UTF-8 CSV with SHA-256 and
+  size computed from the files that are actually present, and
+  tools/verify_manifests.py checks every committed manifest in CI. The stale
+  root-level INDEX.csv (a workbook, and a duplicate of
+  Createlee_system_library/INDEX.csv) was removed.
+
 WHAT THIS SESSION ADDED
 ----------------------
   1. Grounding honesty - the ISO official ISO/IEC 42001 page that was actually

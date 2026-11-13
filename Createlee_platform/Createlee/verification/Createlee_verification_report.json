@@ -2,7 +2,7 @@
   "platform": "Createlee",
   "agent": "Engeznee",
   "schema_version": "1.0",
-  "generated_at_iso8601": "2026-11-07T01:18:02Z",
+  "generated_at_iso8601": "2026-11-13T17:40:15Z",
   "time_standard": "ISO-8601 / UTC",
   "total_checks": 101,
   "passed": 101,
@@ -28,7 +28,7 @@
     {
       "check": "POST /api/session seeds samples",
       "ok": true,
-      "detail": "8 uploads, sid=sbb72c946e75740d2"
+      "detail": "8 uploads, sid=s931c1ff015bf6a8c"
     },
     {
       "check": "session state has ISO-8601 created_at",
@@ -78,7 +78,7 @@
     {
       "check": "chat: web: reference pack",
       "ok": true,
-      "detail": "0.4s"
+      "detail": "0.0s"
     },
     {
       "check": "chat: generate all (5 formats)",

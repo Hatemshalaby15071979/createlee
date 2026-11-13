@@ -17,6 +17,7 @@ import hashlib
 import io
 import json
 import re
+import secrets
 import statistics
 import subprocess
 from collections import OrderedDict
@@ -24,6 +25,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape
 
 import config
+import csv_safe
 
 # --------------------------------------------------------------------------- #
 # Time
@@ -40,6 +42,73 @@ def compact_stamp() -> str:
 
 def safe_name(text: str) -> str:
     return re.sub(r"[^A-Za-z0-9._-]+", "_", str(text)).strip("_")[:80] or "document"
+
+
+# --------------------------------------------------------------------------- #
+# Document identity and review status
+# --------------------------------------------------------------------------- #
+# A document ID must identify ONE document. The timestamp is second-precision,
+# so two documents of the same domain/type generated in the same second used to
+# collide (same ID, different status in different folders). A random suffix
+# makes each generation unique while keeping the readable prefix.
+STATUS_LEDGER_NAME = "document_status.json"
+
+
+def new_document_id(domain: str, doc_type: str, generated_at: str | None = None) -> str:
+    dcode = re.sub(r"[^A-Z0-9]", "", domain.upper())[:4] or "GEN"
+    stamp = compact_stamp()
+    digest = hashlib.md5(f"{domain}|{doc_type}|{generated_at or iso_now()}"
+                         f"|{secrets.token_hex(8)}".encode()).hexdigest()[:4].upper()
+    return f"CL-{stamp}-{dcode}-{digest}"
+
+
+def _ledger_path() -> Path:
+    # Runtime state, not a generated document: keep it out of OUTPUT_DIR so
+    # consumers that glob outputs/*.json never see a non-document JSON file.
+    return Path(config.SESSION_DIR) / STATUS_LEDGER_NAME
+
+
+def load_status_ledger() -> dict[str, dict]:
+    """Read the append-only status ledger (empty when it does not exist yet)."""
+    path = _ledger_path()
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def set_document_status(document_id: str, status: str, *,
+                        actor: str = "operator", at: str | None = None) -> dict:
+    """Record a status transition. This ledger is the single source of truth.
+
+    The write is atomic (temp file + replace) so a crash mid-write cannot leave
+    a half-written ledger behind.
+    """
+    ledger = load_status_ledger()
+    entry = ledger.get(document_id, {"history": []})
+    entry["status"] = status
+    entry["updated_at_iso8601"] = at or iso_now()
+    entry["updated_by"] = actor
+    entry.setdefault("history", []).append(
+        {"status": status, "at_iso8601": at or iso_now(), "by": actor}
+    )
+    ledger[document_id] = entry
+    path = _ledger_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".tmp")
+    tmp.write_text(json.dumps(ledger, indent=2, ensure_ascii=False), encoding="utf-8")
+    tmp.replace(path)
+    return entry
+
+
+def resolve_status(document_id: str, default: str) -> str:
+    """Return the ledger status for `document_id`, or `default` when unknown."""
+    entry = load_status_ledger().get(document_id)
+    if isinstance(entry, dict) and entry.get("status"):
+        return str(entry["status"])
+    return default
+
 
 
 # --------------------------------------------------------------------------- #
@@ -657,9 +726,7 @@ def build_document(domain: str, doc_type: str, questions: list[dict], mappings: 
             "paragraphs": [references.get("notice", "")],
         })
 
-    dcode = re.sub(r"[^A-Z0-9]", "", domain.upper())[:4] or "GEN"
-    doc_id = ("CL-" + compact_stamp() + "-" + dcode + "-" +
-              hashlib.md5(f"{domain}|{doc_type}|{now}".encode()).hexdigest()[:4].upper())
+    doc_id = new_document_id(domain, doc_type, now)
     return {
         "document_id": doc_id,
         "meta": {
@@ -668,7 +735,7 @@ def build_document(domain: str, doc_type: str, questions: list[dict], mappings: 
             "document_type": doc_type, "generated_at_iso8601": now,
             "time_standard": "ISO-8601 / UTC", "schema_version": config.SCHEMA_VERSION,
             "generator": f"{config.PLATFORM_NAME} / {config.AGENT_NAME}",
-            "review_status": review_status,
+            "review_status": resolve_status(doc_id, review_status),
             "source_files": [a["filename"] for a in analyses],
             "source_file_count": len(analyses),
             "include_timestamp": bool(options.get("include_timestamp", True)),
@@ -745,7 +812,7 @@ def to_csv(doc: dict) -> bytes:
             if k not in cols:
                 cols.append(k)
     buf = io.StringIO()
-    w = csv.DictWriter(buf, fieldnames=cols, extrasaction="ignore", lineterminator="\n")
+    w = csv_safe.dict_writer(buf, cols, extrasaction="ignore", lineterminator="\n")
     w.writeheader()
     for r in rows:
         out = dict(prefix)
