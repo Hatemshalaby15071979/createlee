@@ -1,0 +1,21 @@
+# gitleaks configuration — minimal allowlist for synthetic rehearsal fixtures.
+#
+# The CSVs under the paths below are synthetic export-shaped fixtures that the
+# Signoff evidence gate validates. They are not client records and contain no
+# real personal data (names are [REDACTED_PERSON]), but their shape — contract
+# references, account ids, timestamps — trips generic secret rules.
+#
+# Scope is deliberately narrow: whole directories only, and only the fixture
+# directories. Anything outside these paths is scanned with the default rules.
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Synthetic Signoff CSV fixtures (not client data)"
+paths = [
+  '''Createlee_platform/Createlee/system_library/uploaded/''',
+  '''Createlee_platform/Createlee/uploads/''',
+  '''Createlee_system_library/uploaded/''',
+  '''opencode_next_step_kit/golden_examples/''',
+]

@@ -1,0 +1,22 @@
+version: 2
+# Dependency updates for the ecosystems this repository actually uses.
+#   pip            — Createlee_platform/Createlee/requirements.txt
+#   github-actions — the workflows under .github/workflows/
+# There is no package.json in this repository, so npm is intentionally absent;
+# the validator in opencode_next_step_kit runs on Node with no dependencies.
+updates:
+  - package-ecosystem: "pip"
+    directory: "/Createlee_platform/Createlee"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(ci)"

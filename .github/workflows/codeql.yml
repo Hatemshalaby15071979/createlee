@@ -1,0 +1,74 @@
+name: CodeQL
+
+# Static analysis for the two languages in this repository:
+#   python              — Createlee_platform/Createlee
+#   javascript-typescript — opencode_next_step_kit/validate_signoff_csv.mjs
+# Runs on pull requests, on master, and weekly so new queries reach old code.
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+  schedule:
+    - cron: "27 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  # Required by codeql-action/analyze to upload SARIF and read the run it is in.
+  actions: read
+  security-events: write
+
+concurrency:
+  group: codeql-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    name: analyze (${{ matrix.language }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ["python", "javascript-typescript"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@b7b84b636b4f90c9b31da1bc5f72bfadd5b31410 # v3
+        with:
+          languages: ${{ matrix.language }}
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@b7b84b636b4f90c9b31da1bc5f72bfadd5b31410 # v3
+
+      - name: Analyze
+        uses: github/codeql-action/analyze@b7b84b636b4f90c9b31da1bc5f72bfadd5b31410 # v3
+        with:
+          category: "/language:${{ matrix.language }}"
+          # WHY upload: never — this repository is private on a personal account,
+          # and code scanning (GHAS) is not enabled for it. Uploading SARIF fails
+          # with "Code scanning is not enabled for this repository" and turns the
+          # whole check red even though the analysis itself succeeded.
+          # The analysis still runs; the SARIF is kept as a workflow artifact.
+          # Flip to "always" once code scanning is enabled for the repository.
+          upload: never
+
+      - name: Collect SARIF
+        if: always()
+        continue-on-error: true
+        run: |
+          mkdir -p codeql-results
+          cp "${{ github.workspace }}/../results/"*.sarif codeql-results/ 2>/dev/null || true
+          ls -l codeql-results || true
+
+      - name: Keep SARIF as an artifact
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: codeql-sarif-${{ matrix.language }}
+          path: codeql-results/
+          if-no-files-found: warn
+          retention-days: 14
