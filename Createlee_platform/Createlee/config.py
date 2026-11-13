@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import os
+import secrets
+import warnings
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -77,7 +79,10 @@ CLOUD_LLM_KEY = os.environ.get("CREATELEE_CLOUD_LLM_KEY", "").strip()
 CLOUD_LLM_MODEL = os.environ.get("CREATELEE_CLOUD_LLM_MODEL", "").strip()
 
 # --- Web enrichment (free, no API key) -------------------------------------
-WEB_ENRICH = os.environ.get("CREATELEE_WEB_ENRICH", "1") == "1"
+# OFF by default: the evidence path must not touch the network unless the
+# operator explicitly asks for live references. Opt in with
+# CREATELEE_WEB_ENRICH=1 (or the `web` keyword on a generate command).
+WEB_ENRICH = os.environ.get("CREATELEE_WEB_ENRICH", "0").strip() == "1"
 WEB_TIMEOUT = int(os.environ.get("CREATELEE_WEB_TIMEOUT", "10"))
 
 # --- Email (SMTP). No credentials -> .eml draft is produced instead. -------
@@ -94,4 +99,85 @@ DEFAULT_EMAIL_TO = os.environ.get("CREATELEE_DEFAULT_EMAIL_TO", "").strip()
 MAX_UPLOAD_MB = int(os.environ.get("CREATELEE_MAX_UPLOAD_MB", "25"))
 ALLOWED_EXT = {".csv", ".txt", ".json", ".xlsx", ".xls", ".pdf", ".docx", ".md", ".tsv", ".log"}
 
-SECRET_KEY = os.environ.get("CREATELEE_SECRET_KEY", "createlee-local-dev-key-change-me")
+# --- Session secret + network exposure -------------------------------------
+# A shared, guessable default is not a secret: anyone who has read this file
+# can forge a Flask session cookie. When CREATELEE_SECRET_KEY is unset (or set
+# to a documented placeholder) we generate a fresh random key per process and
+# mark it ephemeral. That is safe for the local single-operator tool, and
+# validate_runtime() refuses to expose such a process beyond loopback.
+INSECURE_SECRET_KEYS = {
+    "",
+    "createlee-local-dev-key-change-me",
+    "change-this-to-a-random-string",
+    "changeme",
+    "secret",
+}
+MIN_SECRET_KEY_LENGTH = 32
+
+
+def _load_secret_key() -> tuple[str, bool]:
+    """Return (secret, is_ephemeral). Never returns a shared default."""
+    raw = os.environ.get("CREATELEE_SECRET_KEY", "").strip()
+    if raw and raw.lower() not in INSECURE_SECRET_KEYS:
+        return raw, False
+    if raw:
+        warnings.warn(
+            "CREATELEE_SECRET_KEY is a documented placeholder; generating a "
+            "random per-process key instead. Set a real random value for a "
+            "stable deployment.",
+            RuntimeWarning,
+            stacklevel=2,
+        )
+    return secrets.token_urlsafe(48), True
+
+
+SECRET_KEY, SECRET_KEY_IS_EPHEMERAL = _load_secret_key()
+
+# Bind loopback by default. Network exposure is an explicit opt-in
+# (CREATELEE_BIND_HOST=0.0.0.0) and requires a stable secret plus a bearer
+# token, enforced by validate_runtime().
+DEFAULT_BIND_HOST = "127.0.0.1"
+BIND_HOST = os.environ.get("CREATELEE_BIND_HOST", "").strip() or DEFAULT_BIND_HOST
+AUTH_TOKEN = os.environ.get("CREATELEE_AUTH_TOKEN", "").strip()
+MIN_AUTH_TOKEN_LENGTH = 24
+LOOPBACK_HOSTS = {"127.0.0.1", "::1", "localhost", "localhost.localdomain"}
+
+
+def is_loopback(host: str) -> bool:
+    """True when `host` only accepts connections from this machine."""
+    value = (host or "").strip().lower()
+    if value in LOOPBACK_HOSTS:
+        return True
+    return value.startswith("127.")
+
+
+def validate_runtime(host: str) -> None:
+    """Fail closed before binding to anything reachable off this machine.
+
+    Raises RuntimeError with every unmet requirement, so the operator fixes
+    them in one pass instead of one restart at a time.
+    """
+    if is_loopback(host):
+        return
+    problems = []
+    if SECRET_KEY_IS_EPHEMERAL:
+        problems.append(
+            "CREATELEE_SECRET_KEY must be set to a stable random value "
+            f"(>= {MIN_SECRET_KEY_LENGTH} characters)"
+        )
+    elif len(SECRET_KEY) < MIN_SECRET_KEY_LENGTH:
+        problems.append(
+            f"CREATELEE_SECRET_KEY must be at least {MIN_SECRET_KEY_LENGTH} characters"
+        )
+    if len(AUTH_TOKEN) < MIN_AUTH_TOKEN_LENGTH:
+        problems.append(
+            "CREATELEE_AUTH_TOKEN must be set "
+            f"(>= {MIN_AUTH_TOKEN_LENGTH} characters) so every route requires "
+            "a bearer token"
+        )
+    if problems:
+        raise RuntimeError(
+            f"Refusing to bind to {host!r} without authentication:\n  - "
+            + "\n  - ".join(problems)
+        )
+

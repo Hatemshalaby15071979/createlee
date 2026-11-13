@@ -25,6 +25,7 @@ from pathlib import Path
 
 import config
 import core
+import csv_safe
 
 HONESTY = ("Synthetic example exports generated from Createlee bundled sample data. "
            "These are NOT real compliance evidence. Replace with genuine system exports "
@@ -222,7 +223,7 @@ OLD_TS2 = "2026-07-01T00:00:00+02:00"
 
 def _write(path: Path, header: list[str], rows: list[list]) -> None:
     with path.open("w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f, lineterminator="\n")
+        w = csv_safe.writer(f, lineterminator="\n")
         w.writerow(header)
         w.writerows(rows)
 
@@ -729,14 +730,15 @@ def validate_strict(directory: Path, as_of: str | None = None) -> dict:
 # --------------------------------------------------------------------------- #
 def build_report_doc(report: dict, review_status: str = "EXAMPLE_PREVIEW — PENDING OPERATOR REVIEW") -> dict:
     now = core.iso_now()
-    doc_id = "CL-" + core.compact_stamp() + "-EVID-" + report["as_of"].replace("-", "")
+    doc_id = core.new_document_id("EVIDENCE", "evidence_validation_report")
     meta = {
         "document_id": doc_id, "title": "Signoff Evidence Validation Report",
         "domain": "EVIDENCE", "domain_label": "Operational Evidence Pack",
         "document_type": "evidence_validation_report", "generated_at_iso8601": now,
         "time_standard": "ISO-8601 / UTC", "schema_version": config.SCHEMA_VERSION,
         "generator": f"{config.PLATFORM_NAME} / {config.AGENT_NAME}",
-        "review_status": review_status, "source_files": [f["filename"] or f["expected_filename"]
+        "review_status": core.resolve_status(doc_id, review_status),
+        "source_files": [f["filename"] or f["expected_filename"]
                                                          for f in report["files"]],
         "source_file_count": len(report["files"]), "include_timestamp": True,
         "as_of": report["as_of"], "window_start": report["window_start"],
@@ -827,7 +829,7 @@ def write_excel_csv_demo(out_dir: Path) -> Path:
             ["2026-10-15T11:20:00+02:00", "dpo-office", "retention_check"]]
     tmp = demo / ".tmp_utf16"
     with tmp.open("w", newline="", encoding="utf-16") as f:
-        csv.writer(f, delimiter="\t", lineterminator="\n").writerows(rows)
+        csv_safe.writer(f, delimiter="\t", lineterminator="\n").writerows(rows)
     b.write_bytes(tmp.read_bytes())
     tmp.unlink(missing_ok=True)
 
@@ -939,7 +941,7 @@ def build_pack(out_dir: Path | str, as_of: str | None = None,
     now = core.iso_now()
     index_path = out_dir / "INDEX.csv"
     with index_path.open("w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f, lineterminator="\n")
+        w = csv_safe.writer(f, lineterminator="\n")
         w.writerow(["filename", "kind", "size_bytes", "as_of", "generated_at_iso8601"])
         for p in sorted(out_dir.iterdir()):
             if p.is_file() and p.name != "INDEX.csv":

@@ -42,6 +42,7 @@ import shutil
 from pathlib import Path
 
 import config
+import csv_safe
 import core
 import evidence
 
@@ -128,7 +129,7 @@ DISCLAIMER_SHORT = ("Simulated operational library grounded in real public stand
 def _w(path: Path, header: list[str], rows: list[list]) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f, lineterminator="\n")
+        w = csv_safe.writer(f, lineterminator="\n")
         w.writerow(header)
         w.writerows(rows)
     return path
@@ -532,14 +533,14 @@ def systems_files(out: Path) -> dict[str, list]:
 # --------------------------------------------------------------------------- #
 def build_report_doc(payload: dict) -> dict:
     now = core.iso_now()
-    doc_id = "CL-" + core.compact_stamp() + "-LIB-" + payload["as_of"].replace("-", "")
+    doc_id = core.new_document_id("LIBRARY", "build_report")
     meta = {
         "document_id": doc_id, "title": "Createlee System Library - Build & Validation Report",
         "domain": "LIBRARY", "domain_label": "System Library / Evidence Corpus",
         "document_type": "build_report", "generated_at_iso8601": now,
         "time_standard": "ISO-8601 / UTC", "schema_version": config.SCHEMA_VERSION,
         "generator": f"{config.PLATFORM_NAME} / {config.AGENT_NAME}",
-        "review_status": "EXAMPLE_PREVIEW - PENDING OPERATOR REVIEW",
+        "review_status": core.resolve_status(doc_id, "EXAMPLE_PREVIEW - PENDING OPERATOR REVIEW"),
         "source_files": payload["file_list"], "source_file_count": len(payload["file_list"]),
         "include_timestamp": True, "as_of": payload["as_of"],
     }
@@ -787,7 +788,7 @@ def build_library(out_dir: Path | str, as_of: str | None = None,
         INDEX.csv never lists itself (a self-referential hash is impossible)."""
         index_path = out / "INDEX.csv"
         with index_path.open("w", newline="", encoding="utf-8") as f:
-            w = csv.writer(f, lineterminator="\n")
+            w = csv_safe.writer(f, lineterminator="\n")
             w.writerow(["relative_path", "kind", "rows", "columns", "size_bytes", "sha256",
                         "origin", "generated_at_iso8601"])
             for p in sorted(out.rglob("*")):

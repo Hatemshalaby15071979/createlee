@@ -1,6 +1,6 @@
 Createlee / Engeznee — End-to-End Reliability Verification
 ===========================================================
-Generated at (ISO-8601 UTC): 2026-11-07T01:18:02Z
+Generated at (ISO-8601 UTC): 2026-11-13T17:40:15Z
 Schema version:              1.0
 Result:                      101/101 checks passed (ALL PASS)
 
@@ -18,7 +18,7 @@ CHECKS
    3. [PASS] status has 5 formats
         ['csv', 'txt', 'json', 'pdf', 'docx']
    4. [PASS] POST /api/session seeds samples
-        8 uploads, sid=sbb72c946e75740d2
+        8 uploads, sid=s931c1ff015bf6a8c
    5. [PASS] session state has ISO-8601 created_at
    6. [PASS] GET /api/state/<sid>
    7. [PASS] GET /api/template/questions.csv
@@ -31,7 +31,7 @@ CHECKS
         Documents defined by your CSV schemas (9):
   13. [PASS] list detects canonical 11-column schema
   14. [PASS] chat: web: reference pack
-        0.4s
+        0.0s
   15. [PASS] chat: generate all (5 formats)
         staged=9
   16. [PASS] generate only STAGES (nothing saved)

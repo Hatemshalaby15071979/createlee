@@ -46,6 +46,7 @@ import json
 from pathlib import Path
 
 import config
+import csv_safe
 import core
 import evidence
 import library
@@ -64,7 +65,7 @@ HONESTY = (
 def _w(path: Path, header: list[str], rows: list[list]) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f, lineterminator="\n")
+        w = csv_safe.writer(f, lineterminator="\n")
         w.writerow(header)
         w.writerows(rows)
     return path

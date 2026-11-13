@@ -10,7 +10,9 @@ Nothing is written to outputs/ and nothing is emailed before approval.
 from __future__ import annotations
 
 import csv
+import hmac
 import json
+import os
 import re
 import secrets
 import shutil
@@ -34,6 +36,36 @@ app = Flask(__name__, template_folder=str(config.TEMPLATE_DIR),
             static_folder=str(config.STATIC_DIR))
 app.secret_key = config.SECRET_KEY
 app.config["MAX_CONTENT_LENGTH"] = config.MAX_UPLOAD_MB * 1024 * 1024
+
+# Health check stays open so a supervisor/load balancer can probe the process;
+# it returns no data beyond liveness.
+OPEN_PATHS = {"/healthz"}
+
+
+@app.before_request
+def _require_bearer_token():
+    """Require a bearer token on every route when CREATELEE_AUTH_TOKEN is set.
+
+    The token is mandatory whenever the app binds beyond loopback (see
+    config.validate_runtime). On a loopback-only run it is optional, so the
+    single-operator workflow stays unchanged.
+    """
+    token = config.AUTH_TOKEN
+    if not token or request.path in OPEN_PATHS:
+        return None
+    supplied = request.headers.get("X-Createlee-Token", "")
+    authorization = request.headers.get("Authorization", "")
+    if authorization.lower().startswith("bearer "):
+        supplied = authorization[7:].strip()
+    if not hmac.compare_digest(supplied, token):
+        return jsonify({"ok": False, "error": "Authentication required."}), 401
+    return None
+
+
+@app.get("/healthz")
+def healthz():
+    return jsonify({"ok": True, "platform": config.PLATFORM_NAME})
+
 
 SID_RE = re.compile(r"^[A-Za-z0-9_-]{8,64}$")
 STATE: dict[str, dict] = {}
@@ -1865,12 +1897,18 @@ def api_approve():
     for i in indices:
         item = st["staged"][i]
         doc = item["doc"]
-        doc["meta"]["review_status"] = "APPROVED"
+        doc_id = doc["meta"]["document_id"]
+        # The status ledger is the single source of truth: record the transition
+        # first, then stamp every exported format from it so two copies of the
+        # same document can never disagree about review status.
+        core.set_document_status(doc_id, "APPROVED",
+                                 actor="operator (explicit approval)", at=approved_at)
+        doc["meta"]["review_status"] = core.resolve_status(doc_id, "APPROVED")
         doc["meta"]["approved_at_iso8601"] = approved_at
         for sec in doc["sections"]:
             for f in sec.get("fields", []):
                 if f["label"] == "Review status":
-                    f["value"] = "APPROVED"
+                    f["value"] = doc["meta"]["review_status"]
         for fmt in item["formats"]:
             p = core.export_document(doc, fmt, config.OUTPUT_DIR,
                                      include_timestamp=doc["meta"]["include_timestamp"])
@@ -1928,8 +1966,16 @@ def too_large(_e):
 
 
 if __name__ == "__main__":
-    import os
     port = int(os.environ.get("CREATELEE_PORT", "7860"))
+    host = config.BIND_HOST
+
+    # Fail closed before listening: a non-loopback bind needs a stable secret
+    # and a bearer token, or the whole process refuses to start.
+    try:
+        config.validate_runtime(host)
+    except RuntimeError as exc:
+        print(f"\n  {exc}\n")
+        raise SystemExit(2)
 
     # Bring the local model up without waiting for the operator. Non-blocking:
     # the first request is served immediately; the Settings badge updates when
@@ -1941,7 +1987,14 @@ if __name__ == "__main__":
     # Ollama free model, bind it, and record what changed + timestamp + model.
     init = initialize_constitution()
     bm = init["bound_model"]
-    print(f"\n  {config.PLATFORM_NAME} / {config.AGENT_NAME}  ->  http://127.0.0.1:{port}")
+    print(f"\n  {config.PLATFORM_NAME} / {config.AGENT_NAME}  ->  http://{host}:{port}")
+    if config.is_loopback(host):
+        print("  exposure    : loopback only (set CREATELEE_BIND_HOST=0.0.0.0 "
+              "plus CREATELEE_AUTH_TOKEN to expose)")
+    else:
+        print("  exposure    : non-loopback — bearer token required on every route")
+    if config.SECRET_KEY_IS_EPHEMERAL:
+        print("  secret      : ephemeral random key (sessions reset on restart)")
     print(f"  constitution: {init['constitution']} (loaded={init['constitution_loaded']})")
     print(f"  ollama      : available={init['ollama']['available']} "
           f"models={', '.join(init['ollama']['models']) or '(none)'}")
@@ -1950,4 +2003,4 @@ if __name__ == "__main__":
     print(f"  outputs     : {config.OUTPUT_DIR}")
     print(f"  evidence    : {config.EVIDENCE_DIR}")
     print(f"  ollama active: {llm.status()['active']}   email: {mailer.status()['mode']}\n")
-    app.run(host="0.0.0.0", port=port, debug=False, threaded=True)
+    app.run(host=host, port=port, debug=False, threaded=True)

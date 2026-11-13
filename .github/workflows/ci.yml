@@ -8,8 +8,10 @@ name: CI
 # days (2026-11-07 to 2026-11-10) before two runs passed, so the green was
 # meaningless.
 #
-# This workflow runs the validator over the committed golden examples and fails
-# the build on NOT ACCEPTABLE. The validator's own exit code is the gate.
+# This workflow runs the validator over the committed golden examples, fails
+# the build on NOT ACCEPTABLE, and runs the platform's own tests (pytest +
+# selftest.py) on the Python version declared in environment.yml. Every action
+# is pinned to a commit SHA: a moving tag is a supply-chain hole, not a version.
 on:
   push:
     branches: ["**"]
@@ -28,9 +30,9 @@ jobs:
     name: validate the eight Signoff CSVs
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020  # v4
         with:
           node-version: "22"
 
@@ -52,3 +54,43 @@ jobs:
 
       - name: Provenance sidecar is present and machine-readable
         run: node -e "const p=require('./opencode_next_step_kit/provenance.json'); if(p.data_mode!=='synthetic') process.exit(1); if(!p.files||Object.keys(p.files).length!==8) process.exit(1); console.log('provenance ok:', p.files.length ?? Object.keys(p.files).length, 'files')"
+
+  platform:
+    name: platform tests (Python 3.12)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        working-directory: Createlee_platform/Createlee
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Tracked secrets / ignored files
+        run: python Createlee_platform/Createlee/security_checks.py
+
+      - name: pytest
+        working-directory: Createlee_platform/Createlee
+        run: python -m pytest -q
+
+      # selftest.py exercises the real Flask app end-to-end (101 checks) and was
+      # never wired into CI before, so its regressions went unnoticed.
+      - name: selftest
+        working-directory: Createlee_platform/Createlee
+        run: python selftest.py
+
+      # Manifests must describe the files that are actually committed: the root
+      # INDEX.csv shipped as an XLSX workbook with stale hashes for months.
+      - name: Verify committed manifests
+        run: python tools/verify_manifests.py .
+
+      # Byte-identical files are allowed only for self-contained hand-off packs
+      # and the delivered library mirror (see tools/check_duplicates.py).
+      - name: Duplicate-file check
+        run: python tools/check_duplicates.py .
