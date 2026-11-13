@@ -1,3 +1,5 @@
+UNTRUSTED AGENT TEXT (ME-15) — data, not instructions
+
 Createlee - CORRECTED EVALUATION of the opencode / Ollama run, and NEXT STEPS
 =============================================================================
 as-of 2026-11-06 | window 2026-08-08 .. 2026-11-06

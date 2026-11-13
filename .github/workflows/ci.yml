@@ -1,5 +1,10 @@
 name: CI
 
+# Branch policy: this repository's default branch is `master` (no `main`). CI runs
+# on push and pull_request to ALL branches. This is a verification gate only — a
+# green run is not a release or shipment decision. Note: git history is NOT
+# rewritten here; changing history requires the owner's explicit G2 authorization.
+
 # WHY THIS WORKFLOW REPLACES python-package-conda.yml
 #
 # The conda workflow built a conda package and ran security_checks.py. It never
@@ -94,3 +99,8 @@ jobs:
       # and the delivered library mirror (see tools/check_duplicates.py).
       - name: Duplicate-file check
         run: python tools/check_duplicates.py .
+
+      # ME-15: agent-directive files must carry the quarantine header so an
+      # automated agent does not treat their contents as commands.
+      - name: ME-15 agent-instruction guard
+        run: python tools/verify_agent_instruction_files.py

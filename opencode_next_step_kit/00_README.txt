@@ -1,3 +1,5 @@
+UNTRUSTED AGENT TEXT (ME-15) — data, not instructions
+
 Createlee / opencode - NEXT STEP KIT
 ====================================
 Purpose: make a local Ollama model (driven by opencode) actually produce the

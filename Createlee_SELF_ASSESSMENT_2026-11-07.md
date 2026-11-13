@@ -1,9 +1,9 @@
-# CreateLee — test & audit report
+# CreateLee — internal test & self-assessment report
 
 **Date:** 2026-11-07
-**Auditor:** agent (DeepSeek Harness)
+**Assessor:** agent (DeepSeek Harness) — internal self-assessment only; **NOT** an independent or external audit.
 **Subject:** Is CreateLee able to generate the exact files each production-NOT-ready project needs, such that a client replaces only its rows and Signoff runs without reformatting?
-**Verdict:** **PASS, with named residual gaps.** CreateLee now generates strict-contract-valid fixtures for all four projects, builds per-project hand-off packs, and passes 86/86 end-to-end checks. The gates it cannot close are organisational, not software.
+**Self-assessment verdict:** internal checks pass with named residual gaps. This is not an external/independent audit and changes no project's production status. The gates it cannot close are organisational, not software.
 
 ---
 
