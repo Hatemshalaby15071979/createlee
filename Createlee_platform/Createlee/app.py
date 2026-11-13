@@ -763,7 +763,7 @@ def client_package_email_body(pkg: dict) -> str:
 def _project_readiness_text() -> str:
     """Honest readiness of the four projects, with live hand-off counts."""
     lines = ["Production readiness — four projects", ""]
-    lines.append("• Signoff (the gate): locally shipment-ready. It turns the client's 8 CSVs "
+    lines.append("• Signoff (the gate): locally verified, not shipment-ready. It turns the client's 8 CSVs "
                  "into a verdict pack. Open: no real client data yet, and Signoff does not "
                  "authenticate source records.")
     lines.append("• Helix-Codex: 9 production gates. 6 need signed organisational evidence — "
