@@ -37,9 +37,30 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Synthetic upload fixtures — export-shaped rehearsal CSVs, never client data.
-# They must not be committed: the validator runs against golden_examples, and
-# these folders only ever hold local test uploads.
-**/system_library/uploaded/
-uploads/
-Createlee_system_library/uploaded/
+# Synthetic upload fixtures. The six committed library uploads under
+# system_library/uploaded/, uploads/, and Createlee_system_library/uploaded/ are
+# intentionally tracked: system_library/INDEX.csv and LIBRARY_MANIFEST.json
+# describe them and tools/verify_manifests.py requires them to be present.
+# Ignore any *other* (local) file in these folders so a real upload is never
+# committed by accident, but re-include the six committed files.
+**/system_library/uploaded/*
+!**/system_library/uploaded/agent_identity_log.csv
+!**/system_library/uploaded/ai_inventory.csv
+!**/system_library/uploaded/audit_events.csv
+!**/system_library/uploaded/delivery_manifest.csv
+!**/system_library/uploaded/escalation_log.csv
+!**/system_library/uploaded/training_records.csv
+**/uploads/*
+!**/uploads/agent_identity_log.csv
+!**/uploads/ai_inventory.csv
+!**/uploads/audit_events.csv
+!**/uploads/delivery_manifest.csv
+!**/uploads/escalation_log.csv
+!**/uploads/training_records.csv
+**/Createlee_system_library/uploaded/*
+!**/Createlee_system_library/uploaded/agent_identity_log.csv
+!**/Createlee_system_library/uploaded/ai_inventory.csv
+!**/Createlee_system_library/uploaded/audit_events.csv
+!**/Createlee_system_library/uploaded/delivery_manifest.csv
+!**/Createlee_system_library/uploaded/escalation_log.csv
+!**/Createlee_system_library/uploaded/training_records.csv
