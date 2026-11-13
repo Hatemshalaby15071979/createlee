@@ -25,7 +25,10 @@ const SPEC = [
   { file: 'ai_approvals.csv',           header: ['ts','gate','decision','approver_id'] },
   { file: 'escalations.csv',            header: ['ts','escalated_by','supervisor_id','authorised'] },
   { file: 'role_spec.csv',              header: ['ts','role','assigned_to','is_authorised_supervisor','named_accountable'] },
-  { file: 'ai_inventory.csv',           header: ['ts','row_type','provider_name','reference','term_or_version','owner'] },
+  // Signoff's documented ingest schema (src/signoff/ingest/csv_normaliser.py).
+  // The previous columns (reference, term_or_version, owner) were rejected by
+  // that consumer as unknown, which made this pack unloadable downstream.
+  { file: 'ai_inventory.csv',           header: ['ts','row_type','provider_name','model_name','clause','signed_by','registered_by','policy_rule'] },
   { file: 'ai_training.csv',            header: ['ts','staff_id','module_name','completed'] },
   { file: 'incident_notifications.csv', header: ['ts','incident_id','notified_within_sla','owner'] },
 ];
@@ -139,23 +142,23 @@ function checkFile(dir, spec) {
     }
     case 'ai_inventory.csv': {
       const t = col(rows, 'row_type'), pn = col(rows, 'provider_name'),
-            ref = col(rows, 'reference'), tv = col(rows, 'term_or_version'), own = col(rows, 'owner');
+            model = col(rows, 'model_name'), clause = col(rows, 'clause'),
+            signed = col(rows, 'signed_by'), registered = col(rows, 'registered_by');
       if (t) {
         if (!t.includes('provider')) out.failures.push('0 row_type=provider');
         if (!t.includes('contract_term')) out.failures.push('0 row_type=contract_term');
-        if (pn && ref && tv) {
-          const providers = new Set(), contracted = new Set();
+        if (pn && model && clause) {
+          const contracted = new Set();
           t.forEach((v,i) => {
-            if (v === 'provider') providers.add(pn[i]);
             if (v === 'contract_term') {
-              if (tv[i] !== 'no_training') out.failures.push(`contract_term row ${i+2}: term_or_version must be no_training (got '${tv[i]}')`);
-              if (pn[i] === 'no_training') out.failures.push(`contract_term row ${i+2}: no_training wrongly placed in provider_name`);
-              contracted.add(`${pn[i]}|${ref[i]}`);
+              if (clause[i] !== 'no_training') out.failures.push(`contract_term row ${i+2}: clause must be no_training (got '${clause[i]}')`);
+              contracted.add(`${pn[i]}|${model[i]}`);
             }
+            if (v === 'provider' && registered && !registered[i]) out.failures.push(`provider row ${i+2}: registered_by is empty`);
+            if (v === 'contract_term' && signed && !signed[i]) out.failures.push(`contract_term row ${i+2}: signed_by is empty`);
           });
-          t.forEach((v,i) => { if (v === 'provider' && !contracted.has(`${pn[i]}|${ref[i]}`)) out.findings.push(`provider ${pn[i]} has no matching no-training contract term`); });
+          t.forEach((v,i) => { if (v === 'provider' && !contracted.has(`${pn[i]}|${model[i]}`)) out.findings.push(`provider ${pn[i]} has no matching no-training contract term`); });
         }
-        if (own && own.some(v => !v)) out.failures.push('empty owner field(s)');
       }
       break;
     }
