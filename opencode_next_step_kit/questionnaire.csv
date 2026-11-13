@@ -1,0 +1,13 @@
+Ref,Question,Yes,Partly,No
+Q-101,"Are AI-proposed QA actions reviewed by a named human before acceptance?",,,
+Q-102,"Is there a kill switch, and are AI agent accesses revocable on request?",,,
+Q-103,"Is the identity of each AI agent logged on decisions affecting customers?",,,
+Q-104,"Are agent permissions reviewed at stated intervals (at least quarterly)?",,,
+Q-105,"Is there a complete inventory of AI providers in use?",,,
+Q-106,"Do supplier contracts prohibit training on customer data?",,,
+Q-107,"Do AI escalations go only to an authorised supervisor?",,,
+Q-108,"Is a named person accountable for AI-assisted decisions?",,,
+Q-109,"How is the accepted-versus-edited rate of AI QA monitored?",,,
+Q-110,"Are staff trained on responsible AI and prompt safety?",,,
+Q-111,"Are AI incidents notified within the contractual SLA?",,,
+Q-112,"Are prompts and outputs logged with PII retention rules applied?",,,
