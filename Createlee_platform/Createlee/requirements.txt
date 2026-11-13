@@ -2,7 +2,7 @@ Flask>=2.2
 reportlab>=4.0
 python-docx>=1.0
 openpyxl>=3.1
-requests>=2.31
+requests>=2.34.2
 beautifulsoup4>=4.12
 # dev / test
 pytest>=8.0
