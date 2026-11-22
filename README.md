@@ -16,7 +16,7 @@
 </div>
 
 <p float="left">
-  <strong>CreateLee<br></strong><br>
+  <strong>CreateLee</strong><br>
   <span style="font-size:0.9em;color:#93aaa0">by Helix Solutions</span>
 </p>
 
