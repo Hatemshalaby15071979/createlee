@@ -15,6 +15,11 @@
 
 </div>
 
+<p float="left">
+  <strong>CreateLee<br></strong><br>
+  <span style="font-size:0.9em;color:#93aaa0">by Helix Solutions</span>
+</p>
+
 ## What is this?
 
 <!-- docs-sync:start -->
