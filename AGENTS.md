@@ -99,3 +99,48 @@ how the pass could archive three reports while the root set still looked satisfi
 
 Sensitive: `git push origin master` (owner's instruction in chat, 2026-11-27). No force
 push, no PR or issue writes, no secrets.
+
+## [2026-11-27 04:44 EET] — sami (Claude), portfolio governance subagent — SIGN-OUT
+
+STATUS: SIGN-OUT (landing complete)
+
+Task: Mirror the root-document assertion the owner approved in Assay on 2026-11-27
+(`scripts/check-scaffold.py`) into CreateLee, then fix what it found. Done.
+
+Touched: `tools/check_root_docs.py` (new — byte-identical to the copy landed in
+Helix-Codex, Helix-Matrix and Helix-Solutions); `CHANGELOG.md` (new); `.github/workflows/ci.yml`
+(new "Root-document hygiene (GOVERNANCE.md section 2)" step: runs the gate, then its
+self-test); `AGENTS.md` (this entry and the sign-in above). No file moved, renamed or
+deleted.
+
+Why: GOVERNANCE.md section 2 says "No stray `.md`/`.txt` at the root", but nothing
+asserted the *absence* direction — only that known documents were present. The gate now
+asserts both: every root document the section 2 table names exists, and nothing unlisted
+sits beside them. The allowed set is parsed out of GOVERNANCE.md rather than hard-coded,
+so the policy keeps one source of truth. `requirements*.txt`/`constraints*.txt` are
+treated as package manifests, not documents, and reported as such.
+
+The gate found one real gap here: the section 2 table lists `CHANGELOG.md` and no such
+file existed. `CHANGELOG.md` is now written from the actual `master` history with commit
+references, in the CreateLee facts only — no release version is claimed, because this
+repository cuts none.
+
+Verification: `python3 tools/check_root_docs.py` → "check_root_docs: OK -- createlee/
+holds only the GOVERNANCE.md section 2 set" (7 table rows, 7 allowed root documents).
+`python3 tools/check_root_docs.py --self-test` → "7/7 cases behaved": a planted
+`STRAY-NOTE.md` and a planted `NOTES.txt` each stop the gate, a missing required document
+stops it, `requirements.txt` at the root is acknowledged as a non-document, a stray under
+`docs/` is ignored, and an unparsable section 2 fails closed. The repository's own gates
+re-run green: `tools/verify_manifests.py .` (all 4 manifests verified), `tools/check_duplicates.py .`
+(196 distinct files, 34 duplicate groups, 0 unexpected), `tools/verify_agent_instruction_files.py`
+(ME-15 OK), and the Signoff CSV validator over the golden examples (ACCEPTABLE: 6 PASS,
+2 PASS_WITH_FINDINGS, 0 FAIL, 42 rows preserved). CI on the pushed commits is recorded
+in the status block above.
+
+Left undone: The root holds one directory not in the GOVERNANCE.md section 1 repo map —
+`external docs for clients/` (spelled with spaces). It is not a document, so this gate
+does not touch it, and nothing here was moved on a guess: worth a look on a future
+landing, since the name reads like a working folder that was accidentally committed.
+
+Sensitive: `git push origin master` (owner's instruction in chat, 2026-11-27). No force
+push, no PR or issue writes, no secrets.
