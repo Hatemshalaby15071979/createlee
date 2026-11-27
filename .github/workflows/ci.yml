@@ -100,6 +100,16 @@ jobs:
       - name: Duplicate-file check
         run: python tools/check_duplicates.py .
 
+      # GOVERNANCE.md section 2, asserted in both directions: every root document the
+      # table names is present, and no unlisted .md/.txt sits at the root. A one-way
+      # check cannot enforce a "nothing else at the root" rule — that is how the
+      # 2026-11-26 pass could archive reports while the root set still looked
+      # satisfied. The self-test proves the gate fails closed.
+      - name: Root-document hygiene (GOVERNANCE.md section 2)
+        run: |
+          python3 tools/check_root_docs.py
+          python3 tools/check_root_docs.py --self-test
+
       # ME-15: agent-directive files must carry the quarantine header so an
       # automated agent does not treat their contents as commands.
       - name: ME-15 agent-instruction guard
