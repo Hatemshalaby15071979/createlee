@@ -81,3 +81,21 @@ Why: Owner's 2026-11-26 instruction to bring every public repo to one governance
 Verification: CONSTITUTION.md md5sum equal to the canonical file; `git ls-files` root now holds only README.md, SECURITY.md, CONSTITUTION.md, AGENTS.md, GOVERNANCE.md, LICENSE + config files; the archived reports are reachable from the new README paths.
 Left undone: The un-pushed chore/audit-hygiene commit (README logo line) was superseded — its content is already in origin/master (e448090) and re-applied by this rewrite; nothing unique lost. The nested app-data file `Createlee_platform/Createlee/CREATELEE_CONSTITUTION.md` was deliberately NOT archived: it is application data the app loads and `tools/verify_agent_instruction_files.py` guards, not a governance constitution.
 Sensitive: git push of governance docs to master, authorised by owner 2026-11-26.
+
+## [2026-11-27 04:35 EET] — sami (Claude), portfolio governance subagent
+
+Task: Sign in before any write to CreateLee. Mirror the root-document assertion the
+owner approved in Assay on 2026-11-27 (`scripts/check-scaffold.py`) across the
+governance repositories: add the gate and wire it into CI, then fix whatever it finds.
+
+Touched (planned): `tools/check_root_docs.py` (new); `CHANGELOG.md` (new — the
+GOVERNANCE.md section 2 table lists it and no such file exists); `.github/workflows/ci.yml`
+(new step); `AGENTS.md` (this entry and the sign-out).
+
+Why: the 2026-11-26 governance pass moved the one-off reports into `docs/archive/`, but
+nothing asserted the *other* direction of the same rule — that no unlisted document sits
+at the root. A one-way check cannot enforce a "nothing else at the root" rule, which is
+how the pass could archive three reports while the root set still looked satisfied.
+
+Sensitive: `git push origin master` (owner's instruction in chat, 2026-11-27). No force
+push, no PR or issue writes, no secrets.
